@@ -322,6 +322,8 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 .wc:hover .disc i{transform:scale(1.6)}
 @media(hover:none){.wc .t{right:auto;min-width:calc(100% - 20px);min-height:22%}.wc .disc{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.wc .t,.wc .disc,.wc .disc i{transition:none}}
+.grid .wc{aspect-ratio:.99}
+@media(max-width:640px){.grid .wc{aspect-ratio:1.1}}
 </style>
 </head>
 <body>
@@ -349,12 +351,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 
 <main class="wrap">
   <div class="head"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand, product, campaign</p></div>
-  <div class="grid">
-    <a class="proj" href="#fold"><span class="tag">PROJECT 1 <small>2026<br>Digital product</small></span></a>
-    <a class="proj" href="#halcyon"><span class="tag">PROJECT 2 <small>2026<br>Brand identity</small></span></a>
-    <a class="proj" href="#meridian"><span class="tag">PROJECT 3 <small>2025<br>Film &amp; campaign</small></span></a>
-    <a class="proj" href="#sable"><span class="tag">PROJECT 4 <small>2025<br>Packaging</small></span></a>
-  </div>
+  <div class="grid" id="hgrid"></div>
 
   <section class="notes">
     <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2></div>
@@ -442,18 +439,20 @@ addEventListener('hashchange',route);route();
 (function(){
 var PJ=window.PJ||{},KS=Object.keys(PJ);
 function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-document.getElementById('wgrid').innerHTML=KS.map(function(k){var d=PJ[k];return '<a class="wc" href="#'+k+'" data-s="'+k+'" style="background-image:url(projects/'+k+'/'+(d.cover||'cover.jpg')+')"><span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}).join('\n');
+function U(k,f){return 'url(projects/'+k+'/'+f+')'}
+function card(k,ds){var d=PJ[k];return '<a class="wc" href="#'+k+'"'+(ds?' data-s="'+k+'"':'')+' style="background-image:'+U(k,d.images.cover)+'"><span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}
+document.getElementById('wgrid').innerHTML=KS.map(function(k){return card(k,1)}).join('\n');
+document.getElementById('hgrid').innerHTML=KS.filter(function(k){return PJ[k].home}).sort(function(a,b){return PJ[a].home-PJ[b].home}).map(function(k){return card(k,0)}).join('\n');
 document.getElementById('s2').insertAdjacentHTML('beforeend',KS.map(function(k,i){return '<a href="#'+k+'" style="--i:'+(i+1)+'">'+esc(PJ[k].menu||PJ[k].label)+'</a>'}).join(''));
 window.renderPj=function(k){var d=PJ[k],c=document.querySelector('.wc[data-s="'+k+'"]');if(!d||!c)return;
-var im=c.style.backgroundImage,q=function(x){return document.querySelector(x)};
+var I=d.images,q=function(x){return document.querySelector(x)};
 function st(e,h){e.innerHTML=h;if(window.splitEl)splitEl(e)}
-q('.p-hero').style.backgroundImage='linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.2) 55%,rgba(0,0,0,.65)),'+im;
+q('.p-hero').style.backgroundImage='linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.2) 55%,rgba(0,0,0,.65)),'+U(k,I.hero);
 q('.p-hero small').textContent=d.meta;st(q('.p-hero h1'),d.title);st(q('.brief p'),d.brief);
-var V=[['cover','50% 30%'],['190%','20% 40%'],['190%','80% 60%'],['130%','50% 78%'],['210%','30% 70%'],['210%','75% 25%'],['125%','50% 45%'],['120%','50% 12%']];
-document.querySelectorAll('.shots div').forEach(function(e,i){var v=V[i%V.length];e.style.backgroundImage=im;e.style.backgroundSize=v[0];e.style.backgroundPosition=v[1];e.style.backgroundRepeat='no-repeat'});
+document.querySelectorAll('.shots div').forEach(function(e,i){var f=I.gallery[i];e.style.backgroundImage=f?U(k,f):'none';e.style.backgroundSize='cover';e.style.backgroundPosition='center';e.style.backgroundRepeat='no-repeat'});
 var ks=Object.keys(PJ),nk=ks[(ks.indexOf(k)+1)%ks.length],nc=document.querySelector('.wc[data-s="'+nk+'"]'),nx=q('#nx');if(nc&&nx){nx.href='#'+nk;nx.style.backgroundImage=nc.style.backgroundImage;nx.innerHTML=nc.innerHTML}
 st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
-var ph=q('.quote .ph');ph.style.backgroundImage=im;ph.style.backgroundSize='cover';ph.style.backgroundPosition='50% 40%'};
+var ph=q('.quote .ph');ph.style.backgroundImage=U(k,I.quote);ph.style.backgroundSize='cover';ph.style.backgroundPosition='center'};
 var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(typeof Lenis!=='undefined'&&!rm){var l=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))}});window.lenis=l;(function r(t){l.raf(t);requestAnimationFrame(r)})(0)}
 route();
