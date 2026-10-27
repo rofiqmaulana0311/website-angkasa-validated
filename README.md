@@ -8,6 +8,7 @@ Buka `index.html` langsung di browser, tidak perlu server.
 angkasa-studio/
 ├── index.html
 ├── assets/
+│   ├── hero-home.jpg        hero halaman Home (lebar 16:9, disarankan 2576 x 1449)
 │   ├── contact.jpg          foto halaman Contact
 │   └── works-cta.jpg        background footer halaman Works
 └── projects/
@@ -51,6 +52,8 @@ Tata letak galeri di halaman project:
 │  8  wide              │
 └───────────────────────┘
 ```
+
+Hero Home: timpa `assets/hero-home.jpg`. Gambar diposisikan agar sisi kanan (wajah) tetap terlihat di layar sempit.
 
 Gambar dipotong otomatis dari tengah agar pas dengan kotaknya, jadi subjek utama sebaiknya di tengah.
 Di HP, foto kutipan berubah menjadi bentuk landscape, dan di "Next project" `cover.jpg` dipotong menjadi lebar.

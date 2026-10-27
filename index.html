@@ -14,7 +14,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
 .wrap{padding:0 clamp(12px,1.4vw,24px)}
-.hero{position:relative;margin:var(--hero-gap);background:var(--hero);color:#f4f2ea;border-radius:10px;min-height:var(--hero-h);padding:var(--hero-pad);display:flex;align-items:flex-end}
+.hero{position:relative;margin:var(--hero-gap);background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 28%),linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 55%),url(assets/hero-home.jpg) 60% center/cover no-repeat,var(--hero);color:#f4f2ea;border-radius:10px;min-height:var(--hero-h);padding:var(--hero-pad);display:flex;align-items:flex-end}
 @supports(height:100svh){:root{--hero-h:calc(100svh - var(--safe-y) - var(--hero-gap)*2)}}
 .nav{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:min(300px,60%);background:#1b1b1b;border-radius:6px;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:#ddd}
 .nav svg{width:12px;height:12px}
@@ -214,7 +214,7 @@ body.works .cta{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url(
 .wc{position:relative;display:block;aspect-ratio:1;border-radius:8px;overflow:hidden;background-size:cover;background-position:center;color:#fff}
 .wc .t{position:absolute;top:10px;left:10px;display:flex;gap:10px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:8px;font-size:clamp(15px,1.7vw,26px);letter-spacing:-.02em}
 .wc .t small{font-size:10px;line-height:1.35;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px}
-.wc.big .t{right:10px;min-height:22%}
+.wc.big .t{right:10px;min-height:var(--t-h)}
 .wc .disc{position:absolute;right:16px;bottom:12px;font-size:13px;display:flex;align-items:center;gap:8px}
 .wc .disc i{width:6px;height:6px;border-radius:50%;background:#fff}
 .stud{padding:clamp(70px,8vw,130px) clamp(12px,1.4vw,24px) clamp(30px,4vw,60px)}
@@ -257,10 +257,10 @@ body.works .cta{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url(
 @keyframes subIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 /* hover reveal on works cards */
 .wc .disc{opacity:0;transition:opacity .35s .12s}
-.wc:hover .t,.wc:focus-visible .t{right:10px;min-height:22%;animation:tagIn .6s cubic-bezier(.16,1,.3,1)}
+.wc:hover .t,.wc:focus-visible .t{right:10px;min-height:var(--t-h);animation:tagIn .6s cubic-bezier(.16,1,.3,1)}
 .wc:hover .disc,.wc:focus-visible .disc{opacity:1}
 @keyframes tagIn{from{clip-path:inset(0 62% 40% 0 round 8px)}to{clip-path:inset(0 0 0 0 round 8px)}}
-@media(hover:none){.wc .t{right:10px;min-height:22%}.wc .disc{opacity:1}}
+@media(hover:none){.wc .t{right:10px;min-height:var(--t-h)}.wc .disc{opacity:1}}
 @media(prefers-reduced-motion:reduce){.wc:hover .t{animation:none}}
 .p-hero{background-size:cover;background-position:center}
 @media(min-width:641px){.m{grid-template-columns:1fr 1fr 120px}.m em{text-align:right}}
@@ -313,25 +313,48 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 .shots .wide{aspect-ratio:16/9}
 @media(max-width:640px){.shots{grid-template-columns:1fr 1fr}.shots div{aspect-ratio:4/5}.shots .wide{aspect-ratio:16/9}}
 /* smooth hover reveal on project cards */
-.wc{--e:cubic-bezier(.22,1,.36,1)}
+.wc{--e:cubic-bezier(.22,1,.36,1);--t-h:80px}
 .wc .t{right:auto;width:max-content;min-width:0;min-height:0;overflow:hidden;animation:none;transition:min-width .75s var(--e),min-height .75s var(--e),background-color .5s ease}
-.wc:hover .t,.wc:focus-visible .t{right:auto;animation:none;min-width:calc(100% - 20px);min-height:22%;background-color:rgba(255,255,255,.26)}
+.wc:hover .t,.wc:focus-visible .t{right:auto;animation:none;min-width:calc(100% - 20px);min-height:var(--t-h);background-color:rgba(255,255,255,.26)}
 .wc .disc{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .6s var(--e);transition-delay:0s}
 .wc:hover .disc,.wc:focus-visible .disc{opacity:1;transform:none;transition-delay:.18s}
 .wc .disc i{transition:transform .5s var(--e)}
 .wc:hover .disc i{transform:scale(1.6)}
-@media(hover:none){.wc .t{right:auto;min-width:calc(100% - 20px);min-height:22%}.wc .disc{opacity:1;transform:none}}
+@media(hover:none){.wc .t{right:auto;min-width:calc(100% - 20px);min-height:var(--t-h)}.wc .disc{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.wc .t,.wc .disc,.wc .disc i{transition:none}}
 .grid .wc{aspect-ratio:.99}
 @media(max-width:640px){.grid .wc{aspect-ratio:1.1}}
+
+/* nav: only the dots icon is the menu button; logo + wordmark go home */
+.nav{cursor:default}
+.nav a{color:inherit;text-decoration:none;transition:opacity .25s ease}
+.nav a:hover{opacity:.7}
+.nav .lgl{display:flex;align-items:center;line-height:0}
+.nav .mb{display:flex;padding:0;margin:0;border:0;background:none;color:inherit;cursor:pointer;line-height:0;transition:opacity .25s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.nav .mb:hover{opacity:.7}
+.nav .mb[aria-expanded=true]{transform:rotate(90deg)}
+.nav a:focus-visible,.nav .mb:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:3px}
+/* menu: smooth reveal (panel wipes down, items stagger in) */
+.menu{--e:cubic-bezier(.22,1,.36,1);visibility:hidden;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-10px) scale(.97);transform-origin:50% 0;clip-path:inset(0 -60px 100% -60px);transition:opacity .3s ease,transform .6s var(--e),clip-path .6s var(--e),visibility 0s .6s}
+.menu.open{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(-50%);clip-path:inset(0 -60px -60px -60px);transition:opacity .3s ease,transform .6s var(--e),clip-path .75s var(--e),visibility 0s}
+.menu li,.menu .go{opacity:0;transform:translateY(-8px);transition:opacity .25s ease,transform .4s ease}
+.menu.open li,.menu.open .go{opacity:1;transform:none;transition:opacity .5s ease,transform .7s var(--e);transition-delay:calc(var(--n,0)*55ms + 140ms)}
+.menu li:nth-child(2){--n:1}.menu li:nth-child(3){--n:2}.menu li:nth-child(4){--n:3}.menu li:nth-child(5){--n:4}.menu .go{--n:5}
+/* submenu accordion: height animates instead of snapping */
+.menu .sub,.menu .sub.open{display:grid;grid-template-rows:0fr;padding:0;opacity:0;transition:grid-template-rows .55s var(--e),opacity .35s ease}
+.menu .sub.open{grid-template-rows:1fr;opacity:1}
+.menu .sub>.in{min-height:0;overflow:hidden;padding:0 12px}
+.menu .sub>.in::before{content:"";display:block;height:2px}
+.menu .sub>.in::after{content:"";display:block;height:14px}
+@media(prefers-reduced-motion:reduce){.menu,.menu.open,.menu li,.menu .go,.menu .sub,.nav .mb{transition:none}}
 </style>
 </head>
 <body>
-<nav class="menu" id="menu" aria-label="Main" hidden>
+<nav class="menu" id="menu" aria-label="Main">
 <ul>
 <li><a class="it" href="#home">Home<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
-<li><button class="it" aria-expanded="false" data-sub="s1">About<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s1">Open for Q1 2027 projects.</div></li>
-<li><button class="it" aria-expanded="false" data-sub="s2">Works<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s2"><a href="#works" style="--i:0">All works</a></div></li>
+<li><button class="it" aria-expanded="false" data-sub="s1">About<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s1"><div class="in">Open for Q1 2027 projects.</div></div></li>
+<li><button class="it" aria-expanded="false" data-sub="s2">Works<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s2"><div class="in"><a href="#works" style="--i:0">All works</a></div></div></li>
 <li><a class="it" href="#home">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><a class="it" href="#contact">Contact<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 </ul>
@@ -339,7 +362,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 </nav>
 <div id="home">
 <header class="hero">
-  <div class="nav"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg><span>Angkasa Studio</span><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></div>
+  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
   <h1>Your<br>Invincible<br>Design Team</h1>
   <div class="status"><div><small>Studio status</small>Open for Q1<br>2027 projects.</div><i></i></div>
 </header>
@@ -371,7 +394,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 </div>
 <div id="project" hidden>
 <header class="p-hero">
-  <a class="nav" href="#home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg><span>Angkasa Studio</span><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></a>
+  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
   <small>Digital product · Design system · 2026</small>
   <h1>Fold<br>Apparel</h1>
 </header>
@@ -382,7 +405,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 <a class="wc nx" id="nx" href="#works"></a></section>
 </div>
 <div id="works" hidden>
-<div class="nav"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg><span>Selected work, 2017–2026</span><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></div>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><span>Selected work, 2017–2026</span><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
 <section class="wk-head"><small>Selected work</small><h1 class="wk-h1">Work that<br>still holds up.</h1></section>
 <section class="wgrid" id="wgrid"></section>
 <section class="stud"><div class="shead"><h2>In the studio<br>right now.</h2><p>Live now — 03 / 05<br>Updated this week</p></div>
@@ -392,7 +415,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 </section>
 </div>
 <div id="contact" hidden>
-<div class="nav"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg><span>Angkasa Studio</span><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></div>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
 <section class="ct-head"><small>The studio reel</small><h1 class="ct-h1">Tell us what<br>you are building.</h1></section>
 <section class="ct-info"><div><small>Phone</small><a href="tel:+31202440187">+31 20 244 0187</a></div><div><small>Email</small><a href="mailto:hello@vantra.studio">hello@vantra.studio</a></div></section>
 <section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.jpg)"></div>
@@ -419,8 +442,10 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 <script>
 function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact';if(p)renderPj(h.slice(1));document.getElementById('home').hidden=p||w||c;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30)}
 var menu=document.getElementById('menu');
-function tog(f){menu.hidden=f===undefined?!menu.hidden:!f}
-document.querySelectorAll('.nav').forEach(function(n){n.setAttribute('role','button');n.tabIndex=0;n.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();tog()});n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tog()}})});
+function tog(f){var o=f===undefined?!menu.classList.contains('open'):!!f;menu.classList.toggle('open',o);document.querySelectorAll('.nav .mb').forEach(function(b){b.setAttribute('aria-expanded',o)})}
+function goHome(e){e.preventDefault();tog(false);if(!document.getElementById('home').hidden){if(window.lenis)lenis.scrollTo(0,{duration:1.2});else scrollTo({top:0,behavior:'smooth'})}else location.hash='#home'}
+document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListener('click',goHome)});
+document.querySelectorAll('.nav .mb').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();tog()})});
 menu.addEventListener('click',function(e){e.stopPropagation();var b=e.target.closest('button[data-sub]');if(b){var s=document.getElementById(b.dataset.sub),o=!s.classList.contains('open');s.classList.toggle('open',o);b.setAttribute('aria-expanded',o);return}if(e.target.closest('a')){tog(false)}});
 document.addEventListener('click',function(){tog(false)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
@@ -443,7 +468,7 @@ function U(k,f){return 'url(projects/'+k+'/'+f+')'}
 function card(k,ds){var d=PJ[k];return '<a class="wc" href="#'+k+'"'+(ds?' data-s="'+k+'"':'')+' style="background-image:'+U(k,d.images.cover)+'"><span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}
 document.getElementById('wgrid').innerHTML=KS.map(function(k){return card(k,1)}).join('\n');
 document.getElementById('hgrid').innerHTML=KS.filter(function(k){return PJ[k].home}).sort(function(a,b){return PJ[a].home-PJ[b].home}).map(function(k){return card(k,0)}).join('\n');
-document.getElementById('s2').insertAdjacentHTML('beforeend',KS.map(function(k,i){return '<a href="#'+k+'" style="--i:'+(i+1)+'">'+esc(PJ[k].menu||PJ[k].label)+'</a>'}).join(''));
+document.querySelector('#s2 .in').insertAdjacentHTML('beforeend',KS.map(function(k,i){return '<a href="#'+k+'" style="--i:'+(i+1)+'">'+esc(PJ[k].menu||PJ[k].label)+'</a>'}).join(''));
 window.renderPj=function(k){var d=PJ[k],c=document.querySelector('.wc[data-s="'+k+'"]');if(!d||!c)return;
 var I=d.images,q=function(x){return document.querySelector(x)};
 function st(e,h){e.innerHTML=h;if(window.splitEl)splitEl(e)}
