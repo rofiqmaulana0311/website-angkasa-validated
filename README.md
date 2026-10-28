@@ -12,7 +12,7 @@ angkasa-studio/
 │   ├── contact.jpg          foto halaman Contact
 │   └── works-cta.jpg        background footer halaman Works
 └── projects/
-    ├── fold/  halcyon/  kin/  meridian/  sable/  aurel/  northwind/  luma/
+    ├── fold/  halcyon/  kin/  meridian/  ostra/  aurel/  northwind/  luma/
         ├── project.js           teks project
         ├── cover.jpg            kartu project
         ├── hero.jpg             hero halaman project
