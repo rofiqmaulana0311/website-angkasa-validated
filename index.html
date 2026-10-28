@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Angkasa Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#111;--mute:#8a8a8a;--line:#e6e6e6;--hero:#333;--card:#6b6b6b;--dark:#121212;
+--hero-gap:clamp(4px,.4vw,8px);--safe-y:calc(env(safe-area-inset-top,0px) + env(safe-area-inset-bottom,0px));--hero-h:calc(100vh - var(--safe-y) - var(--hero-gap)*2);--hero-pad:clamp(20px,3.6vw,56px);--nav-clear:112px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{padding:0 clamp(12px,1.4vw,24px)}
+.hero{position:relative;margin:var(--hero-gap);background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 28%),linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 55%),url(assets/hero-home.jpg) 60% center/cover no-repeat,var(--hero);color:#f4f2ea;border-radius:10px;min-height:var(--hero-h);padding:var(--hero-pad);display:flex;align-items:flex-end}
+@supports(height:100svh){:root{--hero-h:calc(100svh - var(--safe-y) - var(--hero-gap)*2)}}
+.nav{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:min(300px,60%);background:#1b1b1b;border-radius:6px;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:#ddd}
+.nav svg{width:12px;height:12px}
+.hero h1{margin:0;font-size:clamp(52px,9.4vw,150px);line-height:.92;font-weight:600;letter-spacing:-.045em}
+.status{position:absolute;right:clamp(14px,1.6vw,28px);bottom:clamp(14px,1.6vw,28px);background:#1d1d1d;border-radius:8px;padding:10px;display:flex;justify-content:space-between;gap:28px;width:clamp(190px,17vw,260px);font-size:11px;line-height:1.3}
+.status small{display:block;font-size:8px;color:#aaa;text-transform:uppercase;margin-bottom:12px}
+.status i{width:clamp(44px,3.9vw,62px);aspect-ratio:1;background:#fff;border-radius:7px;display:block;flex:none}
+.intro{text-align:center;padding:clamp(70px,9vw,140px) 20px clamp(50px,6vw,90px)}
+.intro p{margin:0 auto;max-width:560px;font-size:clamp(20px,2.1vw,32px);line-height:1.2;font-weight:500;letter-spacing:-.03em}
+.logos{display:flex;justify-content:center;gap:clamp(14px,2vw,30px);margin-top:28px;font-size:11px;color:#777;flex-wrap:wrap}
+.logos span{display:inline-flex;align-items:center;gap:5px;letter-spacing:.02em}
+.logos b{width:9px;height:9px;border-radius:50%;border:1.5px solid #888;display:inline-block}
+.head{display:flex;justify-content:space-between;align-items:flex-start;margin:clamp(50px,6vw,100px) 0 clamp(20px,2.6vw,40px)}
+.head h2{margin:0;font-size:clamp(22px,2.2vw,34px);line-height:1.02;font-weight:600;letter-spacing:-.035em}
+.head p{margin:0;text-align:right;font-size:8px;line-height:1.6;text-transform:uppercase;color:#666;letter-spacing:.04em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(4px,.5vw,8px)}
+.proj{position:relative;background:var(--card);border-radius:8px;aspect-ratio:.99;color:#cfcfcf}
+.tag{position:absolute;top:8px;left:8px;background:#595959;border-radius:5px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;font-size:clamp(11px,1.2vw,18px);color:#ddd}
+.tag small{font-size:6px;line-height:1.3;text-transform:uppercase;color:#aaa;letter-spacing:.04em}
+.notes{margin-top:clamp(70px,8vw,130px)}
+.posts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(4px,.5vw,8px);margin-top:clamp(20px,2.4vw,38px)}
+.post{background:var(--dark);color:#f1f1f1;border-radius:8px;aspect-ratio:1.4;padding:10px 12px}
+.post small{display:block;font-size:6px;text-transform:uppercase;color:#aaa;letter-spacing:.04em;margin-bottom:22px}
+.post h3{margin:0;font-size:clamp(13px,1.35vw,20px);line-height:1.2;font-weight:500;letter-spacing:-.025em}
+.list{margin-top:clamp(30px,4vw,60px)}
+.row{display:grid;grid-template-columns:clamp(80px,12vw,160px) 1fr auto 20px;gap:12px;align-items:center;padding:clamp(14px,1.7vw,24px) 0;border-top:1px solid var(--line);font-size:clamp(10px,.95vw,14px)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row span:first-child{font-size:8px;text-transform:uppercase;color:#666;letter-spacing:.04em}
+.row span:nth-child(3){font-size:8px;text-transform:uppercase;color:#555}
+.row svg{width:10px;height:10px}
+.cta{margin-top:clamp(40px,5vw,80px);background:#000;color:#f4f2ea;border-radius:10px 10px 0 0;text-align:center;padding:clamp(30px,4vw,60px) 20px clamp(40px,4vw,60px)}
+.cta h2{margin:0 auto;font-size:clamp(52px,8.4vw,130px);line-height:.92;font-weight:600;letter-spacing:-.045em;max-width:9.5em}
+.cta p{margin:clamp(24px,3vw,40px) auto 20px;max-width:240px;font-size:9px;line-height:1.5;color:#aaa}
+.btns{display:flex;justify-content:center;gap:8px;font-size:8px}
+.btns a{display:inline-flex;align-items:center;gap:14px;padding:6px 8px;border-radius:4px;background:#f1efe6;color:#111}
+.btns a+a{background:#1d1d1d;color:#eee}
+.btns em{font-style:normal;background:#444;color:#fff;border-radius:3px;padding:1px 4px}
+body.alt{background:#f1f1ec}
+.nav{z-index:2}
+.p-hero{position:relative;margin:clamp(4px,.4vw,8px);border-radius:10px;min-height:min(62vh,520px);background:linear-gradient(#3a3a3a,#777 55%,#2b2b2b);color:#f4f2ea;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px 40px}
+.p-hero small{font-size:7px;text-transform:uppercase;letter-spacing:.05em;color:#ccc;margin-bottom:22px}
+.p-hero h1{margin:0;font-size:clamp(64px,10vw,150px);line-height:.92;font-weight:600;letter-spacing:-.045em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.brief{padding:clamp(60px,8vw,120px) clamp(12px,1.4vw,24px) clamp(40px,5vw,80px)}
+.brief h2{margin:0;font-size:clamp(22px,2.2vw,34px);font-weight:600;letter-spacing:-.035em}
+.brief p{margin:0;max-width:300px;font-size:clamp(12px,1.05vw,16px);line-height:1.3;font-weight:500;letter-spacing:-.02em}
+.shots{padding:0 clamp(4px,.5vw,8px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(4px,.5vw,8px)}
+.shots div{background:#111;border-radius:6px;aspect-ratio:.82}
+.shots .wide{grid-column:1/-1;aspect-ratio:2.1}
+.market{margin:clamp(70px,9vw,140px) clamp(4px,.4vw,8px) 0;border-radius:10px;overflow:hidden;background:#0d0d0d;color:#f1f1f1}
+.market .top{min-height:min(40vw,340px);background:linear-gradient(#222,#7a7a7a 60%,#2b2b2b);display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 20px}
+.market h2{margin:0;font-size:clamp(40px,5.6vw,84px);line-height:.95;font-weight:600;letter-spacing:-.04em}
+.market .sub{padding:clamp(20px,2.6vw,40px) clamp(12px,1.4vw,24px) clamp(18px,2vw,30px)}
+.market .sub p{margin:0;grid-column:2;max-width:260px;font-size:clamp(13px,1.2vw,18px);line-height:1.25;font-weight:500}
+.m{display:grid;grid-template-columns:1fr 1fr auto;gap:20px;align-items:start;padding:clamp(12px,1.4vw,20px) clamp(12px,1.4vw,24px);border-top:1px solid #262626;font-size:clamp(9px,.85vw,12px);line-height:1.4}
+.m b{font-size:clamp(11px,1vw,14px);font-weight:500}
+.m span{max-width:300px;color:#ddd}
+.m em{font-style:normal;font-size:7px;text-transform:uppercase;color:#888}
+.m:last-child{margin-bottom:clamp(14px,2vw,28px)}
+.quote{padding:clamp(60px,8vw,120px) clamp(12px,1.4vw,24px) clamp(60px,8vw,120px)}
+.quote .ph{background:#2e2e2e;border-radius:6px;width:min(100%,200px);aspect-ratio:.82}
+.qmeta{display:flex;justify-content:space-between;font-size:7px;text-transform:uppercase;color:#666;letter-spacing:.04em;padding-bottom:14px;border-bottom:1px solid #ddd}
+.qtxt{margin:16px 0 18px;font-size:clamp(12px,1.05vw,16px);line-height:1.3;font-weight:500;padding-bottom:18px;border-bottom:1px solid #ddd}
+.who{display:flex;gap:6px;align-items:center;font-size:8px;line-height:1.3}
+.who i{width:14px;height:14px;border-radius:50%;background:#7a2230;display:block}
+.who small{display:block;font-size:6px;text-transform:uppercase;color:#777}
+.proj{cursor:pointer}
+@media(max-width:640px){.cols,.m{grid-template-columns:1fr}.market .sub p{grid-column:1}.shots .wide{aspect-ratio:1.4}}
+body{position:relative}
+.nav{cursor:pointer}
+.menu{position:absolute;z-index:20;top:48px;left:50%;transform:translateX(-50%);width:min(300px,calc(100% - 24px));background:#000;border:1px solid #1c1c1c;border-radius:10px;padding:0 8px 8px;color:#f4f4f4;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.menu[hidden]{display:none}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li{border-bottom:1px solid #1a1a1a}
+.menu .it{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:46px;padding:0 8px;font:inherit;font-size:15px;letter-spacing:-.01em;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+.menu .it svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:1.4;flex:none;transition:transform .2s}
+.menu .it[aria-expanded=true] svg{transform:rotate(45deg)}
+.menu .sub{display:none;padding:0 8px 10px;font-size:12px;color:#aaa;line-height:1.9}
+.menu .sub.open{display:block}
+.menu .sub a{display:block;color:#ddd}
+.menu .go{display:block;margin-top:8px;height:40px;line-height:38px;text-align:center;font-size:12px;background:#141414;border:1px solid #232323;border-radius:8px}
+.menu a.it:hover,.menu .go:hover{background:#1a1a1a}
+a:focus-visible,button:focus-visible{outline:2px solid #6aa7ff;outline-offset:2px}
+a:focus-visible{outline:2px solid #6aa7ff;outline-offset:2px}
+@media(max-width:640px){.status{position:static;margin-top:20px}.hero{flex-direction:column;justify-content:flex-end;align-items:flex-start}.row{grid-template-columns:1fr 20px;}.row span:first-child,.row span:nth-child(3){grid-column:1}.row svg{grid-row:1/span 3;grid-column:2}}
+/* ukuran font lebih besar + responsif */
+img,svg{max-width:100%}
+.nav{font-size:12px;padding:10px 14px;width:min(340px,calc(100% - 24px))}
+.nav svg{width:14px;height:14px}
+.menu{width:min(340px,calc(100% - 24px));top:58px}
+.menu .it{font-size:17px;min-height:52px}
+.menu .sub{font-size:14px}
+.menu .go{font-size:14px;height:46px;line-height:44px}
+.status{width:clamp(220px,20vw,300px);font-size:clamp(13px,1.1vw,16px)}
+.status small{font-size:11px}
+.intro p{font-size:clamp(22px,2.4vw,36px);max-width:680px}
+.logos{font-size:clamp(13px,1.1vw,16px)}
+.head h2,.brief h2{font-size:clamp(28px,3vw,48px)}
+.head p{font-size:11px}
+.tag{font-size:clamp(14px,1.5vw,22px);padding:10px 12px}
+.tag small{font-size:10px}
+.post small{font-size:11px}
+.post h3{font-size:clamp(17px,1.7vw,26px)}
+.row{font-size:clamp(14px,1.15vw,17px)}
+.row span:first-child,.row span:nth-child(3){font-size:11px}
+.row svg{width:13px;height:13px}
+.cta p{font-size:clamp(14px,1.2vw,18px);max-width:360px}
+.btns{font-size:clamp(12px,1vw,14px)}
+.btns a{padding:10px 14px}
+.p-hero small{font-size:11px}
+.brief p{font-size:clamp(16px,1.4vw,22px);max-width:420px}
+.market .sub p{font-size:clamp(17px,1.5vw,24px);max-width:380px}
+.m{font-size:clamp(14px,1.1vw,16px)}
+.m b{font-size:clamp(16px,1.3vw,20px)}
+.m span{max-width:420px}
+.m em{font-size:11px}
+.qmeta{font-size:11px}
+.qtxt{font-size:clamp(17px,1.5vw,24px)}
+.who{font-size:14px;gap:8px}
+.who i{width:26px;height:26px}
+.who small{font-size:11px}
+@media(max-width:1024px){
+ .p-hero{min-height:52vh}
+ .brief{padding-top:70px}
+ .quote .ph{width:min(100%,180px)}
+}
+@media(max-width:768px){
+ .hero h1{font-size:clamp(46px,12vw,92px)}
+ .p-hero h1,.cta h2,.market h2{font-size:clamp(46px,12.5vw,92px)}
+ .status{width:clamp(210px,40vw,280px)}
+ .cols{gap:16px}
+ .brief p,.market .sub p{max-width:none}
+}
+@media(max-width:640px){
+ .hero{padding:20px}
+ .hero h1{font-size:clamp(44px,13.5vw,64px)}
+ .status{position:static;width:100%;margin-top:20px}
+ .intro{padding-top:60px}
+ .head{flex-direction:column;gap:12px}
+ .head p{text-align:left}
+ .grid,.posts,.shots{grid-template-columns:1fr}
+ .proj{aspect-ratio:1.1}
+ .post{aspect-ratio:auto;min-height:170px}
+ .shots div,.shots .wide{aspect-ratio:1.3}
+ .row{grid-template-columns:1fr 20px;gap:6px 12px}
+ .row span:nth-child(2){grid-column:1;font-size:16px}
+ .m{gap:6px}
+ .m em{order:3}
+ .market .top{min-height:240px}
+ .quote .ph{width:100%;aspect-ratio:1.4}
+ .qmeta{flex-direction:column;gap:6px}
+ .cta{padding-left:16px;padding-right:16px}
+ .cta p{max-width:280px}
+}
+/* navbar 598x72 */
+.nav{width:min(598px,calc(100% - 24px));height:72px;top:16px;padding:0 24px;border-radius:12px;font-size:15px}
+.nav svg{width:22px;height:22px}
+.menu{width:min(598px,calc(100% - 24px));top:96px;padding:0 12px 12px;border-radius:12px}
+.menu .it{font-size:20px;min-height:60px;padding:0 12px}
+.menu .it svg{width:16px;height:16px}
+.menu .sub{font-size:16px;padding:0 12px 14px}
+.menu .go{font-size:16px;height:52px;line-height:50px}
+.p-hero{padding-top:120px}
+@media(max-width:1024px){
+ :root{--nav-clear:96px}
+ .nav{height:64px;top:14px;padding:0 20px;font-size:14px}
+ .nav svg{width:20px;height:20px}
+ .menu{top:86px}
+ .menu .it{font-size:18px;min-height:54px}
+ .p-hero{padding-top:104px}
+}
+@media(max-width:640px){
+ :root{--nav-clear:84px}
+ .nav{height:56px;top:12px;padding:0 16px;font-size:13px;border-radius:10px}
+ .nav svg{width:18px;height:18px}
+ .menu{top:76px;padding:0 8px 8px}
+ .menu .it{font-size:17px;min-height:50px;padding:0 8px}
+ .menu .go{font-size:15px;height:48px;line-height:46px}
+ .p-hero{padding-top:92px}
+}
+@media(max-height:560px){.hero{padding-top:var(--nav-clear)}}
+/* smooth scroll + text reveal */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+.rv .w{display:inline-block;overflow:hidden;vertical-align:top;padding:.12em 0 .18em;margin:-.12em 0 -.18em}
+.rv .w>span{display:inline-block;transform:translateY(115%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*55ms);will-change:transform}
+.rv.in .w>span{transform:none}
+@media(prefers-reduced-motion:reduce){.rv .w>span{transform:none;transition:none}}
+/* works page */
+body.works{background:#f1f1ec}
+body.works .cta{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url(assets/works-cta.jpg) center/cover;margin-top:clamp(50px,6vw,100px);border-radius:10px;margin-left:clamp(4px,.4vw,8px);margin-right:clamp(4px,.4vw,8px)}
+.wk-head{text-align:center;padding:clamp(100px,11vw,150px) 20px clamp(30px,4vw,60px)}
+.wk-head small{display:block;font-size:12px;color:#666;margin-bottom:20px}
+.wk-h1{margin:0;font-size:clamp(44px,7vw,110px);line-height:.95;font-weight:600;letter-spacing:-.045em}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(4px,.5vw,8px);padding:0 clamp(4px,.5vw,8px)}
+.wc{position:relative;display:block;aspect-ratio:1;border-radius:8px;overflow:hidden;background-size:cover;background-position:center;color:#fff}
+.wc .t{position:absolute;top:10px;left:10px;display:flex;gap:10px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:8px;font-size:clamp(15px,1.7vw,26px);letter-spacing:-.02em}
+.wc .t small{font-size:10px;line-height:1.35;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px}
+.wc.big .t{right:10px;min-height:var(--t-h)}
+.wc .disc{position:absolute;right:16px;bottom:12px;font-size:13px;display:flex;align-items:center;gap:8px}
+.wc .disc i{width:6px;height:6px;border-radius:50%;background:#fff}
+.stud{padding:clamp(70px,8vw,130px) clamp(12px,1.4vw,24px) clamp(30px,4vw,60px)}
+.shead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:clamp(30px,4vw,60px)}
+.shead h2{margin:0;font-size:clamp(28px,3vw,48px);line-height:1.02;font-weight:600;letter-spacing:-.035em}
+.shead p{margin:0;text-align:right;font-size:11px;line-height:1.6;text-transform:uppercase;color:#666;letter-spacing:.04em}
+.sr{display:grid;grid-template-columns:1.2fr 1fr 1.3fr 1fr 1fr;gap:16px;align-items:center;padding:clamp(16px,1.9vw,26px) 0;border-top:1px solid #d9d9d3;font-size:clamp(12px,1vw,14px)}
+.sr:last-child{border-bottom:1px solid #d9d9d3}
+.sr b{font-size:clamp(15px,1.25vw,19px);font-weight:500}
+.sr>span{text-transform:uppercase;font-size:11px;color:#555;letter-spacing:.03em}
+.sr .wk{display:block}
+.sr .wk em{display:block;font-style:normal;margin-bottom:8px}
+.sr .wk u{display:block;height:2px;background:#cfcfc8;text-decoration:none;position:relative}
+.sr .wk u::after{content:"";position:absolute;left:0;top:0;height:100%;width:var(--p);background:#111}
+.wf{background:#0d0d0d;color:#f1f1f1;margin:clamp(4px,.4vw,8px) clamp(4px,.4vw,8px) 0;border-radius:10px 10px 0 0;padding:clamp(30px,4vw,60px) clamp(16px,2vw,32px) 24px}
+.wf[hidden]{display:none}
+.wf-top,.wf-mid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vlogo{width:clamp(44px,4vw,64px);height:auto}
+.wf-nav a{display:block;font-size:clamp(20px,1.9vw,30px);letter-spacing:-.02em;padding:6px 0;border-bottom:1px solid #1f1f1f}
+.wf-mid{margin-top:clamp(50px,7vw,110px)}
+.wf-mid p{margin:0;max-width:340px;font-size:14px;line-height:1.5;color:#aaa}
+.wf-links{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;font-size:14px;color:#bbb;align-content:start}
+.wf-bot{display:flex;justify-content:space-between;gap:16px;margin-top:clamp(40px,5vw,80px);font-size:12px;color:#888}
+@media(max-width:1024px){body.works .nav{height:64px}}
+@media(max-width:640px){
+ .wgrid{grid-template-columns:1fr}
+ .wc .t{padding:10px 12px}
+ .shead{flex-direction:column;gap:12px}.shead p{text-align:left}
+ .sr{grid-template-columns:1fr 1fr;gap:10px 16px}
+ .sr b{grid-column:1/-1}
+ .wf-top,.wf-mid{grid-template-columns:1fr}
+ .wf-bot{flex-direction:column}
+}
+.rv-dummy{}
+/* menu works submenu reveal */
+.menu .sub a{font-size:16px;padding:6px 0 6px 2px;line-height:1.3;color:#cfcfcf}
+.menu .sub a:hover{color:#fff}
+.menu .sub.open{padding:2px 12px 14px}
+.menu .sub.open a{animation:subIn .45s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*45ms)}
+@keyframes subIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+/* hover reveal on works cards */
+.wc .disc{opacity:0;transition:opacity .35s .12s}
+.wc:hover .t,.wc:focus-visible .t{right:10px;min-height:var(--t-h);animation:tagIn .6s cubic-bezier(.16,1,.3,1)}
+.wc:hover .disc,.wc:focus-visible .disc{opacity:1}
+@keyframes tagIn{from{clip-path:inset(0 62% 40% 0 round 8px)}to{clip-path:inset(0 0 0 0 round 8px)}}
+@media(hover:none){.wc .t{right:10px;min-height:var(--t-h)}.wc .disc{opacity:1}}
+@media(prefers-reduced-motion:reduce){.wc:hover .t{animation:none}}
+.p-hero{background-size:cover;background-position:center}
+@media(min-width:641px){.m{grid-template-columns:1fr 1fr 120px}.m em{text-align:right}}
+/* contact page + global footer */
+body.contact .cta{display:none}
+body.contact .wf{margin:0;border-radius:10px 10px 0 0}
+.ct-head{text-align:center;padding:clamp(100px,11vw,150px) 20px clamp(40px,5vw,70px)}
+.ct-head small{display:block;font-size:12px;color:#666;margin-bottom:20px}
+.ct-h1{margin:0;font-size:clamp(38px,6.2vw,96px);line-height:.98;font-weight:600;letter-spacing:-.045em}
+.ct-info{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #d9d9d3;border-bottom:1px solid #d9d9d3;margin:0 clamp(12px,1.6vw,26px)}
+.ct-info>div{text-align:center;padding:clamp(18px,2.2vw,30px) 10px}
+.ct-info>div+div{border-left:1px solid #d9d9d3}
+.ct-info small{display:block;font-size:11px;color:#666;text-transform:uppercase;margin-bottom:10px}
+.ct-info a{font-size:clamp(18px,1.7vw,26px);letter-spacing:-.02em;word-break:break-word}
+.ct-main{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px);padding:clamp(60px,9vw,140px) clamp(12px,1.6vw,26px)}
+.ct-img{border-radius:8px;aspect-ratio:.8;background-size:cover;background-position:50% 50%}
+.ct-side{display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.ct-h2{margin:0;font-size:clamp(28px,3vw,48px);line-height:1;font-weight:600;letter-spacing:-.035em}
+.ct-form{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.ct-form .f{grid-column:1/-1}
+.ct-form label{display:block;font-size:11px;text-transform:uppercase;color:#555;padding-top:16px}
+.ct-form input,.ct-form textarea{display:block;width:100%;border:0;border-bottom:1px solid #cfcfc8;background:transparent;font:inherit;font-size:16px;padding:10px 0 12px;outline:0;color:#111;border-radius:0;resize:none}
+.ct-form input:focus,.ct-form textarea:focus{border-bottom-color:#111}
+.ct-form .bad{border-bottom-color:#c0392b}
+.ct-btn{margin-top:28px;display:inline-flex;align-items:center;gap:18px;padding:8px 8px 8px 16px;background:#0d0d0d;color:#fff;border:0;border-radius:8px;font:inherit;font-size:14px;cursor:pointer}
+.ct-btn i{width:26px;height:26px;border-radius:5px;background:#333;display:grid;place-items:center}
+.ct-ok{margin:14px 0 0;font-size:14px;min-height:1.4em}
+.wlogo{display:block;width:clamp(56px,5vw,80px);height:auto}
+.wf .ul{text-decoration:underline}
+@media(max-width:768px){
+ .ct-main{grid-template-columns:1fr}
+ .ct-img{aspect-ratio:1.1}
+}
+@media(max-width:640px){
+ .ct-info{grid-template-columns:1fr}
+ .ct-info>div+div{border-left:0;border-top:1px solid #d9d9d3}
+ .ct-form{grid-template-columns:1fr}
+}
+.nav svg.lg{height:auto;aspect-ratio:159/139}
+.wlogo{height:auto}
+/* next project */
+.nxt{padding:clamp(40px,5vw,80px) clamp(4px,.5vw,8px) 0}
+.nxt .head{margin:0 0 clamp(20px,2.6vw,40px);padding:0 clamp(8px,1vw,16px)}
+.nxt .head p a{text-decoration:underline}
+.nx{aspect-ratio:2.1}
+@media(max-width:640px){.nx{aspect-ratio:1.1}}
+/* gallery layout (susunan) */
+.shots{padding:0 clamp(12px,1.4vw,24px)}
+.shots div{aspect-ratio:4/5;border-radius:8px}
+.shots .wide{aspect-ratio:16/9}
+@media(max-width:640px){.shots{grid-template-columns:1fr 1fr}.shots div{aspect-ratio:4/5}.shots .wide{aspect-ratio:16/9}}
+/* smooth hover reveal on project cards */
+.wc{--e:cubic-bezier(.22,1,.36,1);--t-h:80px}
+.wc .t{right:auto;width:max-content;min-width:0;min-height:0;overflow:hidden;animation:none;transition:min-width .75s var(--e),min-height .75s var(--e),background-color .5s ease}
+.wc:hover .t,.wc:focus-visible .t{right:auto;animation:none;min-width:calc(100% - 20px);min-height:var(--t-h);background-color:rgba(255,255,255,.26)}
+.wc .disc{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .6s var(--e);transition-delay:0s}
+.wc:hover .disc,.wc:focus-visible .disc{opacity:1;transform:none;transition-delay:.18s}
+.wc .disc i{transition:transform .5s var(--e)}
+.wc:hover .disc i{transform:scale(1.6)}
+@media(hover:none){.wc .t{right:auto;min-width:calc(100% - 20px);min-height:var(--t-h)}.wc .disc{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.wc .t,.wc .disc,.wc .disc i{transition:none}}
+.grid .wc{aspect-ratio:.99}
+@media(max-width:640px){.grid .wc{aspect-ratio:1.1}}
+
+/* nav: only the dots icon is the menu button; logo + wordmark go home */
+.nav{cursor:default}
+.nav a{color:inherit;text-decoration:none;transition:opacity .25s ease}
+.nav a:hover{opacity:.7}
+.nav .lgl{display:flex;align-items:center;line-height:0}
+.nav .mb{display:flex;padding:0;margin:0;border:0;background:none;color:inherit;cursor:pointer;line-height:0;transition:opacity .25s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.nav .mb:hover{opacity:.7}
+.nav .mb[aria-expanded=true]{transform:rotate(90deg)}
+.nav a:focus-visible,.nav .mb:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:3px}
+/* menu: smooth reveal (panel wipes down, items stagger in) */
+.menu{--e:cubic-bezier(.22,1,.36,1);visibility:hidden;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-10px) scale(.97);transform-origin:50% 0;clip-path:inset(0 -60px 100% -60px);transition:opacity .3s ease,transform .6s var(--e),clip-path .6s var(--e),visibility 0s .6s}
+.menu.open{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(-50%);clip-path:inset(0 -60px -60px -60px);transition:opacity .3s ease,transform .6s var(--e),clip-path .75s var(--e),visibility 0s}
+.menu li,.menu .go{opacity:0;transform:translateY(-8px);transition:opacity .25s ease,transform .4s ease}
+.menu.open li,.menu.open .go{opacity:1;transform:none;transition:opacity .5s ease,transform .7s var(--e);transition-delay:calc(var(--n,0)*55ms + 140ms)}
+.menu li:nth-child(2){--n:1}.menu li:nth-child(3){--n:2}.menu li:nth-child(4){--n:3}.menu li:nth-child(5){--n:4}.menu .go{--n:5}
+/* submenu accordion: height animates instead of snapping */
+.menu .sub,.menu .sub.open{display:grid;grid-template-rows:0fr;padding:0;opacity:0;transition:grid-template-rows .55s var(--e),opacity .35s ease}
+.menu .sub.open{grid-template-rows:1fr;opacity:1}
+.menu .sub>.in{min-height:0;overflow:hidden;padding:0 12px}
+.menu .sub>.in::before{content:"";display:block;height:2px}
+.menu .sub>.in::after{content:"";display:block;height:14px}
+@media(prefers-reduced-motion:reduce){.menu,.menu.open,.menu li,.menu .go,.menu .sub,.nav .mb{transition:none}}
+</style>
+</head>
+<body>
+<nav class="menu" id="menu" aria-label="Main">
+<ul>
+<li><a class="it" href="#home">Home<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
+<li><button class="it" aria-expanded="false" data-sub="s1">About<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s1"><div class="in">Open for Q1 2027 projects.</div></div></li>
+<li><button class="it" aria-expanded="false" data-sub="s2">Works<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s2"><div class="in"><a href="#works" style="--i:0">All works</a></div></div></li>
+<li><a class="it" href="#home">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
+<li><a class="it" href="#contact">Contact<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
+</ul>
+<a class="go" href="#contact">Start a project</a>
+</nav>
+<div id="home">
+<header class="hero">
+  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+  <h1>Your<br>Invincible<br>Design Team</h1>
+  <div class="status"><div><small>Studio status</small>Open for Q1<br>2027 projects.</div><i></i></div>
+</header>
+
+<section class="intro">
+  <p>Angkasa builds brand systems, digital products, and campaigns. All of it made to hold together.</p>
+  <div class="logos"><span>FOLD+</span><span><b></b>MERIDIAN+</span><span><b></b>HALCYON®</span></div>
+</section>
+
+<main class="wrap">
+  <div class="head"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand, product, campaign</p></div>
+  <div class="grid" id="hgrid"></div>
+
+  <section class="notes">
+    <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2></div>
+    <div class="posts">
+      <a class="post" href="#"><small>Brand systems &nbsp; June 12, 2026</small><h3>What a brand system<br>owes its engineers.</h3></a>
+      <a class="post" href="#"><small>Practice &nbsp; March 2, 2026</small><h3>Why we price in<br>outcomes, not hours.</h3></a>
+    </div>
+    <div class="list">
+      <a class="row" href="#"><span>Brand systems</span><span>What a brand system owes its engineers.</span><span>June 12, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
+      <a class="row" href="#"><span>Interface</span><span>Designing in the browser</span><span>May 5, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
+      <a class="row" href="#"><span>Studio</span><span>Inside a Vantra studio week</span><span>April 21, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
+      <a class="row" href="#"><span>Practice</span><span>Why we price in outcomes, not hours.</span><span>March 2, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
+    </div>
+  </section>
+</main>
+
+</div>
+<div id="project" hidden>
+<header class="p-hero">
+  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+  <small>Digital product · Design system · 2026</small>
+  <h1>Fold<br>Apparel</h1>
+</header>
+<section class="brief cols"><h2>The brief.</h2><p>FOLD+ had three storefronts, two checkout flows and a design file no one trusted. We rebuilt the product surface as one system — tokens, components and templates their engineers own — then shipped the new shop alongside them over eleven weeks.</p></section>
+<section class="shots"><div class="wide"></div><div></div><div></div><div class="wide"></div><div></div><div></div><div class="wide"></div><div class="wide"></div></section>
+<section class="quote cols"><div class="ph"></div><div><div class="qmeta"><span>In their words</span><span>Nine months after launch</span></div><p class="qtxt">The old file was a museum. What we have now is a library our engineers actually pull from, and the shop has not drifted since.</p><div class="who"><i></i><div>Noor Haddad<small>Head of digital, Fold</small></div></div></div></section>
+<section class="nxt"><div class="head"><h2>Next<br>project.</h2><p>[ Up next ]<br><a href="#works">All works</a></p></div>
+<a class="wc nx" id="nx" href="#works"></a></section>
+</div>
+<div id="works" hidden>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><span>Selected work, 2017–2026</span><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+<section class="wk-head"><small>Selected work</small><h1 class="wk-h1">Work that<br>still holds up.</h1></section>
+<section class="wgrid" id="wgrid"></section>
+<section class="stud"><div class="shead"><h2>In the studio<br>right now.</h2><p>Live now — 03 / 05<br>Updated this week</p></div>
+<div class="sr"><b>Halcyon</b><span>Brand system</span><span class="wk"><em>Week 7 of 11</em><u style="--p:64%"></u></span><span>2 of 4 seniors</span><span>Ships Apr 2027</span></div>
+<div class="sr"><b>Aurel</b><span>Interface build</span><span class="wk"><em>Week 8 of 12</em><u style="--p:67%"></u></span><span>3 of 4 seniors</span><span>Ships Q4 2026</span></div>
+<div class="sr"><b>Norrland Coffee</b><span>Production</span><span class="wk"><em>Week 5 of 6</em><u style="--p:83%"></u></span><span>2 of 3 seniors</span><span>Ships Q4 2026</span></div>
+</section>
+</div>
+<div id="contact" hidden>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+<section class="ct-head"><small>The studio reel</small><h1 class="ct-h1">Tell us what<br>you are building.</h1></section>
+<section class="ct-info"><div><small>Phone</small><a href="tel:+31202440187">+31 20 244 0187</a></div><div><small>Email</small><a href="mailto:hello@vantra.studio">hello@vantra.studio</a></div></section>
+<section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.jpg)"></div>
+<div class="ct-side"><h2 class="ct-h2">Let’s build<br>something.</h2>
+<form class="ct-form" id="cf" novalidate>
+<div class="f"><label for="cn">Your name</label><input id="cn" name="name" autocomplete="name" required></div>
+<div><label for="ce">Your email</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
+<div><label for="cp">Your phone</label><input id="cp" name="phone" type="tel" autocomplete="tel"></div>
+<div class="f"><label for="cm">Your message</label><textarea id="cm" name="message" rows="2" required></textarea></div>
+<div class="f"><button class="ct-btn" type="submit">Let’s talk <i><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="#fff" stroke-width="1.3"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status"></p></div>
+</form></div></section>
+</div>
+<footer class="cta">
+  <h2>Build what’s next with us</h2>
+  <p>Wherever you sit at Vantra, there is room to shape real work and leave a lasting mark.</p>
+  <div class="btns"><a href="#contact">Start a project <em>▾</em></a><a href="#">Meet the studio <em>↗</em></a></div>
+</footer>
+<footer class="wf" id="wf">
+<div class="wf-top"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" role="img" aria-label="Angkasa Studio"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg>
+<nav class="wf-nav"><a href="#home">Home</a><a href="#home">About</a><a href="#works">Works</a><a href="#home">Journal</a><a href="#contact">Contact</a></nav></div>
+<div class="wf-mid"><p>Angkasa Studio is an independent studio working across brand, product, and content. We partner with founders and in-house teams on positioning, identity systems, and the digital products that carry them.</p><div class="wf-links"><span>Style Guide</span><span>Custom 404</span><span>Licenses</span><span>Custom 401</span><span>Change Log</span></div></div>
+<div class="wf-bot"><span>© 2026 <a href="#home" class="ul">Angkasa Studio</a></span><span>Central Java - Indonesia</span></div>
+</footer>
+<script>
+function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact';if(p)renderPj(h.slice(1));document.getElementById('home').hidden=p||w||c;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30)}
+var menu=document.getElementById('menu');
+function tog(f){var o=f===undefined?!menu.classList.contains('open'):!!f;menu.classList.toggle('open',o);document.querySelectorAll('.nav .mb').forEach(function(b){b.setAttribute('aria-expanded',o)})}
+function goHome(e){e.preventDefault();tog(false);if(!document.getElementById('home').hidden){if(window.lenis)lenis.scrollTo(0,{duration:1.2});else scrollTo({top:0,behavior:'smooth'})}else location.hash='#home'}
+document.querySelectorAll('a[href="#home"]').forEach(function(a){a.addEventListener('click',goHome)});
+document.querySelectorAll('.nav .mb').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();tog()})});
+menu.addEventListener('click',function(e){e.stopPropagation();var b=e.target.closest('button[data-sub]');if(b){var s=document.getElementById(b.dataset.sub),o=!s.classList.contains('open');s.classList.toggle('open',o);b.setAttribute('aria-expanded',o);return}if(e.target.closest('a')){tog(false)}});
+document.addEventListener('click',function(){tog(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
+addEventListener('hashchange',route);route();
+</script>
+<script src="projects/fold/project.js"></script>
+<script src="projects/halcyon/project.js"></script>
+<script src="projects/kin/project.js"></script>
+<script src="projects/meridian/project.js"></script>
+<script src="projects/ostra/project.js"></script>
+<script src="projects/aurel/project.js"></script>
+<script src="projects/northwind/project.js"></script>
+<script src="projects/luma/project.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+var PJ=window.PJ||{},KS=Object.keys(PJ);
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function U(k,f){return 'url(projects/'+k+'/'+f+')'}
+function card(k,ds){var d=PJ[k];return '<a class="wc" href="#'+k+'"'+(ds?' data-s="'+k+'"':'')+' style="background-image:'+U(k,d.images.cover)+'"><span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}
+document.getElementById('wgrid').innerHTML=KS.map(function(k){return card(k,1)}).join('\n');
+document.getElementById('hgrid').innerHTML=KS.filter(function(k){return PJ[k].home}).sort(function(a,b){return PJ[a].home-PJ[b].home}).map(function(k){return card(k,0)}).join('\n');
+document.querySelector('#s2 .in').insertAdjacentHTML('beforeend',KS.map(function(k,i){return '<a href="#'+k+'" style="--i:'+(i+1)+'">'+esc(PJ[k].menu||PJ[k].label)+'</a>'}).join(''));
+window.renderPj=function(k){var d=PJ[k],c=document.querySelector('.wc[data-s="'+k+'"]');if(!d||!c)return;
+var I=d.images,q=function(x){return document.querySelector(x)};
+function st(e,h){e.innerHTML=h;if(window.splitEl)splitEl(e)}
+q('.p-hero').style.backgroundImage='linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.2) 55%,rgba(0,0,0,.65)),'+U(k,I.hero);
+q('.p-hero small').textContent=d.meta;st(q('.p-hero h1'),d.title);st(q('.brief p'),d.brief);
+document.querySelectorAll('.shots div').forEach(function(e,i){var f=I.gallery[i];e.style.backgroundImage=f?U(k,f):'none';e.style.backgroundSize='cover';e.style.backgroundPosition='center';e.style.backgroundRepeat='no-repeat'});
+var ks=Object.keys(PJ),nk=ks[(ks.indexOf(k)+1)%ks.length],nc=document.querySelector('.wc[data-s="'+nk+'"]'),nx=q('#nx');if(nc&&nx){nx.href='#'+nk;nx.style.backgroundImage=nc.style.backgroundImage;nx.innerHTML=nc.innerHTML}
+st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
+var ph=q('.quote .ph');ph.style.backgroundImage=U(k,I.quote);ph.style.backgroundSize='cover';ph.style.backgroundPosition='center'};
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(typeof Lenis!=='undefined'&&!rm){var l=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))}});window.lenis=l;(function r(t){l.raf(t);requestAnimationFrame(r)})(0)}
+route();
+if(rm)return;
+var sel='.hero h1,.intro p,.head h2,.p-hero h1,.brief h2,.brief p,.market h2,.market .sub p,.qtxt,.cta h2,.cta p,.post h3,.wk-h1,.stud h2,.ct-h1,.ct-h2,.nxt h2';
+var els=[].slice.call(document.querySelectorAll(sel));
+function splitEl(el){var i=0,nodes=[].slice.call(el.childNodes);el.textContent='';
+nodes.forEach(function(n){if(n.nodeType===3){n.textContent.split(/\s+/).filter(Boolean).forEach(function(w){var o=document.createElement('span');o.className='w';var s=document.createElement('span');s.textContent=w;s.style.setProperty('--i',i++);o.appendChild(s);el.appendChild(o);el.appendChild(document.createTextNode(' '))})}else el.appendChild(n)});
+el.classList.add('rv')}window.splitEl=splitEl;els.forEach(splitEl);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+window.arm=function(){els.forEach(function(el){el.classList.remove('in');io.unobserve(el);io.observe(el)})};
+arm();
+})();
+</script>
+<script>
+document.getElementById('cf').addEventListener('submit',function(e){e.preventDefault();var f=e.target,ok=true;
+['cn','ce','cm'].forEach(function(id){var el=document.getElementById(id),v=el.value.trim(),bad=!v||(id==='ce'&&!/^\S+@\S+\.\S+$/.test(v));el.classList.toggle('bad',bad);if(bad)ok=false});
+var m=document.getElementById('cok');m.textContent=ok?'Thanks, we will reply within two working days.':'Please fill in your name, a valid email and a message.';if(ok)f.reset()});
+</script>
+</body>
+</html>
