@@ -1,6 +1,6 @@
-// Sable — edit the text below. Replace an image by overwriting its file in this folder
+// Ostra — edit the text below. Replace an image by overwriting its file in this folder
 // (if you use .png / .webp instead, change the file name in "images").
-(window.PJ=window.PJ||{}).Ostra={
+(window.PJ=window.PJ||{}).sable={
   images: {
     cover:   "cover.jpg",                // square 1:1 — Home card, Works card, "Next project"
     hero:    "hero.jpg",                 // wide 16:9 — top of the project page
@@ -21,13 +21,13 @@
   label: "OSTRA",
   menu:  "Ostra",
   year:  "2025",
-  type:  "Brand Identity",
+  type:  "Packaging",
   home:  4,          // position on the home page (1–4); delete this line to hide it from home
 
   // Project page
-  meta:  "Brand Identity · 2025",
+  meta:  "Packaging · 2025",
   title: "Ostra",          // <br> = line break
-  brief: "Ostra's range sat on shelves looking like three different companies. We redrew the packaging system — structure, print and typography — so every product reads as one family and costs less to produce.",
+  brief: "Ostra’s range sat on shelves looking like three different companies. We redrew the packaging system — structure, print and typography — so every product reads as one family and costs less to produce.",
 
   quote: {
     text: "Customers find us on the shelf now. The range finally looks like it belongs together.",
