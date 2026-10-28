@@ -27,7 +27,7 @@
   // Project page
   meta:  "Brand Identity · 2025",
   title: "Ostra",          // <br> = line break
-  brief: "Ostra’s range sat on shelves looking like three different companies. We redrew the packaging system — structure, print and typography — so every product reads as one family and costs less to produce.",
+  brief: "OSTRA is an IT Solution Network Company focused on delivering reliable, secure, and scalable digital infrastructure for modern businesses.",
 
   quote: {
     text: "Customers find us on the shelf now. The range finally looks like it belongs together.",
