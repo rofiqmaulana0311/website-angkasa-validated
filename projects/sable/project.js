@@ -5,7 +5,7 @@
     cover:   "cover.webp",                // square 1:1 — Home card, Works card, "Next project"
     hero:    "hero.webp",                 // wide 16:9 — top of the project page
     gallery: [                           // project page, top to bottom
-      "gallery-1-wide.jpg",              //   row 1: wide 16:9
+      "gallery-1-wide.webp",              //   row 1: wide 16:9
       "gallery-2-portrait.webp",          //   row 2: portrait 4:5 (left)
       "gallery-3-portrait.webp",          //   row 2: portrait 4:5 (right)
       "gallery-4-wide.webp",              //   row 3: wide 16:9
