@@ -2,7 +2,7 @@
 // (if you use .png / .webp instead, change the file name in "images").
 (window.PJ=window.PJ||{}).sable={
   images: {
-    cover:   "cover.jpg",                // square 1:1 — Home card, Works card, "Next project"
+    cover:   "cover.webp",                // square 1:1 — Home card, Works card, "Next project"
     hero:    "hero.jpg",                 // wide 16:9 — top of the project page
     gallery: [                           // project page, top to bottom
       "gallery-1-wide.jpg",              //   row 1: wide 16:9
