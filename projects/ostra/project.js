@@ -1,4 +1,4 @@
-// Ostra — edit the text below. Replace an image by overwriting its file in this folder
+// Sable — edit the text below. Replace an image by overwriting its file in this folder
 // (if you use .png / .webp instead, change the file name in "images").
 (window.PJ=window.PJ||{}).Ostra={
   images: {
