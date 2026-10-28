@@ -2,7 +2,7 @@
 // (if you use .png / .webp instead, change the file name in "images").
 (window.PJ=window.PJ||{}).sable={
   images: {
-    cover:   "cover.jpg",                // square 1:1 — Home card, Works card, "Next project"
+    cover:   "cover.webp",                // square 1:1 — Home card, Works card, "Next project"
     hero:    "hero.jpg",                 // wide 16:9 — top of the project page
     gallery: [                           // project page, top to bottom
       "gallery-1-wide.jpg",              //   row 1: wide 16:9
@@ -21,11 +21,11 @@
   label: "OSTRA",
   menu:  "Ostra",
   year:  "2025",
-  type:  "Packaging",
+  type:  "Brand Identity",
   home:  4,          // position on the home page (1–4); delete this line to hide it from home
 
   // Project page
-  meta:  "Packaging · 2025",
+  meta:  "Brand Identity · 2025",
   title: "Ostra",          // <br> = line break
   brief: "Ostra’s range sat on shelves looking like three different companies. We redrew the packaging system — structure, print and typography — so every product reads as one family and costs less to produce.",
 
