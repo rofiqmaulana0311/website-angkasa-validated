@@ -418,6 +418,16 @@ body.nav-scrolled .nav{opacity:.9;background:rgba(17,17,17,.66);border-color:rgb
 body.nav-scrolled .nav:hover,body.nav-scrolled .nav:focus-within{opacity:1}
 body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
 @media(prefers-reduced-motion:reduce){.nav{transition:opacity .2s linear}}
+/* client logo marquee under the intro: slow, seamless, pauses on hover */
+.marq{--gap:clamp(44px,5vw,80px);position:relative;overflow:hidden;margin:clamp(32px,4vw,56px) auto 0;max-width:1200px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq-track{display:flex;align-items:center;gap:var(--gap);width:max-content;margin:0;padding:0 0 0 var(--gap);list-style:none;color:#8f8f8f;animation:marq 48s linear infinite;will-change:transform}
+.marq-track li{flex:none;line-height:0}
+.marq-track svg{display:block;height:clamp(24px,2.2vw,30px);width:auto;overflow:visible;transition:color .4s ease}
+.marq-track li:hover svg{color:#111}
+.marq:hover .marq-track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq{-webkit-mask-image:none;mask-image:none}.marq-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;padding:0;row-gap:24px}.marq-track [aria-hidden]{display:none}}
+@media(max-width:640px){.marq{--gap:36px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.marq-track svg{height:22px}.marq-track{animation-duration:38s}}
 </style>
 </head>
 <body>
@@ -440,7 +450,7 @@ body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) transl
 
 <section class="intro">
   <p>Angkasa builds brand systems, digital products, and campaigns. All of it made to hold together.</p>
-  <div class="logos"><span>FOLD+</span><span><b></b>MERIDIAN+</span><span><b></b>HALCYON®</span></div>
+  <div class="marq" aria-label="Clients"><ul class="marq-track"><li><svg viewBox="0 0 92 32" role="img" aria-label="Fold+" fill="currentColor"><path d="M2 6h20v20H2z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M2 6l20 20H2z"/><text x="30" y="23" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="700" letter-spacing="-.5">FOLD+</text></svg></li><li><svg viewBox="0 0 118 32" role="img" aria-label="Meridian+" fill="currentColor"><circle cx="14" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 3v26" stroke="currentColor" stroke-width="2"/><ellipse cx="14" cy="16" rx="5" ry="11" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="33" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500" letter-spacing="-.4">Meridian+</text></svg></li><li><svg viewBox="0 0 145 32" role="img" aria-label="Halcyon" fill="currentColor"><path d="M3 23a11 11 0 0 1 22 0z"/><path d="M1 27h26" stroke="currentColor" stroke-width="2"/><text x="35" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="3">HALCYON®</text></svg></li><li><svg viewBox="0 0 62 32" role="img" aria-label="Kin" fill="currentColor"><circle cx="7" cy="9" r="4.5"/><circle cx="19" cy="9" r="4.5"/><circle cx="13" cy="20" r="4.5"/><text x="31" y="24" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-1">kin</text></svg></li><li><svg viewBox="0 0 98 32" role="img" aria-label="Luma" fill="currentColor"><path d="M14 2c1.2 7.3 4.7 10.8 12 12-7.3 1.2-10.8 4.7-12 12-1.2-7.3-4.7-10.8-12-12 7.3-1.2 10.8-4.7 12-12z"/><text x="34" y="23" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="500" letter-spacing="-.6">Luma®</text></svg></li><li><svg viewBox="0 0 149 32" role="img" aria-label="Northwind" fill="currentColor"><path d="M13 3l10 22-10-6-10 6z"/><text x="31" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="14.5" font-weight="700" letter-spacing="2.6">NORTHWIND</text></svg></li><li><svg viewBox="0 0 79 32" role="img" aria-label="Ostra" fill="currentColor"><circle cx="13" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="16" r="4"/><text x="31" y="23" font-family="Georgia,'Times New Roman',serif" font-size="21" font-style="italic" letter-spacing="-.3">Ostra</text></svg></li><li><svg viewBox="0 0 98 32" role="img" aria-label="Aurel+" fill="currentColor"><circle cx="10" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="19" cy="16" r="8"/><text x="35" y="23" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" letter-spacing="-.6">Aurel+</text></svg></li></ul></div>
 </section>
 
 <main class="wrap">
@@ -578,6 +588,10 @@ addEventListener('scroll',onScroll,{passive:true});onScroll();
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});var h=vis.size>0;b.classList.toggle('nav-hide',h);if(h&&window.tog)tog(false)},{rootMargin:'0px 0px -12% 0px'});
 document.querySelectorAll('.cta,.wf').forEach(function(el){io.observe(el)});
 addEventListener('hashchange',function(){setTimeout(onScroll,60)})})();
+</script>
+<script>
+/* duplicate the logo row once so the marquee loops without a seam */
+(function(){var t=document.querySelector('.marq-track');if(!t)return;[].slice.call(t.children).forEach(function(li){var c=li.cloneNode(true);c.setAttribute('aria-hidden','true');t.appendChild(c)})})();
 </script>
 </body>
 </html>

@@ -84,3 +84,14 @@ Urutan tag script menentukan urutan project di Works, menu, dan "Next project".
 
 ## Menghapus project
 Hapus foldernya dan baris `<script>`-nya di `index.html`.
+
+## Logo klien (baris berjalan di bawah intro)
+
+Logo ada di `index.html`, di dalam `<ul class="marq-track">`. Setiap logo adalah satu `<li><svg …></svg></li>`.
+Logo saat ini adalah logo contoh untuk klien di portofolio. Ganti dengan logo klien asli (yang memang sudah mengizinkan logonya dipakai):
+
+1. Buka file SVG logo klien, salin isinya, lalu tempel menggantikan salah satu `<svg …>…</svg>`.
+2. Ganti semua warna di SVG itu menjadi `currentColor` (misal `fill="currentColor"`), supaya logonya ikut abu-abu dan jadi hitam saat kursor diarahkan.
+3. Tambahkan `role="img" aria-label="Nama Klien"` di tag `<svg>`.
+
+Baris otomatis diduplikasi oleh script, jadi cukup tulis setiap logo satu kali. Kecepatannya diatur di CSS `.marq-track{animation:marq 48s …}`: angka lebih besar berarti lebih pelan.
