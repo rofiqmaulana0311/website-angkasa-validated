@@ -36,22 +36,32 @@ angkasa-studio/
 | `gallery-8-wide.jpg` | galeri baris 6 | lebar 16:9 | 2000 x 1125 |
 | `quote-portrait.jpg` | foto di samping kutipan | potret 4:5 | 800 x 1000 |
 
-Tata letak galeri di halaman project:
+## Menambah gambar galeri (jumlah bebas)
 
+Galeri tidak lagi dibatasi 8 gambar. Taruh file baru di folder project, lalu tambahkan namanya ke daftar `gallery` di `project.js` (urutan = urutan dari atas ke bawah). Bentuk kotaknya dibaca dari nama file:
+
+| Kata di nama file | Tampilan | Ukuran disarankan |
+|---|---|---|
+| `wide` (misal `gallery-9-wide.jpg`) | satu baris penuh, 16:9 | 2000 x 1125 |
+| `portrait` (misal `gallery-10-portrait.jpg`) | 2 gambar per baris, 4:5 | 1200 x 1500 |
+| `small` atau `square` (misal `gallery-11-small.jpg`) | 3 gambar per baris, 1:1 | 1000 x 1000 |
+
+Contoh:
+
+```js
+gallery: [
+  "gallery-1-wide.jpg",
+  "gallery-2-portrait.jpg",
+  "gallery-3-portrait.jpg",
+  "gallery-9-small.jpg",
+  "gallery-10-small.jpg",
+  "gallery-11-small.jpg",
+  "gallery-12-wide.jpg"
+],
 ```
-┌───────────────────────┐
-│  1  wide              │
-├───────────┬───────────┤
-│ 2 portrait│ 3 portrait│
-├───────────┴───────────┤
-│  4  wide              │
-├───────────┬───────────┤
-│ 5 portrait│ 6 portrait│
-├───────────┴───────────┤
-│  7  wide              │
-│  8  wide              │
-└───────────────────────┘
-```
+
+Kalau jumlah `portrait` atau `small` yang berurutan tidak pas (misal 3 portrait berturut-turut), sisanya otomatis dilebarkan supaya tidak ada lubang kosong.
+Bisa juga menentukan bentuk secara manual: `{ src: "foto-apa-saja.jpg", size: "wide" }` (`wide`, `portrait`, atau `small`).
 
 Hero Home: timpa `assets/hero-home.jpg`. Gambar diposisikan agar sisi kanan (wajah) tetap terlihat di layar sempit.
 

@@ -4,7 +4,7 @@
   images: {
     cover:   "cover.jpg",                // square 1:1 — Home card, Works card, "Next project"
     hero:    "hero.jpg",                 // wide 16:9 — top of the project page
-    gallery: [                           // project page, top to bottom
+    gallery: [   // project page, top to bottom — add as many as you like: "wide" in the name = full row, "portrait" = 2 per row, "small" = 3 per row
       "gallery-1-wide.jpg",              //   row 1: wide 16:9
       "gallery-2-portrait.jpg",          //   row 2: portrait 4:5 (left)
       "gallery-3-portrait.jpg",          //   row 2: portrait 4:5 (right)
