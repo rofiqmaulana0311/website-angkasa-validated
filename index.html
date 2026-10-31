@@ -403,7 +403,14 @@ a.status:hover{background:rgba(255,255,255,.28)}
 .status small{display:block;margin:0;font-size:10px;line-height:1.2;color:rgba(240,239,234,.9);letter-spacing:.01em;text-transform:uppercase}
 .status .st-img{display:block;width:auto;height:100%;aspect-ratio:auto;border-radius:16px;background-color:#fff;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.22,1,.36,1)}
 a.status:hover .st-img{transform:scale(.97)}
-@media(max-width:640px){.hero .status,a.status{position:static;width:100%;max-width:340px;margin-top:20px;grid-template-columns:1fr 46%}}
+@media(max-width:640px){
+ /* mobile: one slim row, label | status | photo tile */
+ .hero .status,a.status{position:static;width:100%;max-width:none;height:92px;margin-top:20px;padding:5px;grid-template-columns:34% 1fr 82px;align-items:center;border-radius:18px;font-size:14px;line-height:22px}
+ .status .st-txt{display:contents}
+ .status small{padding-left:14px;font-size:10px}
+ .status .st-txt>span{padding-right:8px}
+ .status .st-img{width:82px;height:82px;border-radius:13px}
+}
 /* sticky navbar: fades a little once you scroll, slips away over the CTA and footer */
 .nav{--ne:cubic-bezier(.22,1,.36,1);position:fixed;z-index:30;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,border-color .9s ease,visibility 0s}
 .menu{position:fixed;z-index:29}
