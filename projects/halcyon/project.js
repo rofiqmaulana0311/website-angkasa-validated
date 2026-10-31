@@ -2,19 +2,19 @@
 // (if you use .png / .webp instead, change the file name in "images").
 (window.PJ=window.PJ||{}).halcyon={
   images: {
-    cover:   "cover.jpg",                // square 1:1 — Home card, Works card, "Next project"
-    hero:    "hero.jpg",                 // wide 16:9 — top of the project page
+    cover:   "cover.webp",                // square 1:1 — Home card, Works card, "Next project"
+    hero:    "hero.webp",                 // wide 16:9 — top of the project page
     gallery: [   // project page, top to bottom — add as many as you like: "wide" in the name = full row, "portrait" = 2 per row, "small" = 3 per row
-      "gallery-1-wide.jpg",              //   row 1: wide 16:9
-      "gallery-2-portrait.jpg",          //   row 2: portrait 4:5 (left)
-      "gallery-3-portrait.jpg",          //   row 2: portrait 4:5 (right)
-      "gallery-4-wide.jpg",              //   row 3: wide 16:9
-      "gallery-5-portrait.jpg",          //   row 4: portrait 4:5 (left)
-      "gallery-6-portrait.jpg",          //   row 4: portrait 4:5 (right)
-      "gallery-7-wide.jpg",              //   row 5: wide 16:9
-      "gallery-8-wide.jpg"               //   row 6: wide 16:9
+      "gallery-1-wide.webp",              //   row 1: wide 16:9
+      "gallery-2-portrait.webp",          //   row 2: portrait 4:5 (left)
+      "gallery-3-portrait.webp",          //   row 2: portrait 4:5 (right)
+      "gallery-4-wide.webp",              //   row 3: wide 16:9
+      "gallery-5-portrait.webp",          //   row 4: portrait 4:5 (left)
+      "gallery-6-portrait.webp",          //   row 4: portrait 4:5 (right)
+      "gallery-7-wide.webp",              //   row 5: wide 16:9
+      "gallery-8-wide.webp"               //   row 6: wide 16:9
     ],
-    quote:   "quote-portrait.jpg"        // portrait 4:5 — photo next to the quote
+    quote:   "quote-portrait.webp"        // portrait 4:5 — photo next to the quote
   },
 
   // Card on the Works page + link in the menu

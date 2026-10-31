@@ -206,7 +206,7 @@ html.lenis,html.lenis body{height:auto}
 @media(prefers-reduced-motion:reduce){.rv .w>span{transform:none;transition:none}}
 /* works page */
 body.works{background:#f1f1ec}
-body.works .cta{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url(assets/works-cta.jpg) center/cover;margin-top:clamp(50px,6vw,100px);border-radius:10px;margin-left:clamp(4px,.4vw,8px);margin-right:clamp(4px,.4vw,8px)}
+body.works .cta{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),url(assets/works-cta.webp) center/cover;margin-top:clamp(50px,6vw,100px);border-radius:10px;margin-left:clamp(4px,.4vw,8px);margin-right:clamp(4px,.4vw,8px)}
 .wk-head{text-align:center;padding:clamp(100px,11vw,150px) 20px clamp(30px,4vw,60px)}
 .wk-head small{display:block;font-size:12px;color:#666;margin-bottom:20px}
 .wk-h1{margin:0;font-size:clamp(44px,7vw,110px);line-height:.95;font-weight:600;letter-spacing:-.045em}
@@ -354,6 +354,23 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 .menu .sub>.in::before{content:"";display:block;height:2px}
 .menu .sub>.in::after{content:"";display:block;height:14px}
 @media(prefers-reduced-motion:reduce){.menu,.menu.open,.menu li,.menu .go,.menu .sub,.nav .mb{transition:none}}
+/* navbar: frosted glass, same treatment as the project card tags */
+.nav{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;border:1px solid rgba(255,255,255,.14)}
+/* on the light pages (Works, Contact) white glass would vanish, so use a dark tint of the same glass */
+#works>.nav,#contact>.nav{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.08)}
+/* CTA: image card with breathing room instead of a full-bleed black band */
+.cta,body.works .cta{position:relative;overflow:hidden;margin:clamp(50px,6vw,100px) clamp(4px,.4vw,8px) 0;border-radius:10px;min-height:clamp(440px,62vh,680px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(70px,9vw,140px) 20px;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55)),url(assets/works-cta.webp) center/cover no-repeat,#000;color:#f4f2ea}
+.cta h2{max-width:8.5em}
+.cta p{margin:clamp(24px,3vw,40px) auto clamp(24px,3vw,36px);max-width:400px;font-size:clamp(15px,1.25vw,19px);line-height:1.45;color:rgba(244,242,234,.82)}
+.btns{flex-wrap:wrap;font-size:clamp(13px,1vw,15px)}
+.btns a{gap:16px;padding:10px 10px 10px 16px;border-radius:8px;transition:opacity .25s ease}
+.btns a:hover{opacity:.85}
+.btns a+a{background:rgba(255,255,255,.18);color:#fff;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btns em{display:grid;place-items:center;width:24px;height:24px;padding:0;border-radius:5px;background:#111;color:#fff}
+.btns a+a em{background:rgba(255,255,255,.2)}
+/* footer: rounded card with a gap below so it no longer sits on the screen edge */
+.wf,body.contact .wf{margin:clamp(4px,.4vw,8px) clamp(4px,.4vw,8px) calc(clamp(8px,1vw,16px) + env(safe-area-inset-bottom,0px));border-radius:10px;padding-bottom:clamp(28px,3vw,44px)}
+@media(max-width:640px){.cta{min-height:440px;padding:72px 16px}.cta p{max-width:300px}.wf{padding-left:20px;padding-right:20px}}
 </style>
 </head>
 <body>
@@ -425,7 +442,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
 <section class="ct-head"><small>The studio reel</small><h1 class="ct-h1">Tell us what<br>you are building.</h1></section>
 <section class="ct-info"><div><small>Phone</small><a href="tel:+31202440187">+31 20 244 0187</a></div><div><small>Email</small><a href="mailto:hello@vantra.studio">hello@vantra.studio</a></div></section>
-<section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.jpg)"></div>
+<section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.webp)"></div>
 <div class="ct-side"><h2 class="ct-h2">Let’s build<br>something.</h2>
 <form class="ct-form" id="cf" novalidate>
 <div class="f"><label for="cn">Your name</label><input id="cn" name="name" autocomplete="name" required></div>
@@ -437,8 +454,8 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 </div>
 <footer class="cta">
   <h2>Build what’s next with us</h2>
-  <p>Wherever you sit at Vantra, there is room to shape real work and leave a lasting mark.</p>
-  <div class="btns"><a href="#contact">Start a project <em>▾</em></a><a href="#">Meet the studio <em>↗</em></a></div>
+  <p>Brand, product or campaign, tell us what you are building and we will reply within two working days.</p>
+  <div class="btns"><a href="#contact">Start a project <em>→</em></a><a href="#works">See our work <em>↗</em></a></div>
 </footer>
 <footer class="wf" id="wf">
 <div class="wf-top"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" role="img" aria-label="Angkasa Studio"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg>
