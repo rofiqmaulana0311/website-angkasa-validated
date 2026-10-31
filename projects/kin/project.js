@@ -12,7 +12,16 @@
       "gallery-5-portrait.webp",          //   row 4: portrait 4:5 (left)
       "gallery-6-portrait.webp",          //   row 4: portrait 4:5 (right)
       "gallery-7-wide.webp",              //   row 5: wide 16:9
-      "gallery-8-wide.webp"               //   row 6: wide 16:9
+      "gallery-8-wide.webp",              //   row 6: wide 16:9
+      "gallery-9-portrait.webp",          //   portrait 4:5 (left)
+      "gallery-10-portrait.webp",         //   portrait 4:5 (right)
+      "gallery-11-wide.webp",             //   wide 16:9
+      "gallery-12-wide.webp",             //   wide 16:9
+      "gallery-13-portrait.webp",         //   portrait 4:5 (left)
+      "gallery-14-portrait.webp",         //   portrait 4:5 (right)
+      "gallery-15-portrait.webp",         //   portrait 4:5 (left)
+      "gallery-16-portrait.webp",         //   portrait 4:5 (right)
+      "gallery-17-wide.webp"              //   wide 16:9
     ],
     quote:   "quote-portrait.webp"        // portrait 4:5 — photo next to the quote
   },

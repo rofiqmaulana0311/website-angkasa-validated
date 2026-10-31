@@ -16,7 +16,7 @@ angkasa-studio/
         ├── project.js           teks project
         ├── cover.webp            kartu project
         ├── hero.webp             hero halaman project
-        ├── gallery-1-wide.webp   ... sampai gallery-8-wide.webp
+        ├── gallery-1-wide.webp   ... sampai gallery-17-wide.webp
         └── quote-portrait.webp   foto di samping kutipan
 ```
 
