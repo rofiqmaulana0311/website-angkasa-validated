@@ -371,6 +371,46 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 /* footer: rounded card with a gap below so it no longer sits on the screen edge */
 .wf,body.contact .wf{margin:clamp(4px,.4vw,8px) clamp(4px,.4vw,8px) calc(clamp(8px,1vw,16px) + env(safe-area-inset-bottom,0px));border-radius:10px;padding-bottom:clamp(28px,3vw,44px)}
 @media(max-width:640px){.cta{min-height:440px;padding:72px 16px}.cta p{max-width:300px}.wf{padding-left:20px;padding-right:20px}}
+/* buttons: one shape everywhere (from Button_Angkasa_Studio: dark pill, label left, ↗ in a tile on the right) */
+.btn,.menu a.go.btn,.ct-form .btn,.btns a.btn{--e:cubic-bezier(.22,1,.36,1);display:inline-flex;align-items:center;justify-content:space-between;gap:26px;height:36px;margin:0;padding:4px 4px 4px 18px;border:0;border-radius:7px;background:#0d0d0d;color:#fff;font:inherit;font-size:15px;font-weight:400;line-height:1;letter-spacing:-.01em;text-align:left;white-space:nowrap;cursor:pointer;opacity:1;transition:background-color .3s ease,color .3s ease}
+.btn i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:5px;background:#333;transition:background-color .3s ease}
+.btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.4;transition:transform .45s var(--e)}
+.btn:hover svg,.btn:focus-visible svg{transform:translate(1px,-1px)}
+.btn:hover,.btns a.btn:hover,.ct-form .btn:hover{background:#1f1f1f}.btn:hover i{background:#444}
+.btn.btn-light,.btns a.btn.btn-light,.menu a.go.btn.btn-light{background:#fff;color:#0d0d0d}
+.btn-light i{background:#ececec}
+.btn.btn-light:hover,.btns a.btn.btn-light:hover,.menu a.go.btn.btn-light:hover{background:#f1f1f1}.btn-light:hover i{background:#e0e0e0}
+.btn.btn-glass,.btns a.btn.btn-glass{background:rgba(255,255,255,.18);color:#fff;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn-glass i{background:rgba(255,255,255,.2)}
+.btn.btn-glass:hover,.btns a.btn.btn-glass:hover{background:rgba(255,255,255,.26)}.btn-glass:hover i{background:rgba(255,255,255,.3)}
+.btns{gap:8px}
+.ct-form .btn{margin-top:28px}
+/* menu: full-width white button so it stands out on the black panel */
+.menu a.go.btn{display:flex;width:100%;height:48px;margin-top:12px;padding:0 6px 0 16px;font-size:16px}
+.menu a.go.btn i{width:36px;height:36px;border-radius:6px}
+@media(max-width:640px){.btns{flex-direction:column;align-items:center}.btns a.btn{width:min(100%,240px)}.menu a.go.btn{height:46px}.menu a.go.btn i{width:34px;height:34px}}
+/* section heads: the small label sits on the baseline of the heading */
+.head,.shead{align-items:flex-end}
+.head p,.shead p{padding-bottom:0}
+@media(max-width:640px){.head,.shead{align-items:flex-start}.head p,.shead p{padding-bottom:0}}
+/* footer logo is a link home */
+.wlogo-a{display:inline-block;line-height:0;transition:opacity .3s ease}
+.wlogo-a:hover{opacity:.7}
+/* studio status card (STUDIO_STATUS.pdf): glass card, label top, status bottom, photo tile right */
+.hero .status,a.status{position:absolute;right:clamp(14px,1.6vw,28px);bottom:clamp(14px,1.6vw,28px);display:grid;grid-template-columns:1fr 156px;gap:0;width:300px;height:165px;margin:0;padding:5px;border-radius:24px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#f0efea;font-size:15px;line-height:22px;letter-spacing:-.01em;text-decoration:none;transition:background-color .4s ease}
+a.status:hover{background:rgba(255,255,255,.28)}
+.status .st-txt{display:flex;flex-direction:column;justify-content:space-between;padding:12px 8px 15px 14px}
+.status small{display:block;margin:0;font-size:10px;line-height:1.2;color:rgba(240,239,234,.9);letter-spacing:.01em;text-transform:uppercase}
+.status .st-img{display:block;width:auto;height:100%;aspect-ratio:auto;border-radius:16px;background-color:#fff;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+a.status:hover .st-img{transform:scale(.97)}
+@media(max-width:640px){.hero .status,a.status{position:static;width:100%;max-width:340px;margin-top:20px;grid-template-columns:1fr 46%}}
+/* sticky navbar: fades a little once you scroll, slips away over the CTA and footer */
+.nav{--ne:cubic-bezier(.22,1,.36,1);position:fixed;z-index:30;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,border-color .9s ease,visibility 0s}
+.menu{position:fixed;z-index:29}
+body.nav-scrolled .nav{opacity:.9;background:rgba(17,17,17,.66);border-color:rgba(255,255,255,.1)}
+body.nav-scrolled .nav:hover,body.nav-scrolled .nav:focus-within{opacity:1}
+body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
+@media(prefers-reduced-motion:reduce){.nav{transition:opacity .2s linear}}
 </style>
 </head>
 <body>
@@ -382,13 +422,13 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 <li><a class="it" href="#home">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><a class="it" href="#contact">Contact<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 </ul>
-<a class="go" href="#contact">Start a project</a>
+<a class="go btn btn-light" href="#contact">Start a project <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a>
 </nav>
 <div id="home">
 <header class="hero">
   <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
   <h1>Your<br>Invincible<br>Design Team</h1>
-  <div class="status"><div><small>Studio status</small>Open for Q1<br>2027 projects.</div><i></i></div>
+  <a class="status" href="#contact" aria-label="Studio status: open for Q1 2027 projects. Go to contact"><span class="st-txt"><small>Studio status</small><span>Open for Q1<br>2027 projects.</span></span><i class="st-img" style="background-image:url(assets/contact.webp)" aria-hidden="true"></i></a>
 </header>
 
 <section class="intro">
@@ -449,16 +489,16 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 <div><label for="ce">Your email</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
 <div><label for="cp">Your phone</label><input id="cp" name="phone" type="tel" autocomplete="tel"></div>
 <div class="f"><label for="cm">Your message</label><textarea id="cm" name="message" rows="2" required></textarea></div>
-<div class="f"><button class="ct-btn" type="submit">Let’s talk <i><svg viewBox="0 0 12 12" width="11" height="11" fill="none" stroke="#fff" stroke-width="1.3"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status"></p></div>
+<div class="f"><button class="ct-btn btn" type="submit">Let’s talk <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status"></p></div>
 </form></div></section>
 </div>
 <footer class="cta">
   <h2>Build what’s next with us</h2>
   <p>Brand, product or campaign, tell us what you are building and we will reply within two working days.</p>
-  <div class="btns"><a href="#contact">Start a project <em>→</em></a><a href="#works">See our work <em>↗</em></a></div>
+  <div class="btns"><a class="btn btn-light" href="#contact">Start a project <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a><a class="btn btn-glass" href="#works">See our work <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div>
 </footer>
 <footer class="wf" id="wf">
-<div class="wf-top"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" role="img" aria-label="Angkasa Studio"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg>
+<div class="wf-top"><a class="wlogo-a" href="#home" aria-label="Angkasa Studio, back to home"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a>
 <nav class="wf-nav"><a href="#home">Home</a><a href="#home">About</a><a href="#works">Works</a><a href="#home">Journal</a><a href="#contact">Contact</a></nav></div>
 <div class="wf-mid"><p>Angkasa Studio is an independent studio working across brand, product, and content. We partner with founders and in-house teams on positioning, identity systems, and the digital products that carry them.</p><div class="wf-links"><span>Style Guide</span><span>Custom 404</span><span>Licenses</span><span>Custom 401</span><span>Change Log</span></div></div>
 <div class="wf-bot"><span>© 2026 <a href="#home" class="ul">Angkasa Studio</a></span><span>Central Java - Indonesia</span></div>
@@ -522,6 +562,15 @@ arm();
 document.getElementById('cf').addEventListener('submit',function(e){e.preventDefault();var f=e.target,ok=true;
 ['cn','ce','cm'].forEach(function(id){var el=document.getElementById(id),v=el.value.trim(),bad=!v||(id==='ce'&&!/^\S+@\S+\.\S+$/.test(v));el.classList.toggle('bad',bad);if(bad)ok=false});
 var m=document.getElementById('cok');m.textContent=ok?'Thanks, we will reply within two working days.':'Please fill in your name, a valid email and a message.';if(ok)f.reset()});
+</script>
+<script>
+/* sticky navbar state: scrolled (softer) and hidden while the CTA or footer is on screen */
+(function(){var b=document.body,vis=new Set();
+function onScroll(){b.classList.toggle('nav-scrolled',(window.scrollY||document.documentElement.scrollTop)>40)}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});var h=vis.size>0;b.classList.toggle('nav-hide',h);if(h&&window.tog)tog(false)},{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.cta,.wf').forEach(function(el){io.observe(el)});
+addEventListener('hashchange',function(){setTimeout(onScroll,60)})})();
 </script>
 </body>
 </html>
