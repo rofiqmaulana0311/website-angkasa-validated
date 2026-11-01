@@ -128,20 +128,18 @@ Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Jumlahnya
 Saat navbar melewati section karya di Home, teks tengahnya berganti jadi "SELECTED WORKS". Saat melewati bidang logo, berganti jadi "LOGO COLLECTION". Di bagian lain kembali ke "ANGKASA STUDIO". Pergantiannya pakai efek huruf berputar.
 Teksnya bisa diubah di script paling bawah `index.html`, cari `'Logo Collection'` dan `'Selected Works'`.
 
-## Journal (halaman artikel)
+## Journal
 
-Halaman Journal ada di `#journal`, dan setiap artikel punya halaman sendiri di `#journal/nama-artikel`. Menu "Journal", link Journal di footer, dan section "Notes from the studio" di Home semuanya mengarah ke halaman ini.
+Halaman Journal ada di `#journal` dan menampilkan **semua artikel lengkap** dalam satu halaman. Tiap artikel tampil dengan gambar di kiri (sepertiga lebar) dan teks di kanan, jadi bisa langsung dibaca tanpa membuka halaman lain.
+Di Home, section "Notes from the studio" menampilkan 4 artikel terbaru sebagai kartu. Klik salah satu kartu untuk membuka halaman Journal dan langsung menggulir ke artikel itu (`#journal/nama-artikel`).
 
-Semua artikel ditulis di `journal/posts.js`, urut dari yang terbaru. Artikel pertama tampil paling besar di atas halaman Journal, dan dua artikel terbaru juga tampil sebagai kartu di Home.
-
-Setiap artikel berisi:
+Semua artikel ditulis di `journal/posts.js`, urut dari yang terbaru. Setiap artikel berisi:
 - `slug`: bagian link, misalnya `price-in-outcomes`. Pakai huruf kecil, angka, dan tanda strip saja.
-- `title`, `category`, `date`, `read` (misal "5 min read"), dan `excerpt` (ringkasan 1–2 kalimat).
-- `cover`: gambar di folder `journal/`, landscape 16:10, disarankan 1600 x 1000 dalam format .webp.
-- `body`: isi artikel, satu paragraf per baris. Awali dengan `## ` untuk subjudul atau `> ` untuk kutipan besar.
+- `title`, `category`, `date`, `read` (misal "2 min read"), dan `excerpt` (ringkasan satu kalimat).
+- `cover`: gambar di folder `journal/`, landscape. Di Home dipotong 4:3, di Journal 4:3 (16:10 di HP).
+- `body`: isi artikel, satu paragraf per baris. Awali dengan `## ` untuk subjudul atau `> ` untuk kutipan besar. Sebaiknya 3 sampai 5 paragraf supaya tetap singkat dan to the point.
 
-Tombol filter kategori di halaman Journal dibuat otomatis dari kategori artikel.
-Isi keempat artikel yang ada sekarang hanya contoh, dan gambarnya diambil dari galeri project. Ganti dengan tulisan dan gambarmu sendiri.
+Isi keempat artikel yang ada sekarang hanya contoh, dan gambarnya diambil dari galeri project.
 
 ## About (halaman tentang studio)
 
