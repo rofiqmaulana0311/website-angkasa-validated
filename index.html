@@ -449,9 +449,9 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 .wc .wc-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .wc .t{z-index:1}
 /* infinite icon field: a drifting, draggable field of logo tiles that swell near the cursor */
-.ifield-sec{margin-top:clamp(70px,8vw,130px)}
-.ifield{--tile:clamp(64px,6.4vw,92px);position:relative;height:clamp(340px,40vw,560px);overflow:hidden;border-radius:10px;background:#f4f4f1;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
--webkit-mask-image:radial-gradient(120% 95% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(120% 95% at 50% 50%,#000 55%,transparent 100%)}
+.ifield-sec{margin:clamp(70px,8vw,130px) calc(var(--hero-gap) - clamp(12px,1.4vw,24px)) 0}
+.ifield{--tile:clamp(100px,9.4vw,156px);position:relative;height:var(--hero-h);min-height:520px;overflow:hidden;border-radius:10px;background:#f4f4f1;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
+-webkit-mask-image:radial-gradient(130% 110% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(130% 110% at 50% 50%,#000 62%,transparent 100%)}
 .ifield.drag{cursor:grabbing}
 .if-t{position:absolute;left:0;top:0;width:var(--tile);height:var(--tile);margin:calc(var(--tile)/-2) 0 0 calc(var(--tile)/-2);display:grid;place-items:center;border-radius:24%;background:#fff;color:#151515;box-shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);will-change:transform}
 .if-t img{position:absolute;left:25%;top:25%;width:50%;height:50%;max-width:none;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
@@ -459,7 +459,14 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 .if-t.k1{background:#111;color:#f1efe6}
 .if-t.k2{background:#e7e6df;color:#2a2a2a}
 .if-t.k3{background:#3b1ca5;color:#fff}
-@media(max-width:640px){.ifield{--tile:60px;height:340px}}
+@media(max-width:640px){.ifield{--tile:84px;min-height:0}}
+/* navbar wordmark: split-flap style flip when the label changes */
+.nav .wm{display:inline-block;white-space:pre;perspective:400px}
+.wm .fc{display:inline-grid;vertical-align:top;transform-style:preserve-3d}
+.wm .fc>span{grid-area:1/1;display:block;backface-visibility:hidden;transform-origin:50% 50% -.5em;transition:transform .55s cubic-bezier(.65,0,.35,1),opacity .55s ease;transition-delay:calc(var(--i)*22ms)}
+.wm .fc .n{transform:rotateX(-90deg);opacity:0}
+.wm.go .fc .o{transform:rotateX(90deg);opacity:0}
+.wm.go .fc .n{transform:none;opacity:1}
 </style>
 </head>
 <body>
@@ -476,7 +483,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 <div id="home">
 <header class="hero" id="hero">
   <canvas class="hero-reveal" aria-hidden="true"></canvas><div class="hero-shade" aria-hidden="true"></div>
-  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+  <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" id="wm" href="#home" aria-live="polite">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
   <h1>Your<br>Invincible<br>Design Team</h1>
   <a class="status" href="#contact" aria-label="Studio status: open for Q1 2027 projects. Go to contact"><span class="st-txt"><small>Studio status</small><span>Open for Q1<br>2027 projects.</span></span><i class="st-img" style="background-image:url(assets/contact.webp)" aria-hidden="true"></i></a>
 </header>
@@ -487,11 +494,10 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 </section>
 
 <main class="wrap">
-  <div class="head"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand, product, campaign</p></div>
+  <div class="head" id="works-sec"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand, product, campaign</p></div>
   <div class="grid" id="hgrid"></div>
 
-  <section class="ifield-sec" aria-labelledby="if-h">
-    <div class="head"><h2 id="if-h">Brands we have<br>built with.</h2><p>[ Clients ]<br>2017–2026</p></div>
+  <section class="ifield-sec" id="logos" aria-label="Logo collection">
     <div class="ifield" id="ifield" role="img" aria-label="Logos of brands we have worked with"></div>
   </section>
 
@@ -759,6 +765,24 @@ var io=new IntersectionObserver(function(es){on=es[0].isIntersecting;if(on)go()}
 build();vx=bx;vy=by;draw();
 if(window.ResizeObserver)new ResizeObserver(function(){build();draw()}).observe(f);else addEventListener('resize',function(){build();draw()});
 })();
+</script>
+<script>
+/* navbar label follows the section under it: LOGO COLLECTION / SELECTED WORKS / ANGKASA STUDIO */
+(function(){var wm=document.getElementById('wm');if(!wm)return;
+var home=document.getElementById('home'),nav=wm.closest('.nav'),logos=document.getElementById('logos'),wk=document.getElementById('works-sec'),grid=document.getElementById('hgrid'),
+rm=matchMedia('(prefers-reduced-motion: reduce)').matches,cur='Angkasa Studio',want=cur,busy=false,tick=false,timer=0;
+function esc(c){return c===' '?' ':c.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function flip(to){if(rm){wm.textContent=to;cur=to;return}
+busy=true;var a=cur,n=Math.max(a.length,to.length),h='';
+for(var k=0;k<n;k++)h+='<span class="fc" style="--i:'+k+'"><span class="o">'+esc(a[k]||' ')+'</span><span class="n">'+esc(to[k]||' ')+'</span></span>';
+wm.classList.remove('go');wm.innerHTML=h;void wm.offsetWidth;wm.classList.add('go');
+clearTimeout(timer);timer=setTimeout(function(){wm.classList.remove('go');wm.textContent=to;cur=to;busy=false;if(want!==cur)flip(want)},550+n*22+40)}
+function pick(){tick=false;if(home.hidden){set('Angkasa Studio');return}
+var r=nav.getBoundingClientRect(),y=r.top+r.height/2,L=logos.getBoundingClientRect(),A=wk.getBoundingClientRect(),B=grid.getBoundingClientRect();
+set(y>=L.top&&y<=L.bottom?'Logo Collection':(y>=A.top&&y<=B.bottom?'Selected Works':'Angkasa Studio'))}
+function set(t){want=t;if(!busy&&t!==cur)flip(t)}
+function on(){if(!tick){tick=true;requestAnimationFrame(pick)}}
+addEventListener('scroll',on,{passive:true});addEventListener('resize',on);addEventListener('hashchange',function(){setTimeout(on,60)});on()})();
 </script>
 </body>
 </html>

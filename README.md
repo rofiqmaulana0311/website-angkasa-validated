@@ -112,7 +112,7 @@ Kartu project di Home, Works, dan "Next project" bisa memakai video, bukan hanya
 
 Video otomatis berputar terus tanpa suara, hanya saat kartunya terlihat di layar. Untuk pengunjung yang mematikan animasi, yang tampil hanya gambar diamnya.
 
-## Icon field (section "Brands we have built with." di Home)
+## Icon field (section Logo Collection di Home)
 
 Bidang ikon logo yang terus bergeser pelan, bisa di-drag, dan ikonnya membesar di dekat kursor.
 Semua logonya ada di folder `assets/logos/`, berisi 30 file: `logo-01.svg` sampai `logo-30.svg`. File yang sekarang masih placeholder.
@@ -123,3 +123,8 @@ Cara mengganti:
 3. Di kotak gelap, logo otomatis ditampilkan putih. Di kotak terang, logo tampil sesuai warna aslinya.
 
 Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Urutan di daftar itu adalah urutan logo di bidang ikon. Jumlahnya bebas, tidak harus 30.
+
+## Teks navbar yang berganti (Home)
+
+Saat navbar melewati section karya di Home, teks tengahnya berganti jadi "SELECTED WORKS". Saat melewati bidang logo, berganti jadi "LOGO COLLECTION". Di bagian lain kembali ke "ANGKASA STUDIO". Pergantiannya pakai efek huruf berputar.
+Teksnya bisa diubah di script paling bawah `index.html`, cari `'Logo Collection'` dan `'Selected Works'`.
