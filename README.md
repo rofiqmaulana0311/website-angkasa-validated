@@ -142,3 +142,14 @@ Setiap artikel berisi:
 
 Tombol filter kategori di halaman Journal dibuat otomatis dari kategori artikel.
 Isi keempat artikel yang ada sekarang hanya contoh, dan gambarnya diambil dari galeri project. Ganti dengan tulisan dan gambarmu sendiri.
+
+## About (halaman tentang studio)
+
+Halaman About ada di `#about`. Menu "About" dan link About di footer mengarah ke halaman ini.
+Isinya ditulis langsung di `index.html`, di dalam `<div id="about">`:
+- **Judul dan gambar lebar:** `assets/about.webp` (landscape sekitar 2,4:1, disarankan 2400 x 1000).
+- **The studio:** paragraf cerita studio.
+- **Angka:** 2017, 8, 4, dan Central Java. Sesuaikan dengan angka sebenarnya.
+- **What we do:** empat layanan.
+- **How we work:** empat langkah kerja.
+- **The people:** foto tim di `assets/team/member-1.webp` sampai `member-4.webp` (potret 4:5, disarankan 800 x 1000). Ganti juga "Name Surname" dan jabatannya. Untuk menambah orang, salin satu `<div>` di dalam `.ab-team`.
