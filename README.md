@@ -115,5 +115,11 @@ Video otomatis berputar terus tanpa suara, hanya saat kartunya terlihat di layar
 ## Icon field (section "Brands we have built with." di Home)
 
 Bidang ikon logo yang terus bergeser pelan, bisa di-drag, dan ikonnya membesar di dekat kursor.
-Ikonnya diambil dari `<symbol id="if-0">` sampai `<symbol id="if-8">` di dalam `<div class="ifield">` di `index.html`. Ikon yang ada sekarang adalah tanda logo contoh klien portofolio, ditambah logo Angkasa.
-Untuk mengganti atau menambah logo, salin isi SVG logo (bentuknya saja, tanpa teks) ke `<symbol>` baru dengan `viewBox` milik logo itu, dan beri id berikutnya (`if-9`, dan seterusnya). Warna mengikuti kotaknya secara otomatis, jadi jangan pakai `fill` warna tetap di dalam logo.
+Semua logonya ada di folder `assets/logos/`, berisi 30 file: `logo-01.svg` sampai `logo-30.svg`. File yang sekarang masih placeholder.
+
+Cara mengganti:
+1. Timpa file SVG dengan logo klien, tetap pakai nama yang sama (misal `logo-07.svg`).
+2. Pakai logo satu warna, sebaiknya hitam, berbentuk ikon/simbol (tanpa tulisan panjang), dan punya `viewBox`.
+3. Di kotak gelap, logo otomatis ditampilkan putih. Di kotak terang, logo tampil sesuai warna aslinya.
+
+Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Urutan di daftar itu adalah urutan logo di bidang ikon. Jumlahnya bebas, tidak harus 30.

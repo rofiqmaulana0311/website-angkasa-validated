@@ -454,7 +454,8 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 -webkit-mask-image:radial-gradient(120% 95% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(120% 95% at 50% 50%,#000 55%,transparent 100%)}
 .ifield.drag{cursor:grabbing}
 .if-t{position:absolute;left:0;top:0;width:var(--tile);height:var(--tile);margin:calc(var(--tile)/-2) 0 0 calc(var(--tile)/-2);display:grid;place-items:center;border-radius:24%;background:#fff;color:#151515;box-shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);will-change:transform}
-.if-t svg{position:absolute;left:27%;top:27%;width:46%;height:46%;max-width:none;overflow:visible;display:block;fill:currentColor}
+.if-t img{position:absolute;left:25%;top:25%;width:50%;height:50%;max-width:none;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none}
+.if-t.k1 img,.if-t.k3 img{filter:brightness(0) invert(1)}
 .if-t.k1{background:#111;color:#f1efe6}
 .if-t.k2{background:#e7e6df;color:#2a2a2a}
 .if-t.k3{background:#3b1ca5;color:#fff}
@@ -491,9 +492,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 
   <section class="ifield-sec" aria-labelledby="if-h">
     <div class="head"><h2 id="if-h">Brands we have<br>built with.</h2><p>[ Clients ]<br>2017–2026</p></div>
-    <div class="ifield" id="ifield" role="img" aria-label="Client logos: Fold+, Meridian+, Halcyon, Kin, Luma, Northwind, Ostra, Aurel+, Angkasa Studio">
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="if-0" viewBox="0 4 24 24"><path d="M2 6h20v20H2z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M2 6l20 20H2z"/></symbol><symbol id="if-1" viewBox="1 3 26 26"><circle cx="14" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 3v26" stroke="currentColor" stroke-width="2"/><ellipse cx="14" cy="16" rx="5" ry="11" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol><symbol id="if-2" viewBox="0 4 28 28"><path d="M3 23a11 11 0 0 1 22 0z"/><path d="M1 27h26" stroke="currentColor" stroke-width="2"/></symbol><symbol id="if-3" viewBox="0 1.5 26 26"><circle cx="7" cy="9" r="4.5"/><circle cx="19" cy="9" r="4.5"/><circle cx="13" cy="20" r="4.5"/></symbol><symbol id="if-4" viewBox="1 1 26 26"><path d="M14 2c1.2 7.3 4.7 10.8 12 12-7.3 1.2-10.8 4.7-12 12-1.2-7.3-4.7-10.8-12-12 7.3-1.2 10.8-4.7 12-12z"/></symbol><symbol id="if-5" viewBox="0 1 26 26"><path d="M13 3l10 22-10-6-10 6z"/></symbol><symbol id="if-6" viewBox="0 3 26 26"><circle cx="13" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="16" r="4"/></symbol><symbol id="if-7" viewBox="0 2 28 28"><circle cx="10" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="19" cy="16" r="8"/></symbol><symbol id="if-8" viewBox="-10 -15 178.5 168.5"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></symbol></svg>
-    </div>
+    <div class="ifield" id="ifield" role="img" aria-label="Logos of brands we have worked with"></div>
   </section>
 
   <section class="notes">
@@ -571,6 +570,7 @@ document.addEventListener('click',function(){tog(false)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
 addEventListener('hashchange',route);route();
 </script>
+<script src="assets/logos/logos.js"></script>
 <script src="projects/fold/project.js"></script>
 <script src="projects/halcyon/project.js"></script>
 <script src="projects/kin/project.js"></script>
@@ -681,7 +681,7 @@ function initFB(){var sr=res(CFG.SIM),dr=res(CFG.DYE);vel=dbl(sr[0],sr[1],FRG,LF
 /* astronaut image, downscaled to a safe texture size */
 var itex=null,iw=1,ih=1,img=new Image();
 img.onload=function(){var mx=Math.min(2048,gl.getParameter(gl.MAX_TEXTURE_SIZE)),k=Math.min(1,mx/Math.max(img.naturalWidth,img.naturalHeight)),c2=document.createElement('canvas');c2.width=Math.round(img.naturalWidth*k);c2.height=Math.round(img.naturalHeight*k);c2.getContext('2d').drawImage(img,0,0,c2.width,c2.height);iw=c2.width;ih=c2.height;
-itex=gl.createTexture();gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,itex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,c2);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
+itex=gl.createTexture();gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,itex);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);try{gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,c2)}catch(err){gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);gl.deleteTexture(itex);itex=null;fallback();return}gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,false);
 gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE)};
 img.src='assets/hero-home.webp';
 function size(){var b=h.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,1.5),W=Math.max(1,Math.round(b.width*d)),H=Math.max(1,Math.round(b.height*d));if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H;initFB()}}
@@ -730,7 +730,7 @@ window.syncCoverVideos=scan;scan();addEventListener('hashchange',function(){setT
 <script>
 /* infinite icon field */
 (function(){var f=document.getElementById('ifield');if(!f)return;
-var N=f.querySelectorAll('symbol').length,rm=matchMedia('(prefers-reduced-motion: reduce)').matches,
+var L=(window.LOGOS||[]).slice(),N=L.length;if(!N)return;var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,
 tiles=[],cols=0,rows=0,step=0,W=0,H=0,ox=0,oy=0,vx=0,vy=0,bx=rm?0:-.32,by=rm?0:-.16,
 px=-1e4,py=-1e4,drag=false,lx=0,ly=0,on=false,run=false,last=0;
 function kind(i,j){var h=(i*7+j*13+(i*j)%5)%13;return h===0?' k3':h<3?' k1':h<5?' k2':''}
@@ -740,7 +740,7 @@ var pr=document.createElement('div');pr.className='if-t';pr.style.visibility='hi
 step=t*1.38;var c=Math.ceil(W/step)+2,r=Math.ceil(H/step)+2;if(c===cols&&r===rows)return;cols=c;rows=r;
 tiles.forEach(function(o){o.el.remove()});tiles=[];
 for(var j=0;j<rows;j++)for(var i=0;i<cols;i++){var el=document.createElement('div'),k=((i*4+j*7+(j%2)*2)%N+N)%N;el.className='if-t'+kind(i,j);el.setAttribute('aria-hidden','true');
-el.innerHTML='<svg><use href="#if-'+k+'" width="100%" height="100%"></use></svg>';f.appendChild(el);tiles.push({el:el,i:i,j:j})}}
+el.innerHTML='<img src="assets/logos/'+L[k]+'" alt="" decoding="async" draggable="false">';f.appendChild(el);tiles.push({el:el,i:i,j:j})}}
 function mod(a,n){return((a%n)+n)%n}
 function draw(){var fw=cols*step,fh=rows*step,R=step*2.4;
 for(var n=0;n<tiles.length;n++){var o=tiles[n],x=mod(o.i*step+ox+(o.j%2)*step*.5,fw)-step,y=mod(o.j*step+oy,fh)-step,
