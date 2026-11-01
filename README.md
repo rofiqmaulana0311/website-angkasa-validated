@@ -115,14 +115,13 @@ Video otomatis berputar terus tanpa suara, hanya saat kartunya terlihat di layar
 ## Icon field (section Logo Collection di Home)
 
 Bidang ikon logo yang terus bergeser pelan, bisa di-drag, dan ikonnya membesar di dekat kursor.
-Semua logonya ada di folder `assets/logos/`, berisi 30 file: `logo-01.svg` sampai `logo-30.svg`. File yang sekarang masih placeholder.
+Semua logo ada di folder `assets/logos/`, berisi 28 file: `logo-01.svg` sampai `logo-28.svg`. File-file ini dipotong dari LOGO_COLLECTION.svg, urut dari kiri atas ke kanan bawah.
+Setiap file adalah satu kotak persegi lengkap, yaitu logo beserta warna latarnya.
 
-Cara mengganti:
-1. Timpa file SVG dengan logo klien, tetap pakai nama yang sama (misal `logo-07.svg`).
-2. Pakai logo satu warna, sebaiknya hitam, berbentuk ikon/simbol (tanpa tulisan panjang), dan punya `viewBox`.
-3. Di kotak gelap, logo otomatis ditampilkan putih. Di kotak terang, logo tampil sesuai warna aslinya.
+Ukuran dan susunannya sama dengan LOGO_COLLECTION.svg: setiap kotak 260,571 x 255 dengan sudut 12, jarak antarkotak 12, dan 7 kotak memenuhi lebar layar (di HP minimal 104px).
 
-Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Urutan di daftar itu adalah urutan logo di bidang ikon. Jumlahnya bebas, tidak harus 30.
+Cara mengganti: timpa file dengan SVG milikmu memakai nama yang sama. Gunakan ukuran 260,571 x 255 (atau rasio yang sama), dan sertakan warna latarnya di dalam SVG.
+Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Jumlahnya bebas.
 
 ## Teks navbar yang berganti (Home)
 

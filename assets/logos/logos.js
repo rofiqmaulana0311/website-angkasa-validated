@@ -1,8 +1,7 @@
-// Logos in the "Brands we have built with." icon field on Home.
-// Replace any file in this folder with your own SVG (keep the same name), or edit this list
+// Logos in the Logo Collection field on Home.
+// Each file is one square tile: the logo together with its own background colour.
+// Replace any file with your own square SVG (keep the same name), or edit this list
 // to add / remove logos. Order = order they appear in the field.
-// Tips: square-ish SVG with a viewBox, single colour (black works best).
-// On dark tiles the logo is shown in white automatically.
 window.LOGOS = [
   "logo-01.svg",
   "logo-02.svg",
@@ -31,7 +30,5 @@ window.LOGOS = [
   "logo-25.svg",
   "logo-26.svg",
   "logo-27.svg",
-  "logo-28.svg",
-  "logo-29.svg",
-  "logo-30.svg"
+  "logo-28.svg"
 ];
