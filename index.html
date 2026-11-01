@@ -735,7 +735,7 @@ window.syncCoverVideos=scan;scan();addEventListener('hashchange',function(){setT
 (function(){var f=document.getElementById('ifield');if(!f)return;
 var L=(window.LOGOS||[]).slice(),N=L.length;if(!N)return;var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,
 tiles=[],cols=0,rows=0,step=0,W=0,H=0,ox=0,oy=0,vx=0,vy=0,bx=rm?0:-.32,by=rm?0:-.16,
-px=-1e4,py=-1e4,drag=false,lx=0,ly=0,on=false,run=false,last=0;
+px=-1e4,py=-1e4,tx=0,ty=0,drag=false,lx=0,ly=0,on=false,run=false,last=0;
 function kind(){return''}
 var tw=0,th=0,gx=0,gy=0;
 function build(){var b=f.getBoundingClientRect();W=b.width;H=b.height;
@@ -750,15 +750,16 @@ function draw(){var fw=cols*gx,fh=rows*gy,R=gx*2.2;
 for(var n=0;n<tiles.length;n++){var o=tiles[n],x=mod(o.i*gx+ox,fw)-gx,y=mod(o.j*gy+oy,fh)-gy,
 d=Math.hypot(x-px,y-py),s=1+.12*Math.max(0,1-d/R)*Math.max(0,1-d/R);o.el.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) scale('+s.toFixed(3)+')'}}
 function frame(t){var dt=last?Math.min((t-last)/16.67,3):1;last=t;
-if(!drag){vx+=(bx-vx)*.04*dt;vy+=(by-vy)*.04*dt}
-ox+=vx*dt;oy+=vy*dt;draw();
-if(on&&(!rm||drag||Math.abs(vx)+Math.abs(vy)>.01))requestAnimationFrame(frame);else{run=false;last=0}}
+if(drag){var nx=ox+(tx-ox)*(1-Math.pow(1-.09,dt)),ny=oy+(ty-oy)*(1-Math.pow(1-.09,dt));vx=(nx-ox)/dt;vy=(ny-oy)/dt;ox=nx;oy=ny}
+else{vx+=(bx-vx)*(1-Math.pow(1-.022,dt));vy+=(by-vy)*(1-Math.pow(1-.022,dt));ox+=vx*dt;oy+=vy*dt;tx=ox;ty=oy}
+draw();
+if(on&&(!rm||drag||Math.abs(vx)+Math.abs(vy)>.01||Math.abs(tx-ox)+Math.abs(ty-oy)>.1))requestAnimationFrame(frame);else{run=false;last=0}}
 function go(){if(!run&&on){run=true;requestAnimationFrame(frame)}}
 function pt(e){var b=f.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]}
-f.addEventListener('pointermove',function(e){var p=pt(e);px=p[0];py=p[1];if(drag){vx=(p[0]-lx);vy=(p[1]-ly);ox+=vx;oy+=vy;lx=p[0];ly=p[1]}if(rm){draw()}go()});
+f.addEventListener('pointermove',function(e){var p=pt(e);px=p[0];py=p[1];if(drag){tx+=(p[0]-lx)*.85;ty+=(p[1]-ly)*.85;lx=p[0];ly=p[1]}if(rm){draw()}go()});
 f.addEventListener('pointerleave',function(){px=py=-1e4;if(rm)draw()});
-f.addEventListener('pointerdown',function(e){var p=pt(e);drag=true;lx=p[0];ly=p[1];vx=vy=0;f.classList.add('drag');try{f.setPointerCapture(e.pointerId)}catch(_){}go()});
-['pointerup','pointercancel'].forEach(function(t){f.addEventListener(t,function(){drag=false;f.classList.remove('drag');go()})});
+f.addEventListener('pointerdown',function(e){var p=pt(e);drag=true;lx=p[0];ly=p[1];tx=ox;ty=oy;f.classList.add('drag');try{f.setPointerCapture(e.pointerId)}catch(_){}go()});
+['pointerup','pointercancel'].forEach(function(t){f.addEventListener(t,function(){if(drag){var m=Math.hypot(vx,vy),M=28;if(m>M){vx*=M/m;vy*=M/m}}drag=false;f.classList.remove('drag');go()})});
 var io=new IntersectionObserver(function(es){on=es[0].isIntersecting;if(on)go()},{rootMargin:'80px'});io.observe(f);
 build();vx=bx;vy=by;draw();
 if(window.ResizeObserver)new ResizeObserver(function(){build();draw()}).observe(f);else addEventListener('resize',function(){build();draw()});
