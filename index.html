@@ -445,6 +445,9 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 .hero>.status{z-index:2}
 /* founder photo in the quote byline */
 .who i{width:40px;height:40px;flex:none;background-color:#7a2230;background-size:cover;background-position:center}
+/* motion-logo covers: video fills the card under the tag */
+.wc .wc-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.wc .t{z-index:1}
 </style>
 </head>
 <body>
@@ -564,7 +567,7 @@ addEventListener('hashchange',route);route();
 var PJ=window.PJ||{},KS=Object.keys(PJ);
 function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function U(k,f){return 'url(projects/'+k+'/'+f+')'}
-function card(k,ds){var d=PJ[k];return '<a class="wc" href="#'+k+'"'+(ds?' data-s="'+k+'"':'')+' style="background-image:'+U(k,d.images.cover)+'"><span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}
+function card(k,ds){var d=PJ[k];return '<a class="wc" href="#'+k+'"'+(ds?' data-s="'+k+'"':'')+' style="background-image:'+U(k,d.images.cover)+'">'+(d.images.coverVideo?'<video class="wc-v" src="projects/'+k+'/'+d.images.coverVideo+'" poster="projects/'+k+'/'+d.images.cover+'" muted loop playsinline preload="metadata" aria-hidden="true"></video>':'')+'<span class="t">'+esc(d.label)+' <small>'+esc(d.year)+'<br>'+esc(d.type)+'</small><span class="disc">Discover case <i></i></span></span></a>'}
 document.getElementById('wgrid').innerHTML=KS.map(function(k){return card(k,1)}).join('\n');
 document.getElementById('hgrid').innerHTML=KS.filter(function(k){return PJ[k].home}).sort(function(a,b){return PJ[a].home-PJ[b].home}).map(function(k){return card(k,0)}).join('\n');
 document.querySelector('#s2 .in').insertAdjacentHTML('beforeend',KS.map(function(k,i){return '<a href="#'+k+'" style="--i:'+(i+1)+'">'+esc(PJ[k].menu||PJ[k].label)+'</a>'}).join(''));
@@ -698,6 +701,13 @@ h.addEventListener('pointerleave',function(){on=false});
 size();addEventListener('resize',size);if(window.ResizeObserver)new ResizeObserver(size).observe(h);
 window.__heroFluid=true;
 })();
+</script>
+<script>
+/* play cover videos only while they are on screen; still frame for reduced motion */
+(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,seen=new WeakSet(),
+io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting&&!rm){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{rootMargin:'120px'}):null;
+function scan(){document.querySelectorAll('video.wc-v').forEach(function(v){if(seen.has(v))return;seen.add(v);v.muted=true;if(io)io.observe(v);else if(!rm)v.play()})}
+window.syncCoverVideos=scan;scan();addEventListener('hashchange',function(){setTimeout(scan,80)})})();
 </script>
 </body>
 </html>

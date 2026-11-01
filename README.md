@@ -100,3 +100,14 @@ Baris otomatis diduplikasi oleh script, jadi cukup tulis setiap logo satu kali. 
 
 Setiap folder project punya `avatar.webp`, yaitu foto kecil bulat di samping nama founder di bawah kutipan. File yang sekarang hanya placeholder (siluet).
 Timpa dengan foto asli memakai nama file yang sama: persegi 1:1, disarankan 400 x 400, wajah di tengah.
+
+## Cover video (logo motion) di kartu project
+
+Kartu project di Home, Works, dan "Next project" bisa memakai video, bukan hanya gambar. Contohnya ada di `projects/fold/`.
+
+1. Taruh video persegi (1:1) bernama `cover.mp4` di folder project. Pakai format MP4 (H.264) tanpa suara. Ukuran 1080 x 1080 sudah cukup.
+2. Di `project.js`, tambahkan baris ini di bawah `cover:`:
+   `coverVideo: "cover.mp4",`
+3. `cover.webp` tetap dipakai sebagai gambar diam saat video belum termuat. Isi dengan frame terbaik dari videonya, misalnya saat logo sudah utuh.
+
+Video otomatis berputar terus tanpa suara, hanya saat kartunya terlihat di layar. Untuk pengunjung yang mematikan animasi, yang tampil hanya gambar diamnya.

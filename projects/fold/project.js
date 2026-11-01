@@ -3,6 +3,7 @@
 (window.PJ=window.PJ||{}).fold={
   images: {
     cover:   "cover.webp",                // square 1:1 — Home card, Works card, "Next project"
+    coverVideo: "cover.mp4",             // optional: square looping video (logo motion) played on the cards; cover.webp is its still frame
     hero:    "hero.webp",                 // wide 16:9 — top of the project page
     gallery: [   // project page, top to bottom — add as many as you like: "wide" in the name = full row, "portrait" = 2 per row, "small" = 3 per row
       "gallery-1-wide.webp",              //   row 1: wide 16:9
