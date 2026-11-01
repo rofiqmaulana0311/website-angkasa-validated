@@ -357,7 +357,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 /* navbar: frosted glass, same treatment as the project card tags */
 .nav{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;border:1px solid rgba(255,255,255,.14)}
 /* on the light pages (Works, Contact) white glass would vanish, so use a dark tint of the same glass */
-#works>.nav,#contact>.nav{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.08)}
+#works>.nav,#contact>.nav,#journal>.nav,#article>.nav{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.08)}
 /* CTA: image card with breathing room instead of a full-bleed black band */
 .cta,body.works .cta{position:relative;overflow:hidden;margin:clamp(50px,6vw,100px) clamp(4px,.4vw,8px) 0;border-radius:10px;min-height:clamp(440px,62vh,680px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(70px,9vw,140px) 20px;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55)),url(assets/works-cta.webp) center/cover no-repeat,#000;color:#f4f2ea}
 .cta h2{max-width:8.5em}
@@ -431,7 +431,7 @@ body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) transl
 /* menu panel uses the same glass as the navbar (light over the hero, dark wherever the navbar is dark) */
 .menu{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);box-shadow:0 12px 40px rgba(0,0,0,.18);transition:opacity .3s ease,transform .6s var(--e),clip-path .6s var(--e),visibility 0s .6s,background-color .9s ease,border-color .9s ease}
 .menu.open{transition:opacity .3s ease,transform .6s var(--e),clip-path .75s var(--e),visibility 0s,background-color .9s ease,border-color .9s ease}
-body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.1)}
+body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.1)}
 .menu li{border-bottom-color:rgba(255,255,255,.14)}
 .menu a.it:hover,.menu button.it:hover{background:rgba(255,255,255,.08)}
 /* hero hover reveal: empty landscape by default, a soft circle following the cursor reveals the astronaut */
@@ -464,6 +464,46 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 .wm .fc .n{transform:rotateX(-90deg);opacity:0}
 .wm.go .fc .o{transform:rotateX(90deg);opacity:0}
 .wm.go .fc .n{transform:none;opacity:1}
+/* journal index */
+.jr-head{padding-bottom:clamp(24px,3vw,44px)}
+.jr-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:0 16px clamp(30px,4vw,56px)}
+.jr-tags button{font:inherit;font-size:14px;letter-spacing:-.01em;padding:9px 16px;border-radius:999px;border:1px solid #d9d9d3;background:transparent;color:#333;cursor:pointer;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+.jr-tags button:hover{border-color:#111}
+.jr-tags button[aria-selected=true]{background:#111;border-color:#111;color:#fff}
+.jr-feat-wrap{padding:0 clamp(12px,1.4vw,24px)}
+.jr-feat{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(20px,3vw,48px);align-items:center}
+.jr-feat[hidden],.jr-card[hidden]{display:none}
+.jr-img{display:block;overflow:hidden;border-radius:10px;background:#ddd;aspect-ratio:16/10}
+.jr-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,1,.36,1)}
+a:hover .jr-img img{transform:scale(1.035)}
+.jr-ft small,.jr-card small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666}
+.jr-ft h2{margin:16px 0 0;font-size:clamp(30px,3.4vw,54px);line-height:1;font-weight:600;letter-spacing:-.04em}
+.jr-ft p{margin:18px 0 28px;max-width:440px;font-size:clamp(16px,1.3vw,19px);line-height:1.4;color:#444}
+.jr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px) clamp(12px,1.4vw,24px);padding:clamp(60px,7vw,110px) clamp(12px,1.4vw,24px) 0}
+.jr-card{display:block}
+.jr-card small{margin-top:16px}
+.jr-card h3{margin:10px 0 0;font-size:clamp(20px,1.7vw,26px);line-height:1.1;font-weight:500;letter-spacing:-.03em}
+.jr-card p{margin:10px 0 0;font-size:15px;line-height:1.45;color:#555;max-width:440px}
+.jr-card em{display:block;margin-top:12px;font-style:normal;font-size:12px;color:#888}
+/* article */
+.ar-head{max-width:900px;margin:0 auto;text-align:center;padding:clamp(120px,12vw,170px) 20px clamp(36px,4vw,60px)}
+.ar-back{display:inline-block;font-size:13px;color:#555;margin-bottom:28px;transition:color .3s ease}
+.ar-back:hover{color:#111}
+.ar-head small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#666;margin-bottom:20px}
+.ar-h1{margin:0;font-size:clamp(38px,5.6vw,86px);line-height:.98;font-weight:600;letter-spacing:-.045em}
+.ar-cover{margin:0 clamp(4px,.5vw,8px);border-radius:10px;overflow:hidden;background:#ddd;aspect-ratio:16/8}
+.ar-cover img{display:block;width:100%;height:100%;object-fit:cover}
+.ar-body{max-width:680px;margin:0 auto;padding:clamp(50px,6vw,90px) 20px 0}
+.ar-body p{margin:0 0 1.2em;font-size:clamp(17px,1.35vw,20px);line-height:1.6;letter-spacing:-.01em;color:#222}
+.ar-body h2{margin:1.8em 0 .6em;font-size:clamp(24px,2vw,30px);line-height:1.15;font-weight:600;letter-spacing:-.03em}
+.ar-body blockquote{margin:1.6em 0;padding:0 0 0 24px;border-left:2px solid #111;font-size:clamp(22px,2vw,30px);line-height:1.3;font-weight:500;letter-spacing:-.03em}
+.ar-more{padding:clamp(80px,9vw,140px) 0 0}
+.ar-more .head{margin:0;padding:0 clamp(12px,1.4vw,24px)}
+.ar-more .head p a{text-decoration:underline}
+.ar-more .jr-grid{padding-top:clamp(20px,2.6vw,40px)}
+@media(max-width:1024px){.jr-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.jr-feat{grid-template-columns:1fr}.ar-cover{aspect-ratio:4/3}}
+@media(max-width:640px){.jr-grid{grid-template-columns:1fr}.ar-body blockquote{padding-left:16px}}
 </style>
 </head>
 <body>
@@ -472,7 +512,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 <li><a class="it" href="#home">Home<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><button class="it" aria-expanded="false" data-sub="s1">About<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s1"><div class="in">Open for Q1 2027 projects.</div></div></li>
 <li><button class="it" aria-expanded="false" data-sub="s2">Works<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s2"><div class="in"><a href="#works" style="--i:0">All works</a></div></div></li>
-<li><a class="it" href="#home">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
+<li><a class="it" href="#journal">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><a class="it" href="#contact">Contact<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 </ul>
 <a class="go btn btn-light" href="#contact">Start a project <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a>
@@ -499,17 +539,9 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
   </section>
 
   <section class="notes">
-    <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2></div>
-    <div class="posts">
-      <a class="post" href="#"><small>Brand systems &nbsp; June 12, 2026</small><h3>What a brand system<br>owes its engineers.</h3></a>
-      <a class="post" href="#"><small>Practice &nbsp; March 2, 2026</small><h3>Why we price in<br>outcomes, not hours.</h3></a>
-    </div>
-    <div class="list">
-      <a class="row" href="#"><span>Brand systems</span><span>What a brand system owes its engineers.</span><span>June 12, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
-      <a class="row" href="#"><span>Interface</span><span>Designing in the browser</span><span>May 5, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
-      <a class="row" href="#"><span>Studio</span><span>Inside an Angkasa Studio week</span><span>April 21, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
-      <a class="row" href="#"><span>Practice</span><span>Why we price in outcomes, not hours.</span><span>March 2, 2026</span><svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg></a>
-    </div>
+    <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2><p>[ Journal ]<br><a href="#journal">All articles</a></p></div>
+    <div class="posts" id="hposts"></div>
+    <div class="list" id="hlist"></div>
   </section>
 </main>
 
@@ -550,6 +582,22 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 <div class="f"><button class="ct-btn btn" type="submit">Let’s talk <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status"></p></div>
 </form></div></section>
 </div>
+<div id="journal" hidden>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><span>Journal, notes from the studio</span><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+<section class="wk-head jr-head"><small>Journal</small><h1 class="wk-h1">Notes from<br>the studio.</h1></section>
+<div class="jr-tags" id="jr-tags" role="tablist" aria-label="Filter articles"></div>
+<section class="jr-feat-wrap" id="jr-feat"></section>
+<section class="jr-grid" id="jr-grid"></section>
+</div>
+<div id="article" hidden>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#journal">Journal</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+<article class="ar">
+<header class="ar-head"><a class="ar-back" href="#journal">← All articles</a><small id="ar-meta"></small><h1 class="ar-h1" id="ar-title"></h1></header>
+<figure class="ar-cover" id="ar-cover"></figure>
+<div class="ar-body" id="ar-body"></div>
+</article>
+<section class="ar-more"><div class="head"><h2>More from<br>the journal.</h2><p>[ Keep reading ]<br><a href="#journal">All articles</a></p></div><div class="jr-grid" id="ar-more"></div></section>
+</div>
 <footer class="cta">
   <h2>Build what’s next with us</h2>
   <p>Brand, product or campaign, tell us what you are building and we will reply within two working days.</p>
@@ -557,12 +605,12 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 </footer>
 <footer class="wf" id="wf">
 <div class="wf-top"><a class="wlogo-a" href="#home" aria-label="Angkasa Studio, back to home"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a>
-<nav class="wf-nav"><a href="#home">Home</a><a href="#home">About</a><a href="#works">Works</a><a href="#home">Journal</a><a href="#contact">Contact</a></nav></div>
+<nav class="wf-nav"><a href="#home">Home</a><a href="#home">About</a><a href="#works">Works</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav></div>
 <div class="wf-mid"><p>Angkasa Studio is an independent studio working across brand, product, and content. We partner with founders and in-house teams on positioning, identity systems, and the digital products that carry them.</p><div class="wf-links"><span>Style Guide</span><span>Custom 404</span><span>Licenses</span><span>Custom 401</span><span>Change Log</span></div></div>
 <div class="wf-bot"><span>© 2026 <a href="#home" class="ul">Angkasa Studio</a></span><span>Central Java - Indonesia</span></div>
 </footer>
 <script>
-function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact';if(p)renderPj(h.slice(1));document.getElementById('home').hidden=p||w||c;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30)}
+function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact',j=h==='#journal',as=h.indexOf('#journal/')===0?h.slice(9):'',a=!!(as&&window.POSTS&&POSTS.some(function(x){return x.slug===as}));if(p)renderPj(h.slice(1));if(a&&window.renderArticle)renderArticle(as);document.getElementById('home').hidden=p||w||c||j||a;document.getElementById('journal').hidden=!j;document.getElementById('article').hidden=!a;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c||j||a);document.body.classList.toggle('journal',j||a);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30)}
 var menu=document.getElementById('menu');
 function tog(f){var o=f===undefined?!menu.classList.contains('open'):!!f;menu.classList.toggle('open',o);document.querySelectorAll('.nav .mb').forEach(function(b){b.setAttribute('aria-expanded',o)})}
 function goHome(e){e.preventDefault();tog(false);if(!document.getElementById('home').hidden){if(window.lenis)lenis.scrollTo(0,{duration:1.2});else scrollTo({top:0,behavior:'smooth'})}else location.hash='#home'}
@@ -574,6 +622,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)})
 addEventListener('hashchange',route);route();
 </script>
 <script src="assets/logos/logos.js"></script>
+<script src="journal/posts.js"></script>
 <script src="projects/fold/project.js"></script>
 <script src="projects/halcyon/project.js"></script>
 <script src="projects/kin/project.js"></script>
@@ -582,6 +631,42 @@ addEventListener('hashchange',route);route();
 <script src="projects/aurel/project.js"></script>
 <script src="projects/northwind/project.js"></script>
 <script src="projects/luma/project.js"></script>
+<script>
+/* Journal: home notes, journal index with category filter, article pages */
+(function(){var P=window.POSTS||[];if(!P.length)return;
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+function img(x){return 'journal/'+x.cover}
+var ARW='<svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V6M6 1h3v3M9 1 5 5"/></svg>';
+/* home */
+document.getElementById('hposts').innerHTML=P.slice(0,2).map(function(x){return '<a class="post" href="#journal/'+x.slug+'"><small>'+esc(x.category)+' &nbsp; '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3></a>'}).join('');
+document.getElementById('hlist').innerHTML=P.map(function(x){return '<a class="row" href="#journal/'+x.slug+'"><span>'+esc(x.category)+'</span><span>'+esc(x.title)+'</span><span>'+esc(x.date)+'</span>'+ARW+'</a>'}).join('');
+/* journal index */
+function card(x){return '<a class="jr-card" href="#journal/'+x.slug+'" data-cat="'+esc(x.category)+'"><span class="jr-img"><img src="'+img(x)+'" alt="" loading="lazy"></span><small>'+esc(x.category)+' · '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3><p>'+esc(x.excerpt)+'</p><em>'+esc(x.read||'')+'</em></a>'}
+var f=P[0];
+document.getElementById('jr-feat').innerHTML='<a class="jr-feat" href="#journal/'+f.slug+'" data-cat="'+esc(f.category)+'"><span class="jr-img"><img src="'+img(f)+'" alt=""></span><span class="jr-ft"><small>Latest · '+esc(f.category)+' · '+esc(f.date)+'</small><h2>'+esc(f.title)+'</h2><p>'+esc(f.excerpt)+'</p><span class="btn">Read article <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></span></span></a>';
+document.getElementById('jr-grid').innerHTML=P.slice(1).map(card).join('');
+var cats=['All'].concat(P.map(function(x){return x.category}).filter(function(c,i,a){return a.indexOf(c)===i}));
+var tg=document.getElementById('jr-tags');
+tg.innerHTML=cats.map(function(c,i){return '<button type="button" role="tab" aria-selected="'+(i===0)+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join('');
+tg.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var c=b.dataset.c;
+tg.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-selected',x===b)});
+document.querySelectorAll('#jr-feat .jr-feat,#jr-grid .jr-card').forEach(function(el){el.hidden=!(c==='All'||el.dataset.cat===c)});
+var g=document.getElementById('jr-grid');g.classList.toggle('jr-all',c!=='All');
+if(c!=='All'){/* show the featured one inside the grid when filtering */var ff=document.querySelector('#jr-feat .jr-feat');ff.hidden=true;if(f.category===c&&!g.querySelector('[data-f]')){g.insertAdjacentHTML('afterbegin',card(f).replace('<a ','<a data-f="1" '))}}
+else{var x=g.querySelector('[data-f]');if(x)x.remove()}
+g.querySelectorAll('[data-f]').forEach(function(el){el.hidden=!(el.dataset.cat===c)})});
+/* article */
+window.renderArticle=function(slug){var k=-1;P.forEach(function(x,i){if(x.slug===slug)k=i});if(k<0)return;var x=P[k];
+document.getElementById('ar-meta').textContent=x.category+' · '+x.date+(x.read?' · '+x.read:'');
+document.getElementById('ar-title').textContent=x.title;
+document.getElementById('ar-cover').innerHTML='<img src="'+img(x)+'" alt="">';
+document.getElementById('ar-body').innerHTML=(x.body||[]).map(function(t){return t.indexOf('## ')===0?'<h2>'+esc(t.slice(3))+'</h2>':t.indexOf('> ')===0?'<blockquote>'+esc(t.slice(2))+'</blockquote>':'<p>'+esc(t)+'</p>'}).join('');
+var more=[];for(var n=1;n<P.length&&more.length<3;n++)more.push(P[(k+n)%P.length]);
+document.getElementById('ar-more').innerHTML=more.map(card).join('');
+document.title=x.title+' · Angkasa Studio'};
+addEventListener('hashchange',function(){if(location.hash.indexOf('#journal/')!==0)document.title='Angkasa Studio'});
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
