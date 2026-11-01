@@ -23,7 +23,8 @@
       "gallery-16-portrait.webp",         //   portrait 4:5 (right)
       "gallery-17-wide.webp"              //   wide 16:9
     ],
-    quote:   "quote-portrait.webp"        // portrait 4:5 — photo next to the quote
+    quote:   "quote-portrait.webp",        // portrait 4:5 — photo next to the quote
+    avatar:  "avatar.webp"               // square 1:1, 400 x 400 — founder photo next to the name
   },
 
   // Card on the Works page + link in the menu

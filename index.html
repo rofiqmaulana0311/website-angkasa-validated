@@ -443,6 +443,8 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu{background:rgba(17,1
 .hero-shade{z-index:0;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,0) 28%),linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0) 55%)}
 .hero>h1{position:relative;z-index:1}
 .hero>.status{z-index:2}
+/* founder photo in the quote byline */
+.who i{width:40px;height:40px;flex:none;background-color:#7a2230;background-size:cover;background-position:center}
 </style>
 </head>
 <body>
@@ -575,7 +577,7 @@ var G=(I.gallery||[]).map(function(g){var f=typeof g==='string'?g:g.src,s=(typeo
 for(var gi=0;gi<G.length;){var s=G[gi].s,gj=gi;while(gj<G.length&&G[gj].s===s)gj++;var per=s==='small'?3:s==='portrait'?2:1,left=(gj-gi)%per;if(left)for(var gx=gj-left;gx<gj;gx++)G[gx].o=left;gi=gj}
 q('#shots').innerHTML=G.map(function(g){return '<div class="'+g.s+(g.o?' o'+g.o:'')+'" style="background-image:'+U(k,g.f)+'"></div>'}).join('');
 var ks=Object.keys(PJ),nk=ks[(ks.indexOf(k)+1)%ks.length],nc=document.querySelector('.wc[data-s="'+nk+'"]'),nx=q('#nx');if(nc&&nx){nx.href='#'+nk;nx.style.backgroundImage=nc.style.backgroundImage;nx.innerHTML=nc.innerHTML}
-st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
+st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i'+(I.avatar?' style="background-image:'+U(k,I.avatar)+'"':'')+'></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
 var ph=q('.quote .ph');ph.style.backgroundImage=U(k,I.quote);ph.style.backgroundSize='cover';ph.style.backgroundPosition='center'};
 var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(typeof Lenis!=='undefined'&&!rm){var l=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))}});window.lenis=l;(function r(t){l.raf(t);requestAnimationFrame(r)})(0)}

@@ -95,3 +95,8 @@ Logo saat ini adalah logo contoh untuk klien di portofolio. Ganti dengan logo kl
 3. Tambahkan `role="img" aria-label="Nama Klien"` di tag `<svg>`.
 
 Baris otomatis diduplikasi oleh script, jadi cukup tulis setiap logo satu kali. Kecepatannya diatur di CSS `.marq-track{animation:marq 48s …}`: angka lebih besar berarti lebih pelan.
+
+## Foto founder (di samping nama pada kutipan)
+
+Setiap folder project punya `avatar.webp`, yaitu foto kecil bulat di samping nama founder di bawah kutipan. File yang sekarang hanya placeholder (siluet).
+Timpa dengan foto asli memakai nama file yang sama: persegi 1:1, disarankan 400 x 400, wajah di tengah.
