@@ -534,6 +534,23 @@ a:hover .jr-img img{transform:scale(1.035)}
 @media(max-width:1024px){.ab-svc{grid-template-columns:50px 1fr 1.4fr}.ab-svc span{grid-column:2/-1}.ab-steps,.ab-team{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.ab-band{aspect-ratio:1.3}.ab-facts{grid-template-columns:1fr 1fr}.ab-facts>div:nth-child(3){border-left:0}.ab-facts>div:nth-child(n+3){border-top:1px solid #d9d9d3}
 .ab-svc{grid-template-columns:1fr;gap:8px}.ab-svc span{grid-column:auto}.ab-steps>div{min-height:180px}}
+/* logo collection header */
+.lc-head{margin:0 0 clamp(20px,2.6vw,40px)}
+/* journal index: one row per article, image left and text right (like Contact) */
+.jr-tx,.jr-top,.jr-bot{display:block}
+.jr-card .jr-go{display:none}
+.jr-feat-wrap{padding:0 clamp(12px,1.6vw,26px)}
+#jr-grid{grid-template-columns:1fr;gap:0;padding:0 clamp(12px,1.6vw,26px)}
+.jr-feat,#jr-grid .jr-card{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px);align-items:stretch;padding:clamp(28px,3.4vw,56px) 0;border-top:1px solid #d9d9d3}
+#jr-grid .jr-card:last-child{border-bottom:1px solid #d9d9d3}
+.jr-feat .jr-img,#jr-grid .jr-img{aspect-ratio:4/3}
+.jr-ft,#jr-grid .jr-tx{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+#jr-grid .jr-card small{margin-top:0}
+#jr-grid .jr-card h3,.jr-ft h2{margin:16px 0 0;font-size:clamp(28px,3vw,48px);line-height:1;font-weight:600;letter-spacing:-.04em}
+.jr-ft p,#jr-grid .jr-card p{margin:0;max-width:440px;font-size:clamp(16px,1.3vw,19px);line-height:1.45;color:#444}
+.jr-ft em,#jr-grid .jr-card em{display:block;margin:12px 0 0;font-style:normal;font-size:12px;color:#888}
+.jr-ft .btn,#jr-grid .jr-go{display:inline-flex;margin-top:24px}
+@media(max-width:768px){.jr-feat,#jr-grid .jr-card{grid-template-columns:1fr;gap:20px}.jr-ft,#jr-grid .jr-tx{gap:16px}}
 </style>
 </head>
 <body>
@@ -564,7 +581,8 @@ a:hover .jr-img img{transform:scale(1.035)}
   <div class="head" id="works-sec"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand, product, campaign</p></div>
   <div class="grid" id="hgrid"></div>
 
-  <section class="ifield-sec" id="logos" aria-label="Logo collection">
+  <section class="ifield-sec" id="logos" aria-labelledby="lc-h">
+    <div class="head lc-head"><h2 id="lc-h">Logo<br>collection.</h2><p>[ Identity ]<br>28 marks, 2017–2026</p></div>
     <div class="ifield" id="ifield" role="img" aria-label="Logos of brands we have worked with"></div>
   </section>
 
@@ -712,9 +730,9 @@ var ARW='<svg viewBox="0 0 10 10" fill="none" stroke="#111"><path d="M4 2H2v6h6V
 document.getElementById('hposts').innerHTML=P.slice(0,2).map(function(x){return '<a class="post" href="#journal/'+x.slug+'"><small>'+esc(x.category)+' &nbsp; '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3></a>'}).join('');
 document.getElementById('hlist').innerHTML=P.map(function(x){return '<a class="row" href="#journal/'+x.slug+'"><span>'+esc(x.category)+'</span><span>'+esc(x.title)+'</span><span>'+esc(x.date)+'</span>'+ARW+'</a>'}).join('');
 /* journal index */
-function card(x){return '<a class="jr-card" href="#journal/'+x.slug+'" data-cat="'+esc(x.category)+'"><span class="jr-img"><img src="'+img(x)+'" alt="" loading="lazy"></span><small>'+esc(x.category)+' · '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3><p>'+esc(x.excerpt)+'</p><em>'+esc(x.read||'')+'</em></a>'}
+function card(x){return '<a class="jr-card" href="#journal/'+x.slug+'" data-cat="'+esc(x.category)+'"><span class="jr-img"><img src="'+img(x)+'" alt="" loading="lazy"></span><span class="jr-tx"><span class="jr-top"><small>'+esc(x.category)+' · '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3></span><span class="jr-bot"><p>'+esc(x.excerpt)+'</p><em>'+esc(x.read||'')+'</em><span class="btn jr-go">Read article <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></span></span></span></a>'}
 var f=P[0];
-document.getElementById('jr-feat').innerHTML='<a class="jr-feat" href="#journal/'+f.slug+'" data-cat="'+esc(f.category)+'"><span class="jr-img"><img src="'+img(f)+'" alt=""></span><span class="jr-ft"><small>Latest · '+esc(f.category)+' · '+esc(f.date)+'</small><h2>'+esc(f.title)+'</h2><p>'+esc(f.excerpt)+'</p><span class="btn">Read article <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></span></span></a>';
+document.getElementById('jr-feat').innerHTML='<a class="jr-feat" href="#journal/'+f.slug+'" data-cat="'+esc(f.category)+'"><span class="jr-img"><img src="'+img(f)+'" alt=""></span><span class="jr-ft"><span class="jr-top"><small>Latest · '+esc(f.category)+' · '+esc(f.date)+'</small><h2>'+esc(f.title)+'</h2></span><span class="jr-bot"><p>'+esc(f.excerpt)+'</p><em>'+esc(f.read||'')+'</em><span class="btn">Read article <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></span></span></span></a>';
 document.getElementById('jr-grid').innerHTML=P.slice(1).map(card).join('');
 var cats=['All'].concat(P.map(function(x){return x.category}).filter(function(c,i,a){return a.indexOf(c)===i}));
 var tg=document.getElementById('jr-tags');
