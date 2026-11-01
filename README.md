@@ -111,3 +111,9 @@ Kartu project di Home, Works, dan "Next project" bisa memakai video, bukan hanya
 3. `cover.webp` tetap dipakai sebagai gambar diam saat video belum termuat. Isi dengan frame terbaik dari videonya, misalnya saat logo sudah utuh.
 
 Video otomatis berputar terus tanpa suara, hanya saat kartunya terlihat di layar. Untuk pengunjung yang mematikan animasi, yang tampil hanya gambar diamnya.
+
+## Icon field (section "Brands we have built with." di Home)
+
+Bidang ikon logo yang terus bergeser pelan, bisa di-drag, dan ikonnya membesar di dekat kursor.
+Ikonnya diambil dari `<symbol id="if-0">` sampai `<symbol id="if-8">` di dalam `<div class="ifield">` di `index.html`. Ikon yang ada sekarang adalah tanda logo contoh klien portofolio, ditambah logo Angkasa.
+Untuk mengganti atau menambah logo, salin isi SVG logo (bentuknya saja, tanpa teks) ke `<symbol>` baru dengan `viewBox` milik logo itu, dan beri id berikutnya (`if-9`, dan seterusnya). Warna mengikuti kotaknya secara otomatis, jadi jangan pakai `fill` warna tetap di dalam logo.
