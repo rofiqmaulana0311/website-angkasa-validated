@@ -538,14 +538,23 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .ct-set{border:0;margin:0;padding:0;min-width:0}
 .ct-set legend{display:block;float:left;width:100%;font-size:11px;text-transform:uppercase;color:#555;padding:18px 0 10px}
 .ct-form .bad,.ct-form input.bad{border-bottom-color:#c0392b}
-.chips{clear:both;display:flex;flex-wrap:wrap;gap:6px}
+.chips{clear:both;display:flex;flex-wrap:wrap;gap:8px}
 .ct-form .chip{position:relative;cursor:pointer;padding:0;font-size:inherit;text-transform:none;color:inherit}
 .chip input{position:absolute;opacity:0;width:1px;height:1px}
-.chip span{display:inline-block;padding:8px 14px;border:1px solid #cfcfc8;border-radius:999px;font-size:14px;letter-spacing:-.01em;color:#333;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
-.chip:hover span{border-color:#111}
-.chip input:checked+span{background:#111;border-color:#111;color:#fff}
-.chip input:focus-visible+span{outline:2px solid #6aa7ff;outline-offset:2px}
-.ct-set.bad .chip span{border-color:#c0392b}
+.chip .cb{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:36px;padding:4px 4px 4px 14px;border:1px solid #d6d6cf;border-radius:7px;background:#fff;font-size:14px;letter-spacing:-.01em;color:#222;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+.chip .cl{display:flex;flex-direction:column;line-height:1.2}
+.chip .cl small{font-size:12px;color:#888;margin-top:2px;transition:color .3s ease}
+.chip i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:5px;background:#efefea;transition:background-color .3s ease}
+.chip i svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.6);transition:opacity .25s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.chip:hover .cb{border-color:#111}
+.chip input:checked+.cb{background:#0d0d0d;border-color:#0d0d0d;color:#fff}
+.chip input:checked+.cb small{color:rgba(255,255,255,.65)}
+.chip input:checked+.cb i{background:#333}
+.chip input:checked+.cb i svg{opacity:1;transform:none}
+.chip input:focus-visible+.cb{outline:2px solid #6aa7ff;outline-offset:2px}
+.ct-set.bad .chip .cb{border-color:#c0392b}
+.chips-plan .chip .cb{min-height:48px;padding:6px 6px 6px 14px}
+.ct-see{float:right;text-transform:none;font-size:12px;color:#555;text-decoration:underline}
 .ct-form input::placeholder{color:#aaa}
 .ct-ok a{text-decoration:underline}
 .ct-btn[disabled]{opacity:.6;cursor:wait}
@@ -588,8 +597,6 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .pr-grid-home .pr-card ul{border-top-color:#e2e2dc}
 .pr-grid-home .pr-feat ul{border-top-color:rgba(255,255,255,.12)}
 .pr-grid-home .pr-feat{background:#111}
-.ct-plan{grid-column:1/-1;margin:6px 0 0;font-size:14px;color:#333}
-.ct-plan button{margin-left:8px;font:inherit;font-size:13px;background:none;border:0;padding:0;text-decoration:underline;color:#666;cursor:pointer}
 @media(max-width:900px){.pr-grid{grid-template-columns:1fr}.pr-card ul{margin-bottom:24px}}
 </style>
 </head>
@@ -666,16 +673,15 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.webp)"></div>
 <div class="ct-side"><h2 class="ct-h2">Tell us what is<br>on your desk.</h2>
 <form class="ct-form" id="cf" novalidate>
-<input type="hidden" name="plan" id="cplan" value=""><p class="ct-plan" id="cplan-note" hidden></p>
 <input type="text" name="_honey" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div><label for="cn">Your name *</label><input id="cn" name="name" autocomplete="name" required></div>
 <div><label for="ce">Work email *</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
 <div><label for="ca">Agency name *</label><input id="ca" name="agency" autocomplete="organization" required></div>
 <div><label for="cw">Agency website</label><input id="cw" name="website" type="url" inputmode="url" placeholder="agency.com"></div>
-<fieldset class="f ct-set" id="cs"><legend>What do you need help with? *</legend><div class="chips"><label class="chip"><input type="checkbox" name="services" value="Brand identity"><span>Brand identity</span></label><label class="chip"><input type="checkbox" name="services" value="Logo design"><span>Logo design</span></label><label class="chip"><input type="checkbox" name="services" value="Brand refresh"><span>Brand refresh</span></label><label class="chip"><input type="checkbox" name="services" value="Guidelines & assets"><span>Guidelines & assets</span></label></div></fieldset>
-<fieldset class="ct-set"><legend>Briefs per month</legend><div class="chips"><label class="chip"><input type="radio" name="briefs" value="1–2"><span>1–2</span></label><label class="chip"><input type="radio" name="briefs" value="3–5"><span>3–5</span></label><label class="chip"><input type="radio" name="briefs" value="6+"><span>6+</span></label></div></fieldset>
-<fieldset class="ct-set"><legend>White-label?</legend><div class="chips"><label class="chip"><input type="radio" name="white_label" value="Yes"><span>Yes</span></label><label class="chip"><input type="radio" name="white_label" value="No"><span>No</span></label><label class="chip"><input type="radio" name="white_label" value="Not sure"><span>Not sure</span></label></div></fieldset>
-<fieldset class="f ct-set"><legend>When do you want to start?</legend><div class="chips"><label class="chip"><input type="radio" name="start" value="As soon as possible"><span>As soon as possible</span></label><label class="chip"><input type="radio" name="start" value="Next month"><span>Next month</span></label><label class="chip"><input type="radio" name="start" value="Just exploring"><span>Just exploring</span></label></div></fieldset>
+<fieldset class="f ct-set" id="cpl"><legend>Which plan? * <a href="#pricing" class="ct-see">Compare plans</a></legend><div class="chips chips-plan"><label class="chip"><input type="radio" name="plan" value="Logo"><span class="cb"><span class="cl">Logo<small>$790 / month</small></span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="plan" value="Brand"><span class="cb"><span class="cl">Brand<small>$1,490 / month</small></span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="plan" value="Dedicated"><span class="cb"><span class="cl">Dedicated<small>$2,490 / month</small></span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="plan" value="One-off project"><span class="cb"><span class="cl">One-off project<small>from $1,900</small></span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="plan" value="Not sure yet"><span class="cb"><span class="cl">Not sure yet<small>help me choose</small></span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label></div></fieldset>
+<fieldset class="f ct-set"><legend>What will you send us?</legend><div class="chips"><label class="chip"><input type="checkbox" name="services" value="Brand identity"><span class="cb"><span class="cl">Brand identity</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="checkbox" name="services" value="Logo design"><span class="cb"><span class="cl">Logo design</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="checkbox" name="services" value="Brand refresh"><span class="cb"><span class="cl">Brand refresh</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="checkbox" name="services" value="Guidelines &amp; assets"><span class="cb"><span class="cl">Guidelines &amp; assets</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label></div></fieldset>
+<fieldset class="ct-set"><legend>White-label?</legend><div class="chips"><label class="chip"><input type="radio" name="white_label" value="Yes"><span class="cb"><span class="cl">Yes</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="white_label" value="No"><span class="cb"><span class="cl">No</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="white_label" value="Not sure"><span class="cb"><span class="cl">Not sure</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label></div></fieldset>
+<fieldset class="ct-set"><legend>When do you want to start?</legend><div class="chips"><label class="chip"><input type="radio" name="start" value="As soon as possible"><span class="cb"><span class="cl">As soon as possible</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="start" value="Next month"><span class="cb"><span class="cl">Next month</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label><label class="chip"><input type="radio" name="start" value="Just exploring"><span class="cb"><span class="cl">Just exploring</span><i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i></span></label></div></fieldset>
 <div class="f"><label for="cm">Anything else? (optional)</label><textarea id="cm" name="message" rows="2"></textarea></div>
 <div class="f"><button class="ct-btn btn" type="submit" id="cbtn">Send enquiry <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status" aria-live="polite"></p></div>
 </form></div></section>
@@ -817,22 +823,22 @@ arm();
 (function(){var TO='hello@angkasastudio.space',KEY='6a2d5d5c358a7307206ee19e6a66203f',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
 function v(n){return f.elements[n]?String(f.elements[n].value||'').trim():''}
 function picked(n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"]:checked')).map(function(x){return x.value})}
-function setPlan(n){document.getElementById('cplan').value=n;var el=document.getElementById('cplan-note');el.hidden=!n;el.innerHTML=n?'Selected plan: <b>'+n+'</b> <button type="button" id="cplan-x">Change</button>':''}
-document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-plan]');if(a)setPlan(a.dataset.plan);if(e.target.id==='cplan-x')setPlan('')});
+function setPlan(n){f.querySelectorAll('input[name="plan"]').forEach(function(x){x.checked=(x.value===n)});document.getElementById('cpl').classList.remove('bad')}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-plan]');if(a)setPlan(a.dataset.plan)});
 f.addEventListener('input',function(e){var t=e.target;if(t.classList)t.classList.remove('bad');var fs=t.closest&&t.closest('.ct-set');if(fs)fs.classList.remove('bad')});
 f.addEventListener('change',function(e){var fs=e.target.closest&&e.target.closest('.ct-set');if(fs)fs.classList.remove('bad')});
 f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
 [['cn',function(x){return !!x}],['ce',function(x){return /^\S+@\S+\.\S+$/.test(x)}],['ca',function(x){return !!x}]].forEach(function(r){var el=document.getElementById(r[0]),good=r[1](el.value.trim());el.classList.toggle('bad',!good);if(!good)ok=false});
-var sv=picked('services');document.getElementById('cs').classList.toggle('bad',!sv.length);if(!sv.length)ok=false;
-if(!ok){m.textContent='Please fill in your name, work email, agency and what you need help with.';return}
+var pl=picked('plan')[0]||'',sv=picked('services');document.getElementById('cpl').classList.toggle('bad',!pl);if(!pl)ok=false;
+if(!ok){m.textContent='Please fill in your name, work email, agency and pick a plan.';return}
 if(v('_honey')){m.textContent='Thanks.';return}
-var data={plan:v('plan')||'-',name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', '),briefs_per_month:picked('briefs')[0]||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
+var data={plan:pl,name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', ')||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
 _subject:'New enquiry from '+v('agency')+' (angkasastudio.space)',_replyto:v('email'),_template:'table',_captcha:'false',
 _autoresponse:'Hi '+v('name')+',\n\nThanks for reaching out to Angkasa Studio. We have received your enquiry for '+v('agency')+' and will reply within two working days with a team and a monthly plan that fits.\n\nNeed something sooner? Message us on WhatsApp: +62 878 2029 9410.\n\nAngkasa Studio\nYour invincible design team\nhello@angkasastudio.space'};
 btn.disabled=true;m.textContent='Sending…';
 fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
-.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset();setPlan('')})
+.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})
 .catch(function(){m.innerHTML='Something went wrong. Please email us at <a href="mailto:'+TO+'">'+TO+'</a> or message us on WhatsApp.'})
 .then(function(){btn.disabled=false})});
 })();
