@@ -7,63 +7,63 @@
 // Keep each article short: 3 to 5 paragraphs reads best on the page.
 window.POSTS = [
   {
-    slug: "brand-system-engineers",
-    title: "What a brand system owes its engineers.",
-    category: "Brand systems",
+    slug: "design-team-by-the-month",
+    title: "Why agencies add a design team by the month.",
+    category: "Agencies",
     date: "June 12, 2026",
     read: "2 min read",
     cover: "brand-system-engineers.webp",
-    excerpt: "A brand system only lasts if the people who ship the product can use it without asking us.",
+    excerpt: "Hiring takes months and freelancers come and go. A monthly design team fits the way agency work actually arrives.",
     body: [
-      "Most brand systems are written for the people who made them, then quietly ignored six months later. The engineers who build with them were never the audience.",
-      "So we design for them first. Tokens are named for what they do (surface, text, border, accent), not for moods, so the palette can change without renaming anything.",
-      "Every system lives in the product's own repository and ships like code: versioned, reviewed and released, so brand and product cannot drift apart unnoticed.",
-      "> The test: can their team ship a campaign without us? If not, we are not done."
+      "Agency work comes in waves. One month the studio is quiet, the next three identity briefs land in the same week and nobody has room for them.",
+      "Hiring for the peak takes months and leaves you paying for capacity you do not need in the quiet weeks. Freelancers help, until the good ones are booked and you are briefing someone new every time.",
+      "A monthly team sits in between. The same senior designers learn your process once, then scale up or down with your workload, on one simple contract.",
+      "> You get a design team when you need one, without carrying it when you do not."
     ]
   },
   {
-    slug: "designing-in-the-browser",
-    title: "Designing in the browser.",
-    category: "Interface",
+    slug: "what-makes-a-logo-last",
+    title: "What makes a logo last.",
+    category: "Logo design",
     date: "May 5, 2026",
     read: "2 min read",
     cover: "designing-in-the-browser.webp",
-    excerpt: "Static mockups hide the hard parts of an interface, so we move the second half of every project into the browser.",
+    excerpt: "A logo has to work at 16 pixels, on a sign and in ten years. Here is what we check before anything goes to your client.",
     body: [
-      "A mockup shows how a screen looks. It cannot show slow data, a name that is too long, or a phone on one bar of signal.",
-      "Halfway through every product project we stop drawing and start building. Motion, empty states and errors get designed because we can see them, and clients review the real thing on their own devices.",
-      "Early direction still happens in a design tool. The browser is where decisions that need real content get made.",
-      "> Our best review came from a client testing the prototype on the train home."
+      "Most logos look good at the size they were drawn. The ones that last also work as a favicon, an embroidered patch and a building sign.",
+      "So every mark we design is tested small first. If it does not read at 16 pixels, it goes back to the sketchbook, however good it looks in the presentation.",
+      "We also design in one colour before adding any. A mark that only works with a gradient is a mark that will break the first time it is printed on a receipt.",
+      "> Simple is not the goal. Clear at every size is."
     ]
   },
   {
-    slug: "inside-a-studio-week",
-    title: "Inside an Angkasa Studio week.",
-    category: "Studio",
+    slug: "white-label-without-the-awkwardness",
+    title: "White-label, without the awkwardness.",
+    category: "Partnership",
     date: "April 21, 2026",
     read: "2 min read",
     cover: "inside-a-studio-week.webp",
-    excerpt: "A small team, a few projects at a time, and a week built around two fixed moments.",
+    excerpt: "Most of our work is presented under our partners' names. This is how we make that feel seamless for everyone.",
     body: [
-      "Monday starts with one list per project: what the client will see on Friday. If it is not on the list, it waits.",
-      "Tuesday to Thursday, mornings are for making with no meetings, and afternoons are for reviews and pairing with the client's team. Seniors work on no more than two projects at once.",
-      "Friday, every client gets a walkthrough of real work, even when it is rough. Feedback stays small and nobody is surprised at the end.",
-      "> A predictable week is what lets the work itself be ambitious."
+      "When we work as your design team, the work is yours. We present nothing to your client unless you ask us to, and our name stays off the files.",
+      "We join your Slack, use your project board and follow your naming and file conventions, so the work looks like it came from inside your studio.",
+      "If you want us in the room, we can join client calls as part of your team. If you do not, we stay behind the scenes and make you look good.",
+      "> Your client should see one team. Ours is just part of it."
     ]
   },
   {
-    slug: "price-in-outcomes",
-    title: "Why we price in outcomes, not hours.",
-    category: "Practice",
+    slug: "brief-to-brand-guidelines",
+    title: "From brief to brand guidelines in four weeks.",
+    category: "Brand identity",
     date: "March 2, 2026",
     read: "2 min read",
     cover: "price-in-outcomes.webp",
-    excerpt: "Hourly billing rewards the slowest version of the work, so we price around what a project has to achieve.",
+    excerpt: "What a typical identity looks like inside one monthly cycle, from your brief to files your client can use.",
     body: [
-      "Billing by the hour meant the faster we got, the less we earned for the same result. The incentives were quietly wrong.",
-      "Now every proposal starts with what has to change: a launch date, a conversion number, a system the client's team can run alone. The price follows that scope, and it is fixed.",
-      "Clients get a number that does not move and a clear definition of done. We stay motivated to find the fastest good solution. When the goal changes, we agree a new outcome and price together.",
-      "> Clients do not buy hours. They buy what is different afterwards."
+      "Week one: we read your brief and strategy, then explore widely in sketches. You see a short list of directions by Friday.",
+      "Week two: three routes, each shown on real applications so your client can picture them. You pick one, or mix two.",
+      "Week three: we refine the chosen route, tune the type and colour, and test the mark at every size. Week four: final files and a clear guideline, ready to present under your name.",
+      "> Four weeks is not a rule, but it is the rhythm most identities fit."
     ]
   }
 ];

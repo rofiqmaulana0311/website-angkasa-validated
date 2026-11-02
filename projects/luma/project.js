@@ -31,24 +31,24 @@
   label: "LUMA®",
   menu:  "Luma",
   year:  "2023",
-  type:  "Content & motion",
+  type:  "Logo design",
 
   // Project page
-  meta:  "Content & motion · 2023",
+  meta:  "Logo design · 2023",
   title: "Luma",          // <br> = line break
-  brief: "Luma had a product people loved and almost no content to show for it. We built a motion language and a content engine — short films, templates and a weekly production routine their own team runs.",
+  brief: "Luma's agency had the campaign covered but no time for the mark itself. We designed the Luma symbol and wordmark, then built a simple animated version so the logo arrives on screen the same way every time.",
 
   quote: {
-    text: "We went from posting when we could to a rhythm we can keep. The motion language does the rest.",
+    text: "We handed over the logo brief on Monday and stopped worrying about it. Angkasa handled the rest.",
     name: "Sofia Marchetti",
-    role: "Content lead, Luma"
+    role: "Account director, partner agency"
   },
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Output", "Content published each month tripled with the same team.", "3×"],
-    ["Engagement", "Social engagement up 62% across all channels.", "+62%"],
-    ["Library", "120 motion templates now live in their editing tool.", "120 files"],
-    ["Routine", "One weekly production cycle, run in house since launch.", "52 wks"]
+    ["Mark", "Symbol and wordmark designed together.", "2 marks"],
+    ["Motion", "One animated logo for every screen.", "1 animation"],
+    ["Formats", "Full file set for print, web and social.", "All formats"],
+    ["Timeline", "Delivered alongside the agency's campaign.", "On time"]
   ]
 };

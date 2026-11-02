@@ -32,25 +32,25 @@
   label: "FOLD+",
   menu:  "Fold+",
   year:  "2026",
-  type:  "Digital product",
+  type:  "Brand identity",
   home:  1,          // position on the home page (1–4); delete this line to hide it from home
 
   // Project page
-  meta:  "Digital product · Design system · 2026",
+  meta:  "Brand identity · Agency partner · 2026",
   title: "Fold<br>Apparel",          // <br> = line break
-  brief: "FOLD+ had three storefronts, two checkout flows and a design file no one trusted. We rebuilt the product surface as one system — tokens, components and templates their engineers own — then shipped the new shop alongside them over eleven weeks.",
+  brief: "A retail agency won FOLD+ with no designer free for eleven weeks. We joined their team on a monthly contract and built the identity end to end: wordmark, monogram, type and colour, plus a guide their account team now presents from.",
 
   quote: {
-    text: "The old file was a museum. What we have now is a library our engineers actually pull from, and the shop has not drifted since.",
+    text: "We pitched it as ours and it was the strongest work in the room. Angkasa felt like the senior team we never had time to hire.",
     name: "Noor Haddad",
-    role: "Head of digital, Fold"
+    role: "Creative director, partner agency"
   },
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Checkout", "Checkout completion up 21% on the same traffic, with the three storefronts collapsed into one flow.", "+21%"],
-    ["Speed", "Brief to launch in eleven weeks, designed and built in parallel rather than handed over at the end.", "11 wks"],
-    ["System", "One token set and 64 components now running every surface, named the way their engineers name things.", "180 tokens"],
-    ["Handover", "Two seasonal campaigns shipped by their own team since handover, with nothing redrawn by the studio.", "0 redraws"]
+    ["Capacity", "One extra senior designer for the length of the project, no hiring.", "+1 senior"],
+    ["Speed", "Brief to approved identity in eleven weeks.", "11 wks"],
+    ["Approval", "Client signed off on the first presented route.", "1st round"],
+    ["Handover", "Guide and master files delivered under the agency's name.", "White-label"]
   ]
 };

@@ -36,7 +36,7 @@
   // Project page
   meta:  "Brand identity · 2024",
   title: "Northwind",          // <br> = line break
-  brief: "Northwind’s name was strong but its look belonged to the company it used to be. We reset the brand — positioning, identity and voice — and carried it across their site, stores and sales material.",
+  brief: "Northwind's name was strong but its look belonged to the company it used to be. Alongside their agency's strategy team, we redrew the identity — mark, type and colour — and built the guidelines they rolled out to every store.",
 
   quote: {
     text: "Our sales team finally has a story they believe, and a look that backs it up.",
@@ -46,9 +46,9 @@
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Perception", "Customers calling the brand modern rose from 22% to 51%.", "+29 pts"],
-    ["Pipeline", "Qualified leads up 19% within two quarters.", "+19%"],
-    ["Rollout", "Site, stores and sales deck relaunched in a single week.", "1 week"],
-    ["Guidelines", "One 48-page guide replaced six old decks.", "48 pages"]
+    ["Refresh", "Mark redrawn, name and equity kept.", "Redrawn"],
+    ["Rollout", "Stores and sales material relaunched in one week.", "1 week"],
+    ["Guidelines", "One 48-page guide replaced six old decks.", "48 pages"],
+    ["Partnership", "Strategy by the agency, identity by Angkasa.", "Joint team"]
   ]
 };

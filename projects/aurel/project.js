@@ -31,24 +31,24 @@
   label: "AUREL+",
   menu:  "Aurel",
   year:  "2024",
-  type:  "Digital product",
+  type:  "Logo design",
 
   // Project page
-  meta:  "Digital product · 2024",
+  meta:  "Logo design · 2024",
   title: "Aurel",          // <br> = line break
-  brief: "Aurel’s booking app lost people between the first tap and the payment. We redesigned the flow end to end, rebuilt the interface and shipped it in stages so their service never went offline.",
+  brief: "Aurel was renaming and needed a mark before launch day, not after. On a monthly retainer with their agency, we took the logo from first sketches to final files in three weeks, with app icon, favicon and social versions ready to ship.",
 
   quote: {
-    text: "Customers stopped dropping out halfway through. Support tickets fell the same month.",
+    text: "We added a logo designer for a month instead of hiring for a year. The mark was ready before the launch plan was.",
     name: "Priya Nair",
-    role: "Head of product, Aurel"
+    role: "Founder, partner agency"
   },
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Conversion", "Booking completion up 17% after the new flow.", "+17%"],
-    ["Speed", "Time to book cut from four minutes to ninety seconds.", "90 sec"],
-    ["Rating", "App store rating rose from 3.8 to 4.6.", "4.6"],
-    ["Release", "Six staged releases shipped with no downtime.", "0 outages"]
+    ["Speed", "Sketch to final files in three weeks.", "3 wks"],
+    ["Formats", "App icon, favicon and social versions included.", "All sizes"],
+    ["Model", "One month of retainer capacity.", "1 month"],
+    ["Launch", "Ready before launch day.", "On time"]
   ]
 };

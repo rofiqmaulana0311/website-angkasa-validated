@@ -31,25 +31,25 @@
   label: "OSTRA",
   menu:  "Ostra",
   year:  "2025",
-  type:  "Brand Identity",
+  type:  "Brand identity",
   home:  4,          // position on the home page (1–4); delete this line to hide it from home
 
   // Project page
-  meta:  "Brand Identity · 2025",
+  meta:  "Brand identity · 2025",
   title: "Ostra",          // <br> = line break
-  brief: "OSTRA is an IT Solution Network Company focused on delivering reliable, secure, and scalable digital infrastructure for modern businesses.",
+  brief: "OSTRA is an IT solution network company focused on delivering reliable, secure and scalable digital infrastructure for modern businesses. We designed an identity — mark, type and colour — that feels as dependable as the networks it builds.",
 
   quote: {
-    text: "Customers find us on the shelf now. The range finally looks like it belongs together.",
+    text: "The new identity finally looks like the company we are: solid, calm and built to scale.",
     name: "Tomas Reyes",
     role: "Founder, Ostra"
   },
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Shelf", "Shelf recognition up 28% in retail tests.", "+28%"],
-    ["Cost", "Print cost per unit down after consolidating to two finishes.", "−12%"],
-    ["Range", "36 products moved onto one packaging system.", "36 SKUs"],
-    ["Materials", "Recyclable board used across the full range.", "100%"]
+    ["Mark", "A symbol built on the idea of a stable network.", "1 mark"],
+    ["System", "Type, colour and layout rules in one guide.", "1 guide"],
+    ["Formats", "Files for screen, print and signage.", "All formats"],
+    ["Timeline", "Delivered in one monthly cycle.", "1 month"]
   ]
 };

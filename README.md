@@ -134,7 +134,7 @@ Halaman Journal ada di `#journal` dan menampilkan **semua artikel lengkap** dala
 Di Home, section "Notes from the studio" menampilkan 4 artikel terbaru sebagai kartu. Klik salah satu kartu untuk membuka halaman Journal dan langsung menggulir ke artikel itu (`#journal/nama-artikel`).
 
 Semua artikel ditulis di `journal/posts.js`, urut dari yang terbaru. Setiap artikel berisi:
-- `slug`: bagian link, misalnya `price-in-outcomes`. Pakai huruf kecil, angka, dan tanda strip saja.
+- `slug`: bagian link, misalnya `what-makes-a-logo-last`. Pakai huruf kecil, angka, dan tanda strip saja.
 - `title`, `category`, `date`, `read` (misal "2 min read"), dan `excerpt` (ringkasan satu kalimat).
 - `cover`: gambar di folder `journal/`, landscape. Di Home dipotong 4:3, di Journal 4:3 (16:10 di HP).
 - `body`: isi artikel, satu paragraf per baris. Awali dengan `## ` untuk subjudul atau `> ` untuk kutipan besar. Sebaiknya 3 sampai 5 paragraf supaya tetap singkat dan to the point.

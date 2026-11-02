@@ -31,24 +31,24 @@
   label: "KIN®",
   menu:  "KIN",
   year:  "2025",
-  type:  "Design systems",
+  type:  "Logo design",
 
   // Project page
-  meta:  "Design systems · 2025",
+  meta:  "Logo design · 2025",
   title: "KIN",          // <br> = line break
-  brief: "KIN’s product team shipped on three frameworks and four sets of buttons. We unified them into one cross-platform system — tokens, documented components and release tooling — built with their engineers from the first week.",
+  brief: "KIN needed a mark that worked as an app icon, a sticker and a sign. Their agency brought us in for a four-week logo sprint: forty sketches, three routes and one mark tested at every size from 16 pixels to a storefront.",
 
   quote: {
-    text: "The system feels like something we built ourselves, because we did, together.",
+    text: "Three routes in two weeks, all of them presentable. Our client signed off in the first round.",
     name: "Jonas Weber",
-    role: "Design engineering lead, KIN"
+    role: "Design director, partner agency"
   },
 
   // Stored for the case study (not shown on the page yet)
   results: [
-    ["Delivery", "Feature teams ship interface work 40% faster using shared components.", "+40%"],
-    ["Coverage", "58 components now cover every web and mobile surface.", "58 parts"],
-    ["Quality", "Accessibility defects fell by two thirds after the audit.", "−66%"],
-    ["Adoption", "All six product squads were on the system within one quarter.", "6 squads"]
+    ["Sprint", "Logo delivered in four weeks.", "4 wks"],
+    ["Exploration", "Forty sketches narrowed to three routes.", "40 → 3"],
+    ["Approval", "Signed off in the first round.", "1st round"],
+    ["Formats", "Tested from 16 px icon to storefront.", "16 px+"]
   ]
 };
