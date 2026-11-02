@@ -509,15 +509,14 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .jr-body p{margin:0 0 1em;font-size:clamp(16px,1.25vw,19px);line-height:1.55;color:#333;letter-spacing:-.01em}
 .jr-body h3{margin:1.4em 0 .5em;font-size:clamp(19px,1.5vw,23px);font-weight:600;letter-spacing:-.02em}
 .jr-body blockquote{margin:1.4em 0 0;padding-left:20px;border-left:2px solid #111;font-size:clamp(19px,1.7vw,26px);line-height:1.3;font-weight:500;letter-spacing:-.03em;color:#111}
-/* home: four journal cards */
-.jn-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1vw,16px);margin-top:clamp(20px,2.4vw,38px)}
-.jn{display:block}
-.jn-img{display:block;border-radius:8px;overflow:hidden;aspect-ratio:4/3;background:#ddd}
-.jn-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,1,.36,1)}
-.jn:hover .jn-img img{transform:scale(1.04)}
-.jn small{display:block;margin-top:14px;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666}
-.jn h3{margin:8px 0 0;font-size:clamp(17px,1.4vw,21px);line-height:1.15;font-weight:500;letter-spacing:-.025em}
-@media(max-width:1024px){.jn-cards{grid-template-columns:1fr 1fr;row-gap:28px}}
+/* home: four journal cards, styled like the Selected Works cards */
+.jn-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(4px,.5vw,8px);margin-top:clamp(20px,2.4vw,38px)}
+.jn-cards .wc{aspect-ratio:.99}
+.jn-wc .t{max-width:calc(100% - 20px);font-size:clamp(14px,1.15vw,18px);line-height:1.15}
+.jn-wc .jn-tt{display:block;max-width:15em}
+.jn-wc .t small{flex:none;white-space:nowrap}
+@media(max-width:1024px){.jn-cards{grid-template-columns:1fr 1fr}.jn-wc .t{font-size:clamp(15px,2vw,20px)}}
+@media(max-width:640px){.jn-cards{grid-template-columns:1fr}.jn-cards .wc{aspect-ratio:1.1}}
 @media(max-width:768px){.jr-post{grid-template-columns:1fr}.jr-pic{position:static;aspect-ratio:16/10}}
 </style>
 </head>
@@ -681,7 +680,7 @@ addEventListener('hashchange',route);route();
 (function(){var P=window.POSTS||[];if(!P.length)return;
 function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
 function img(x){return 'journal/'+x.cover}
-document.getElementById('hposts').innerHTML=P.slice(0,4).map(function(x){return '<a class="jn" href="#journal/'+x.slug+'"><span class="jn-img"><img src="'+img(x)+'" alt="" loading="lazy"></span><small>'+esc(x.category)+' · '+esc(x.date)+'</small><h3>'+esc(x.title)+'</h3></a>'}).join('');
+document.getElementById('hposts').innerHTML=P.slice(0,4).map(function(x){return '<a class="wc jn-wc" href="#journal/'+x.slug+'" style="background-image:url('+img(x)+')"><span class="t"><span class="jn-tt">'+esc(x.title)+'</span> <small>'+esc(x.category)+'<br>'+esc(x.date)+'</small><span class="disc">Read article <i></i></span></span></a>'}).join('');
 function body(b){return (b||[]).map(function(t){return t.indexOf('## ')===0?'<h3>'+esc(t.slice(3))+'</h3>':t.indexOf('> ')===0?'<blockquote>'+esc(t.slice(2))+'</blockquote>':'<p>'+esc(t)+'</p>'}).join('')}
 document.getElementById('jr-list').innerHTML=P.map(function(x){return '<article class="jr-post" id="post-'+x.slug+'"><figure class="jr-pic"><img src="'+img(x)+'" alt="" loading="lazy"></figure><div class="jr-txt"><small>'+esc(x.category)+' · '+esc(x.date)+(x.read?' · '+esc(x.read):'')+'</small><h2>'+esc(x.title)+'</h2><div class="jr-body">'+body(x.body)+'</div></div></article>'}).join('');
 })();
