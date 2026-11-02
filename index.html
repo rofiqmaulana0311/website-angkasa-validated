@@ -538,22 +538,18 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .ct-set{border:0;margin:0;padding:0;min-width:0}
 .ct-set legend{display:block;float:left;width:100%;font-size:11px;text-transform:uppercase;color:#555;padding:18px 0 10px}
 .ct-form .bad,.ct-form input.bad{border-bottom-color:#c0392b}
-.chips{clear:both;display:flex;flex-wrap:wrap;gap:8px}
+.chips{clear:both;display:flex;flex-wrap:wrap;gap:6px}
 .ct-form .chip{position:relative;cursor:pointer;padding:0;font-size:inherit;text-transform:none;color:inherit}
 .chip input{position:absolute;opacity:0;width:1px;height:1px}
-.chip .cb{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:36px;padding:4px 4px 4px 14px;border:1px solid #d6d6cf;border-radius:7px;background:#fff;font-size:14px;letter-spacing:-.01em;color:#222;transition:background-color .3s ease,color .3s ease,border-color .3s ease}
-.chip .cl{display:flex;flex-direction:column;line-height:1.2}
-.chip .cl small{font-size:12px;color:#888;margin-top:2px;transition:color .3s ease}
-.chip i{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:5px;background:#efefea;transition:background-color .3s ease}
-.chip i svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.6);transition:opacity .25s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.chip .cb{display:inline-flex;align-items:baseline;gap:6px;padding:8px 14px;border:1px solid #cfcfc8;border-radius:999px;background:transparent;font-size:14px;letter-spacing:-.01em;color:#333;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.chip .cl{display:inline-flex;align-items:baseline;gap:6px;line-height:1.2}
+.chip .cl small{font-size:12px;color:#888;transition:color .25s ease}
+.chip i{display:none}
 .chip:hover .cb{border-color:#111}
-.chip input:checked+.cb{background:#0d0d0d;border-color:#0d0d0d;color:#fff}
-.chip input:checked+.cb small{color:rgba(255,255,255,.65)}
-.chip input:checked+.cb i{background:#333}
-.chip input:checked+.cb i svg{opacity:1;transform:none}
+.chip input:checked+.cb{background:#111;border-color:#111;color:#fff}
+.chip input:checked+.cb small{color:rgba(255,255,255,.7)}
 .chip input:focus-visible+.cb{outline:2px solid #6aa7ff;outline-offset:2px}
 .ct-set.bad .chip .cb{border-color:#c0392b}
-.chips-plan .chip .cb{min-height:48px;padding:6px 6px 6px 14px}
 .ct-see{float:right;text-transform:none;font-size:12px;color:#555;text-decoration:underline}
 .ct-form input::placeholder{color:#aaa}
 .ct-ok a{text-decoration:underline}
