@@ -814,7 +814,7 @@ arm();
 </script>
 <script>
 /* contact form: validate, then email the enquiry via FormSubmit (no backend needed) */
-(function(){var TO='hello@angkasastudio.space',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
+(function(){var TO='hello@angkasastudio.space',KEY='6a2d5d5c358a7307206ee19e6a66203f',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
 function v(n){return f.elements[n]?String(f.elements[n].value||'').trim():''}
 function picked(n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"]:checked')).map(function(x){return x.value})}
 function setPlan(n){document.getElementById('cplan').value=n;var el=document.getElementById('cplan-note');el.hidden=!n;el.innerHTML=n?'Selected plan: <b>'+n+'</b> <button type="button" id="cplan-x">Change</button>':''}
@@ -830,7 +830,7 @@ var data={plan:v('plan')||'-',name:v('name'),email:v('email'),agency:v('agency')
 _subject:'New enquiry from '+v('agency')+' (angkasastudio.space)',_replyto:v('email'),_template:'table',_captcha:'false',
 _autoresponse:'Hi '+v('name')+',\n\nThanks for reaching out to Angkasa Studio. We have received your enquiry for '+v('agency')+' and will reply within two working days with a team and a monthly plan that fits.\n\nNeed something sooner? Message us on WhatsApp: +62 878 2029 9410.\n\nAngkasa Studio\nYour invincible design team\nhello@angkasastudio.space'};
 btn.disabled=true;m.textContent='Sending…';
-fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
 .then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset();setPlan('')})
 .catch(function(){m.innerHTML='Something went wrong. Please email us at <a href="mailto:'+TO+'">'+TO+'</a> or message us on WhatsApp.'})

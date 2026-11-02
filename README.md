@@ -159,7 +159,8 @@ Isinya ditulis langsung di `index.html`, di dalam `<div id="about">`:
 Form di halaman Contact mengirim setiap pesan ke **hello@angkasastudio.space** lewat layanan gratis FormSubmit (formsubmit.co), jadi tidak perlu server.
 
 - **Aktivasi sekali di awal:** kirim form satu kali dari situs online. FormSubmit akan mengirim email aktivasi ke hello@angkasastudio.space. Klik tombol "Activate" di email itu. Setelah itu, setiap pesan langsung masuk.
-- **Mengganti email tujuan:** di `index.html`, cari `var TO='hello@angkasastudio.space'` dan ganti alamatnya. Setelah itu aktivasi ulang dengan cara yang sama.
+- **Kode alamat:** form mengirim ke kode pengganti dari FormSubmit (`KEY` di `index.html`), bukan langsung ke alamat email, supaya alamatnya tidak terbaca bot di kode form.
+- **Mengganti email tujuan:** ganti `TO` dan `KEY` di `index.html`. Untuk email baru, isi `KEY` dengan alamat email itu dulu, kirim form sekali, klik link aktivasi, lalu ganti `KEY` dengan kode acak yang diberikan FormSubmit.
 - **Isi email:** paket yang dipilih, nama, email, agency, website, layanan, jumlah brief per bulan, white-label, kapan mulai, dan pesan. Tombol Reply di email langsung membalas ke pengirim.
 - **Balasan otomatis:** pengirim langsung menerima email konfirmasi dari FormSubmit. Teksnya bisa diubah di `index.html`, cari `_autoresponse`.
 
