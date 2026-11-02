@@ -177,4 +177,4 @@ Harga dan ketentuannya (tanpa minimal kontrak, pause kapan saja, cancel 14 hari 
 
 ## Link sosial di footer
 
-Footer berisi Behance, Dribbble, LinkedIn, Instagram, WhatsApp, dan Email. Untuk Behance, Dribbble, LinkedIn, dan Instagram, link-nya masih ke halaman utama situs masing-masing (ditandai `data-todo`). Ganti dengan alamat profilmu di `index.html`, cari `wf-links`.
+Footer berisi Behance (angkasa___studio), Dribbble (Angkasa_Studio), LinkedIn (sementara profil Rofiq Maulana), Instagram (angkasa___studio), WhatsApp, dan Email. Untuk mengubahnya, buka `index.html` dan cari `wf-links`.
