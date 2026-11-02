@@ -125,7 +125,9 @@ Menambah atau mengurangi logo: edit daftar di `assets/logos/logos.js`. Jumlahnya
 
 ## Teks navbar yang berganti (Home)
 
-Saat navbar melewati section karya di Home, teks tengahnya berganti jadi "SELECTED WORKS". Saat melewati bidang logo, berganti jadi "LOGO COLLECTION". Di bagian lain kembali ke "ANGKASA STUDIO". Pergantiannya pakai efek huruf berputar.
+Saat navbar melewati section karya di Home, teks tengahnya berganti jadi "SELECTED WORKS". Saat melewati bidang logo, berganti jadi "LOGO COLLECTION". Di bagian lain kembali ke "ANGKASA STUDIO". Saat berganti, teks lama bergeser naik keluar dan teks baru naik masuk.
+
+Semua tombol (kelas `btn`) punya efek hover: huruf labelnya berputar satu per satu, dan panah di kotak kanan melesat keluar ke kanan atas lalu panah baru masuk dari kiri bawah. Efek ini dipasang otomatis oleh script, jadi tombol baru cukup memakai kelas `btn` dengan teks dan `<i><svg>…</svg></i>`.
 Teksnya bisa diubah di script paling bawah `index.html`, cari `'Logo Collection'` dan `'Selected Works'`.
 
 ## Journal
