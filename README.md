@@ -161,7 +161,7 @@ Form di halaman Contact mengirim setiap pesan ke **hello@angkasastudio.space** l
 - **Aktivasi sekali di awal:** kirim form satu kali dari situs online. FormSubmit akan mengirim email aktivasi ke hello@angkasastudio.space. Klik tombol "Activate" di email itu. Setelah itu, setiap pesan langsung masuk.
 - **Kode alamat:** form mengirim ke kode pengganti dari FormSubmit (`KEY` di `index.html`), bukan langsung ke alamat email, supaya alamatnya tidak terbaca bot di kode form.
 - **Mengganti email tujuan:** ganti `TO` dan `KEY` di `index.html`. Untuk email baru, isi `KEY` dengan alamat email itu dulu, kirim form sekali, klik link aktivasi, lalu ganti `KEY` dengan kode acak yang diberikan FormSubmit.
-- **Isi email:** paket yang dipilih (wajib; Logo, Brand, Dedicated, One-off project, atau Custom), nama, email, agency, website, dan pesan. Tombol "Choose …" di Pricing langsung memilihkan paketnya di form. Tombol Reply di email langsung membalas ke pengirim.
+- **Isi email:** paket yang dipilih (wajib; Logo, Brand, Dedicated, One-off project, atau Custom), nama, email, agency, website, nomor WhatsApp (opsional, beserta link wa.me untuk langsung chat), dan pesan. Tombol "Choose …" di Pricing langsung memilihkan paketnya di form. Tombol Reply di email langsung membalas ke pengirim.
 - **Balasan otomatis:** pengirim langsung menerima email konfirmasi dari FormSubmit. Teksnya bisa diubah di `index.html`, cari `_autoresponse`.
 
 ## Pricing
