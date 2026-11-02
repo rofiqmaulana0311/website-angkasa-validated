@@ -512,10 +512,10 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .lc-head{margin:0 0 clamp(20px,2.6vw,40px)}
 /* journal page: every article readable in full, image a third of the width */
 .jr-list{padding:clamp(20px,3vw,50px) clamp(12px,1.6vw,26px) clamp(40px,5vw,90px)}
-.jr-post{display:grid;grid-template-columns:1fr 2fr;gap:clamp(28px,5vw,96px);align-items:start;padding:clamp(64px,8vw,140px) 0;border-top:1px solid #d9d9d3;scroll-margin-top:110px}
+.jr-post{display:grid;grid-template-columns:1fr 2fr;gap:clamp(28px,5vw,96px);align-items:stretch;padding:clamp(64px,8vw,140px) 0;border-top:1px solid #d9d9d3;scroll-margin-top:110px}
 .jr-post:last-child{border-bottom:1px solid #d9d9d3}
-.jr-pic{margin:0;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:#ddd;position:sticky;top:110px}
-.jr-pic img{display:block;width:100%;height:100%;object-fit:cover}
+.jr-pic{position:relative;margin:0;border-radius:10px;overflow:hidden;background:#ddd;min-height:260px}
+.jr-pic img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
 .jr-txt{max-width:680px}
 .jr-txt small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666}
 .jr-txt h2{margin:18px 0 clamp(28px,3vw,44px);font-size:clamp(28px,3vw,46px);line-height:1;font-weight:600;letter-spacing:-.04em}
@@ -530,7 +530,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .jn-wc .t small{flex:none;white-space:nowrap}
 @media(max-width:1024px){.jn-cards{grid-template-columns:1fr 1fr}.jn-wc .t{font-size:clamp(15px,2vw,20px)}}
 @media(max-width:640px){.jn-cards{grid-template-columns:1fr}.jn-cards .wc{aspect-ratio:1.1}}
-@media(max-width:768px){.jr-post{grid-template-columns:1fr;gap:28px;padding:56px 0}.jr-pic{position:static;aspect-ratio:16/10}}
+@media(max-width:768px){.jr-post{grid-template-columns:1fr;gap:28px;padding:56px 0}.jr-pic{min-height:0;aspect-ratio:16/10}}
 /* contact: photo + form fit one screen */
 @media(min-width:769px){.ct-img{aspect-ratio:auto;height:calc(100vh - 150px);height:calc(100svh - 150px);min-height:440px;max-height:820px}}
 /* contact form: choice chips */
