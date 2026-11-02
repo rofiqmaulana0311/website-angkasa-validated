@@ -662,7 +662,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <div id="contact" hidden>
 <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><a class="wm" href="#home">Angkasa Studio</a><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
 <section class="ct-head"><small>Contact</small><h1 class="ct-h1">More briefs<br>than designers?</h1></section>
-<section class="ct-info"><div><small>WhatsApp</small><a href="https://wa.me/6287820299410" target="_blank" rel="noopener">+62 878 2029 9410</a></div><div><small>Email</small><a href="mailto:hello@angkasastudio.com">hello@angkasastudio.com</a></div></section>
+<section class="ct-info"><div><small>WhatsApp</small><a href="https://wa.me/6287820299410" target="_blank" rel="noopener">+62 878 2029 9410</a></div><div><small>Email</small><a href="mailto:hello@angkasastudio.space">hello@angkasastudio.space</a></div></section>
 <section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.webp)"></div>
 <div class="ct-side"><h2 class="ct-h2">Tell us what is<br>on your desk.</h2>
 <form class="ct-form" id="cf" novalidate>
@@ -814,7 +814,7 @@ arm();
 </script>
 <script>
 /* contact form: validate, then email the enquiry via FormSubmit (no backend needed) */
-(function(){var TO='hello@angkasastudio.com',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
+(function(){var TO='hello@angkasastudio.space',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
 function v(n){return f.elements[n]?String(f.elements[n].value||'').trim():''}
 function picked(n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"]:checked')).map(function(x){return x.value})}
 function setPlan(n){document.getElementById('cplan').value=n;var el=document.getElementById('cplan-note');el.hidden=!n;el.innerHTML=n?'Selected plan: <b>'+n+'</b> <button type="button" id="cplan-x">Change</button>':''}
@@ -827,7 +827,7 @@ var sv=picked('services');document.getElementById('cs').classList.toggle('bad',!
 if(!ok){m.textContent='Please fill in your name, work email, agency and what you need help with.';return}
 if(v('_honey')){m.textContent='Thanks.';return}
 var data={plan:v('plan')||'-',name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', '),briefs_per_month:picked('briefs')[0]||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
-_subject:'New enquiry from '+v('agency')+' (angkasastudio.com)',_replyto:v('email'),_template:'table',_captcha:'false'};
+_subject:'New enquiry from '+v('agency')+' (angkasastudio.space)',_replyto:v('email'),_template:'table',_captcha:'false'};
 btn.disabled=true;m.textContent='Sending…';
 fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
