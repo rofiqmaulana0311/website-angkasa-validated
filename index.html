@@ -358,7 +358,7 @@ body.contact .wf{margin:0;border-radius:10px 10px 0 0}
 /* navbar: frosted glass, same treatment as the project card tags */
 .nav{background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;border:1px solid rgba(255,255,255,.14)}
 /* on the light pages (Works, Contact) white glass would vanish, so use a dark tint of the same glass */
-#works>.nav,#contact>.nav,#journal>.nav,#about>.nav{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.08)}
+#works>.nav,#contact>.nav,#journal>.nav,#about>.nav,#pricing>.nav{background:rgba(17,17,17,.8);border-color:rgba(255,255,255,.08)}
 /* CTA: image card with breathing room instead of a full-bleed black band */
 .cta,body.works .cta{position:relative;overflow:hidden;margin:clamp(50px,6vw,100px) clamp(4px,.4vw,8px) 0;border-radius:10px;min-height:clamp(440px,62vh,680px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(70px,9vw,140px) 20px;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.55)),url(assets/works-cta.webp) center/cover no-repeat,#000;color:#f4f2ea}
 .cta h2{max-width:8.5em}
@@ -537,6 +537,47 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .ct-ok a{text-decoration:underline}
 .ct-btn[disabled]{opacity:.6;cursor:wait}
 @media(min-width:769px){.ct-main{align-items:stretch}.ct-img{height:auto;max-height:none;min-height:440px}}
+/* pricing */
+.pr-intro{max-width:560px;margin:0 auto;padding:0 20px clamp(40px,5vw,70px);text-align:center;font-size:clamp(18px,1.6vw,24px);line-height:1.35;letter-spacing:-.02em;color:#333}
+.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,.6vw,12px);padding:0 clamp(12px,1.6vw,26px);align-items:stretch}
+.pr-card{position:relative;display:flex;flex-direction:column;background:#fff;color:#111;border-radius:10px;padding:clamp(22px,2.2vw,34px)}
+.pr-feat{background:#111;color:#f1efe6}
+.pr-pop{position:absolute;top:clamp(22px,2.2vw,34px);right:clamp(22px,2.2vw,34px);font-style:normal;font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.14)}
+.pr-name{display:block;font-size:clamp(22px,1.9vw,28px);font-weight:600;letter-spacing:-.03em}
+.pr-tag{margin:6px 0 0;font-size:15px;line-height:1.4;color:#666}
+.pr-feat .pr-tag,.pr-feat .pr-cap{color:rgba(241,239,230,.7)}
+.pr-price{margin:clamp(22px,2.4vw,36px) 0 0;display:flex;align-items:baseline;gap:8px}
+.pr-price strong{font-size:clamp(40px,4vw,60px);line-height:1;font-weight:600;letter-spacing:-.045em}
+.pr-price span{font-size:14px;color:#888}
+.pr-cap{margin:10px 0 0;font-size:14px;color:#555}
+.pr-card ul{list-style:none;margin:clamp(20px,2vw,30px) 0 clamp(24px,2.4vw,36px);padding:clamp(18px,1.8vw,26px) 0 0;border-top:1px solid #e6e6e0;display:grid;gap:11px;font-size:15px;line-height:1.35}
+.pr-feat ul{border-top-color:rgba(255,255,255,.12)}
+.pr-card li{display:flex;gap:10px;align-items:flex-start}
+.pr-card li svg{flex:none;width:14px;height:14px;margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pr-card .pr-go{margin-top:auto;align-self:flex-start}
+.pr-note{max-width:640px;margin:0 auto;padding:clamp(24px,3vw,40px) 20px 0;text-align:center;font-size:14px;line-height:1.5;color:#666}
+.pr-note a{text-decoration:underline;color:#111}
+.pr-faq .shead{margin-bottom:clamp(20px,2.6vw,40px)}
+.pr-q{border-top:1px solid #d9d9d3}
+.pr-q:last-child{border-bottom:1px solid #d9d9d3}
+.pr-q summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:clamp(18px,1.8vw,26px) 0;font-size:clamp(18px,1.5vw,22px);font-weight:500;letter-spacing:-.02em;cursor:pointer}
+.pr-q summary::-webkit-details-marker{display:none}
+.pr-q summary i{position:relative;flex:none;width:14px;height:14px}
+.pr-q summary i::before,.pr-q summary i::after{content:"";position:absolute;left:0;top:6px;width:14px;height:1.5px;background:#111;transition:transform .35s ease}
+.pr-q summary i::after{transform:rotate(90deg)}
+.pr-q[open] summary i::after{transform:rotate(0)}
+.pr-q p{margin:0;padding:0 0 clamp(18px,1.8vw,26px);max-width:640px;font-size:16px;line-height:1.55;color:#444}
+.pr-home{margin-top:clamp(70px,8vw,130px)}
+.pr-home .head{margin-top:0}
+.pr-home .head p a{text-decoration:underline}
+.pr-grid-home{padding:0}
+.pr-grid-home .pr-card{background:#f4f4f1}
+.pr-grid-home .pr-card ul{border-top-color:#e2e2dc}
+.pr-grid-home .pr-feat ul{border-top-color:rgba(255,255,255,.12)}
+.pr-grid-home .pr-feat{background:#111}
+.ct-plan{grid-column:1/-1;margin:6px 0 0;font-size:14px;color:#333}
+.ct-plan button{margin-left:8px;font:inherit;font-size:13px;background:none;border:0;padding:0;text-decoration:underline;color:#666;cursor:pointer}
+@media(max-width:900px){.pr-grid{grid-template-columns:1fr}.pr-card ul{margin-bottom:24px}}
 </style>
 </head>
 <body>
@@ -545,7 +586,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <li><a class="it" href="#home">Home<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><a class="it" href="#about">About<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><button class="it" aria-expanded="false" data-sub="s2">Works<svg viewBox="0 0 12 12"><path d="M6 1v10M1 6h10"/></svg></button><div class="sub" id="s2"><div class="in"><a href="#works" style="--i:0">All works</a></div></div></li>
-<li><a class="it" href="#journal">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
+<li><a class="it" href="#pricing">Pricing<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li><li><a class="it" href="#journal">Journal<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 <li><a class="it" href="#contact">Contact<svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></a></li>
 </ul>
 <a class="go btn btn-light" href="#contact">Get a design team <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a>
@@ -575,6 +616,10 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
   <section class="notes">
     <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2><p>[ Journal ]<br><a href="#journal">All articles</a></p></div>
     <div class="jn-cards" id="hposts"></div>
+  </section>
+  <section class="pr-home" id="pricing-home">
+    <div class="head"><h2>Plans.</h2><p>[ Pricing ]<br><a href="#pricing">All plans and FAQ</a></p></div>
+    <div class="pr-grid pr-grid-home"><div class="pr-card"><b class="pr-name">Logo</b><p class="pr-tag">For agencies that need marks, fast.</p><p class="pr-price"><strong>$1,490</strong><span>/ month</span></p><p class="pr-cap">Up to 2 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 active brief at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>3 logo routes per brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 rounds of revisions</li></ul><a class="btn  pr-go" href="#contact" data-plan="Logo">Choose Logo <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card pr-feat"><em class="pr-pop">Most popular</em><b class="pr-name">Brand</b><p class="pr-tag">For agencies with identity work piling up.</p><p class="pr-price"><strong>$2,990</strong><span>/ month</span></p><p class="pr-cap">1 full identity or 3 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 active briefs at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Logo, type, colour and graphic language</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Brand guidelines (PDF)</li></ul><a class="btn btn-light pr-go" href="#contact" data-plan="Brand">Choose Brand <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card"><b class="pr-name">Dedicated</b><p class="pr-tag">Your own senior designer, full time.</p><p class="pr-price"><strong>$4,900</strong><span>/ month</span></p><p class="pr-cap">About 160 design hours a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 dedicated senior designer</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Creative director review on every brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Up to 3 active briefs</li></ul><a class="btn  pr-go" href="#contact" data-plan="Dedicated">Choose Dedicated <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div></div>
   </section>
 </main>
 
@@ -608,6 +653,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.webp)"></div>
 <div class="ct-side"><h2 class="ct-h2">Tell us what is<br>on your desk.</h2>
 <form class="ct-form" id="cf" novalidate>
+<input type="hidden" name="plan" id="cplan" value=""><p class="ct-plan" id="cplan-note" hidden></p>
 <input type="text" name="_honey" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div><label for="cn">Your name *</label><input id="cn" name="name" autocomplete="name" required></div>
 <div><label for="ce">Work email *</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
@@ -662,6 +708,14 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <div><span class="ab-ph" style="background-image:url(assets/team/member-4.webp)"></span><b>Name Surname</b><small>Brand designer</small></div>
 </div></section>
 </div>
+<div id="pricing" hidden>
+<div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><span>Pricing, monthly plans</span><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
+<section class="wk-head"><small>Pricing</small><h1 class="wk-h1">A design team,<br>by the month.</h1></section>
+<p class="pr-intro">Simple monthly plans for agencies. Senior brand designers, white-label by default, no hiring and no long contracts.</p>
+<section class="pr-grid"><div class="pr-card"><b class="pr-name">Logo</b><p class="pr-tag">For agencies that need marks, fast.</p><p class="pr-price"><strong>$1,490</strong><span>/ month</span></p><p class="pr-cap">Up to 2 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 active brief at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>3 logo routes per brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 rounds of revisions</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Logo files for print, web and social</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>First routes in 3–5 working days</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>White-label delivery</li></ul><a class="btn  pr-go" href="#contact" data-plan="Logo">Choose Logo <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card pr-feat"><em class="pr-pop">Most popular</em><b class="pr-name">Brand</b><p class="pr-tag">For agencies with identity work piling up.</p><p class="pr-price"><strong>$2,990</strong><span>/ month</span></p><p class="pr-cap">1 full identity or 3 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 active briefs at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Logo, type, colour and graphic language</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Brand guidelines (PDF)</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Weekly review call</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Shared Slack channel</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>White-label delivery</li></ul><a class="btn btn-light pr-go" href="#contact" data-plan="Brand">Choose Brand <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card"><b class="pr-name">Dedicated</b><p class="pr-tag">Your own senior designer, full time.</p><p class="pr-price"><strong>$4,900</strong><span>/ month</span></p><p class="pr-cap">About 160 design hours a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 dedicated senior designer</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Creative director review on every brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Up to 3 active briefs</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Joins your client calls under your name</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Works in your tools and project board</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>White-label delivery</li></ul><a class="btn  pr-go" href="#contact" data-plan="Dedicated">Choose Dedicated <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div></section>
+<p class="pr-note">Prices in USD, billed monthly. Need a single project instead? One-off identities start from $3,500. <a href="#contact" data-plan="One-off project">Ask for a quote</a>.</p>
+<section class="ab-sec pr-faq"><div class="shead"><h2>Questions.</h2><p>[ FAQ ]<br>Plans and process</p></div><details class="pr-q"><summary>Is there a minimum contract?<i aria-hidden="true"></i></summary><p>No. Plans run month to month. Pause anytime, or cancel with 14 days' notice before your next billing date.</p></details><details class="pr-q"><summary>Will our clients know you are involved?<i aria-hidden="true"></i></summary><p>Only if you want them to. By default we work white-label: no Angkasa name on files, and we never contact your clients directly.</p></details><details class="pr-q"><summary>Who owns the work?<i aria-hidden="true"></i></summary><p>You do. Full rights and all source files transfer to your agency once the month is paid, ready to hand to your client.</p></details><details class="pr-q"><summary>What if we need more than our plan covers?<i aria-hidden="true"></i></summary><p>Upgrade for the month, or add a single brief at a fixed price. We tell you before any extra cost, never after.</p></details><details class="pr-q"><summary>How do we send briefs?<i aria-hidden="true"></i></summary><p>Through Slack, email or your own project board. One short onboarding call is enough to learn your process.</p></details><details class="pr-q"><summary>Do unused briefs roll over?<i aria-hidden="true"></i></summary><p>Capacity is planned per month, so it does not roll over. If you have a quiet month, pause instead and pay nothing.</p></details><details class="pr-q"><summary>What currency do you bill in?<i aria-hidden="true"></i></summary><p>USD, invoiced monthly in advance. Bank transfer, Wise or card.</p></details></section>
+</div>
 <div id="journal" hidden>
 <div class="nav"><a class="lgl" href="#home" aria-label="Angkasa Studio, back to home"><svg class="lg" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a><span>Journal, notes from the studio</span><button class="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 12 12" fill="#fff"><circle cx="3" cy="3" r="1"/><circle cx="9" cy="3" r="1"/><circle cx="3" cy="9" r="1"/><circle cx="9" cy="9" r="1"/></svg></button></div>
 <section class="wk-head jr-head"><small>Journal</small><h1 class="wk-h1">Notes from<br>the studio.</h1></section>
@@ -674,12 +728,12 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 </footer>
 <footer class="wf" id="wf">
 <div class="wf-top"><a class="wlogo-a" href="#home" aria-label="Angkasa Studio, back to home"><svg class="wlogo" viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M 135.078125 134.957031 L 70.523438 70.410156 L 91.335938 75.988281 C 106.941406 69.929688 117.121094 62.914062 115.871094 58.25 C 114.6875 53.816406 103.449219 52.710938 88.085938 54.828125 C 82.375 48.394531 73.332031 45.367188 64.457031 47.742188 C 55.582031 50.117188 49.277344 57.269531 47.546875 65.691406 C 33.171875 71.535156 23.992188 78.113281 25.183594 82.5625 C 26.710938 88.265625 44.875 88.464844 67.050781 83.359375 L 52.304688 138.4375 C 25.117188 131.167969 4.402344 108.039062 0.703125 79.574219 L 0.621094 78.914062 C 0.285156 76.125 0.113281 73.289062 0.113281 70.410156 C 0.113281 31.523438 31.636719 0 70.523438 0 C 89.972656 0 107.574219 7.875 120.3125 20.621094 L 135.082031 5.855469 L 158.546875 5.855469 L 158.546875 134.957031 Z M 135.078125 134.957031"/></svg></a>
-<nav class="wf-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#works">Works</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav></div>
+<nav class="wf-nav"><a href="#home">Home</a><a href="#about">About</a><a href="#works">Works</a><a href="#pricing">Pricing</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav></div>
 <div class="wf-mid"><p>Angkasa Studio is an independent brand identity and logo design studio. We work as the extra design team for agencies with more briefs than hands, on simple monthly contracts.</p><div class="wf-links"><span>Style Guide</span><span>Custom 404</span><span>Licenses</span><span>Custom 401</span><span>Change Log</span></div></div>
 <div class="wf-bot"><span>© 2026 <a href="#home" class="ul">Angkasa Studio</a></span><span>Central Java - Indonesia</span></div>
 </footer>
 <script>
-function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact',j=h==='#journal',ab=h==='#about',as=h.indexOf('#journal/')===0?h.slice(9):'',a=false;if(as)j=true;if(p)renderPj(h.slice(1));document.getElementById('home').hidden=p||w||c||j||a||ab;document.getElementById('about').hidden=!ab;document.getElementById('journal').hidden=!j;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c||j||a||ab);document.body.classList.toggle('journal',j||a||ab);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30);if(as)setTimeout(function(){var t=document.getElementById('post-'+as);if(t){var y=t.getBoundingClientRect().top+scrollY-110;if(window.lenis)lenis.scrollTo(y,{duration:1.2});else scrollTo({top:y,behavior:'smooth'})}},120)}
+function route(){var h=location.hash,p=!!(window.PJ&&PJ[h.slice(1)]),w=h==='#works',c=h==='#contact',j=h==='#journal',ab=h==='#about',pr=h==='#pricing',as=h.indexOf('#journal/')===0?h.slice(9):'',a=false;if(as)j=true;if(p)renderPj(h.slice(1));document.getElementById('home').hidden=p||w||c||j||a||ab||pr;document.getElementById('about').hidden=!ab;document.getElementById('pricing').hidden=!pr;document.getElementById('journal').hidden=!j;document.getElementById('project').hidden=!p;document.getElementById('works').hidden=!w;document.getElementById('contact').hidden=!c;document.body.classList.toggle('alt',p||w||c||j||a||ab||pr);document.body.classList.toggle('journal',j||a||ab||pr);document.body.classList.toggle('works',w);document.body.classList.toggle('contact',c);window.scrollTo(0,0);if(window.lenis)lenis.scrollTo(0,{immediate:true});if(window.arm)setTimeout(arm,30);if(as)setTimeout(function(){var t=document.getElementById('post-'+as);if(t){var y=t.getBoundingClientRect().top+scrollY-110;if(window.lenis)lenis.scrollTo(y,{duration:1.2});else scrollTo({top:y,behavior:'smooth'})}},120)}
 var menu=document.getElementById('menu');
 function tog(f){var o=f===undefined?!menu.classList.contains('open'):!!f;menu.classList.toggle('open',o);document.querySelectorAll('.nav .mb').forEach(function(b){b.setAttribute('aria-expanded',o)})}
 function goHome(e){e.preventDefault();tog(false);if(!document.getElementById('home').hidden){if(window.lenis)lenis.scrollTo(0,{duration:1.2});else scrollTo({top:0,behavior:'smooth'})}else location.hash='#home'}
@@ -735,7 +789,7 @@ var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(typeof Lenis!=='undefined'&&!rm){var l=new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))}});window.lenis=l;(function r(t){l.raf(t);requestAnimationFrame(r)})(0)}
 route();
 if(rm)return;
-var sel='.ab-intro h2,.ab-lead,.ab-sec .shead h2,.hero h1,.intro p,.head h2,.p-hero h1,.brief h2,.brief p,.market h2,.market .sub p,.qtxt,.cta h2,.cta p,.wk-h1,.stud h2,.ct-h1,.ct-h2,.nxt h2';
+var sel='.pr-intro,.ab-intro h2,.ab-lead,.ab-sec .shead h2,.hero h1,.intro p,.head h2,.p-hero h1,.brief h2,.brief p,.market h2,.market .sub p,.qtxt,.cta h2,.cta p,.wk-h1,.stud h2,.ct-h1,.ct-h2,.nxt h2';
 var els=[].slice.call(document.querySelectorAll(sel));
 function splitEl(el){var i=0,nodes=[].slice.call(el.childNodes);el.textContent='';
 nodes.forEach(function(n){if(n.nodeType===3){n.textContent.split(/\s+/).filter(Boolean).forEach(function(w){var o=document.createElement('span');o.className='w';var s=document.createElement('span');s.textContent=w;s.style.setProperty('--i',i++);o.appendChild(s);el.appendChild(o);el.appendChild(document.createTextNode(' '))})}else el.appendChild(n)});
@@ -750,6 +804,8 @@ arm();
 (function(){var TO='hello@angkasa.studio',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
 function v(n){return f.elements[n]?String(f.elements[n].value||'').trim():''}
 function picked(n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"]:checked')).map(function(x){return x.value})}
+function setPlan(n){document.getElementById('cplan').value=n;var el=document.getElementById('cplan-note');el.hidden=!n;el.innerHTML=n?'Selected plan: <b>'+n+'</b> <button type="button" id="cplan-x">Change</button>':''}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-plan]');if(a)setPlan(a.dataset.plan);if(e.target.id==='cplan-x')setPlan('')});
 f.addEventListener('input',function(e){var t=e.target;if(t.classList)t.classList.remove('bad');var fs=t.closest&&t.closest('.ct-set');if(fs)fs.classList.remove('bad')});
 f.addEventListener('change',function(e){var fs=e.target.closest&&e.target.closest('.ct-set');if(fs)fs.classList.remove('bad')});
 f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
@@ -757,12 +813,12 @@ f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
 var sv=picked('services');document.getElementById('cs').classList.toggle('bad',!sv.length);if(!sv.length)ok=false;
 if(!ok){m.textContent='Please fill in your name, work email, agency and what you need help with.';return}
 if(v('_honey')){m.textContent='Thanks.';return}
-var data={name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', '),briefs_per_month:picked('briefs')[0]||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
+var data={plan:v('plan')||'-',name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', '),briefs_per_month:picked('briefs')[0]||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
 _subject:'New enquiry from '+v('agency')+' (angkasa.studio)',_replyto:v('email'),_template:'table',_captcha:'false'};
 btn.disabled=true;m.textContent='Sending…';
 fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
-.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})
+.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset();setPlan('')})
 .catch(function(){m.innerHTML='Something went wrong. Please email us at <a href="mailto:'+TO+'">'+TO+'</a> or message us on WhatsApp.'})
 .then(function(){btn.disabled=false})});
 })();
