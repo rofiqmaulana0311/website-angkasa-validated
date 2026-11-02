@@ -520,6 +520,23 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 @media(max-width:768px){.jr-post{grid-template-columns:1fr}.jr-pic{position:static;aspect-ratio:16/10}}
 /* contact: photo + form fit one screen */
 @media(min-width:769px){.ct-img{aspect-ratio:auto;height:calc(100vh - 150px);height:calc(100svh - 150px);min-height:440px;max-height:820px}}
+/* contact form: choice chips */
+.ct-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ct-set{border:0;margin:0;padding:0;min-width:0}
+.ct-set legend{display:block;float:left;width:100%;font-size:11px;text-transform:uppercase;color:#555;padding:18px 0 10px}
+.ct-form .bad,.ct-form input.bad{border-bottom-color:#c0392b}
+.chips{clear:both;display:flex;flex-wrap:wrap;gap:6px}
+.ct-form .chip{position:relative;cursor:pointer;padding:0;font-size:inherit;text-transform:none;color:inherit}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-block;padding:8px 14px;border:1px solid #cfcfc8;border-radius:999px;font-size:14px;letter-spacing:-.01em;color:#333;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.chip:hover span{border-color:#111}
+.chip input:checked+span{background:#111;border-color:#111;color:#fff}
+.chip input:focus-visible+span{outline:2px solid #6aa7ff;outline-offset:2px}
+.ct-set.bad .chip span{border-color:#c0392b}
+.ct-form input::placeholder{color:#aaa}
+.ct-ok a{text-decoration:underline}
+.ct-btn[disabled]{opacity:.6;cursor:wait}
+@media(min-width:769px){.ct-main{align-items:stretch}.ct-img{height:auto;max-height:none;min-height:440px}}
 </style>
 </head>
 <body>
@@ -591,11 +608,17 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 <section class="ct-main"><div class="ct-img" style="background-image:url(assets/contact.webp)"></div>
 <div class="ct-side"><h2 class="ct-h2">Tell us what is<br>on your desk.</h2>
 <form class="ct-form" id="cf" novalidate>
-<div class="f"><label for="cn">Your name</label><input id="cn" name="name" autocomplete="name" required></div>
-<div><label for="ce">Your email</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
-<div><label for="cp">Your agency</label><input id="cp" name="agency" autocomplete="organization"></div>
-<div class="f"><label for="cm">What do you need help with?</label><textarea id="cm" name="message" rows="2" required></textarea></div>
-<div class="f"><button class="ct-btn btn" type="submit">Let’s talk <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status"></p></div>
+<input type="text" name="_honey" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div><label for="cn">Your name *</label><input id="cn" name="name" autocomplete="name" required></div>
+<div><label for="ce">Work email *</label><input id="ce" name="email" type="email" autocomplete="email" required></div>
+<div><label for="ca">Agency name *</label><input id="ca" name="agency" autocomplete="organization" required></div>
+<div><label for="cw">Agency website</label><input id="cw" name="website" type="url" inputmode="url" placeholder="agency.com"></div>
+<fieldset class="f ct-set" id="cs"><legend>What do you need help with? *</legend><div class="chips"><label class="chip"><input type="checkbox" name="services" value="Brand identity"><span>Brand identity</span></label><label class="chip"><input type="checkbox" name="services" value="Logo design"><span>Logo design</span></label><label class="chip"><input type="checkbox" name="services" value="Brand refresh"><span>Brand refresh</span></label><label class="chip"><input type="checkbox" name="services" value="Guidelines & assets"><span>Guidelines & assets</span></label></div></fieldset>
+<fieldset class="ct-set"><legend>Briefs per month</legend><div class="chips"><label class="chip"><input type="radio" name="briefs" value="1–2"><span>1–2</span></label><label class="chip"><input type="radio" name="briefs" value="3–5"><span>3–5</span></label><label class="chip"><input type="radio" name="briefs" value="6+"><span>6+</span></label></div></fieldset>
+<fieldset class="ct-set"><legend>White-label?</legend><div class="chips"><label class="chip"><input type="radio" name="white_label" value="Yes"><span>Yes</span></label><label class="chip"><input type="radio" name="white_label" value="No"><span>No</span></label><label class="chip"><input type="radio" name="white_label" value="Not sure"><span>Not sure</span></label></div></fieldset>
+<fieldset class="f ct-set"><legend>When do you want to start?</legend><div class="chips"><label class="chip"><input type="radio" name="start" value="As soon as possible"><span>As soon as possible</span></label><label class="chip"><input type="radio" name="start" value="Next month"><span>Next month</span></label><label class="chip"><input type="radio" name="start" value="Just exploring"><span>Just exploring</span></label></div></fieldset>
+<div class="f"><label for="cm">Anything else? (optional)</label><textarea id="cm" name="message" rows="2"></textarea></div>
+<div class="f"><button class="ct-btn btn" type="submit" id="cbtn">Send enquiry <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></button><p class="ct-ok" id="cok" role="status" aria-live="polite"></p></div>
 </form></div></section>
 </div>
 <div id="about" hidden>
@@ -723,9 +746,26 @@ arm();
 })();
 </script>
 <script>
-document.getElementById('cf').addEventListener('submit',function(e){e.preventDefault();var f=e.target,ok=true;
-['cn','ce','cm'].forEach(function(id){var el=document.getElementById(id),v=el.value.trim(),bad=!v||(id==='ce'&&!/^\S+@\S+\.\S+$/.test(v));el.classList.toggle('bad',bad);if(bad)ok=false});
-var m=document.getElementById('cok');m.textContent=ok?'Thanks. We will reply within two working days with a team and a plan.':'Please fill in your name, a valid email and a message.';if(ok)f.reset()});
+/* contact form: validate, then email the enquiry via FormSubmit (no backend needed) */
+(function(){var TO='hello@angkasa.studio',f=document.getElementById('cf'),m=document.getElementById('cok'),btn=document.getElementById('cbtn');
+function v(n){return f.elements[n]?String(f.elements[n].value||'').trim():''}
+function picked(n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"]:checked')).map(function(x){return x.value})}
+f.addEventListener('input',function(e){var t=e.target;if(t.classList)t.classList.remove('bad');var fs=t.closest&&t.closest('.ct-set');if(fs)fs.classList.remove('bad')});
+f.addEventListener('change',function(e){var fs=e.target.closest&&e.target.closest('.ct-set');if(fs)fs.classList.remove('bad')});
+f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
+[['cn',function(x){return !!x}],['ce',function(x){return /^\S+@\S+\.\S+$/.test(x)}],['ca',function(x){return !!x}]].forEach(function(r){var el=document.getElementById(r[0]),good=r[1](el.value.trim());el.classList.toggle('bad',!good);if(!good)ok=false});
+var sv=picked('services');document.getElementById('cs').classList.toggle('bad',!sv.length);if(!sv.length)ok=false;
+if(!ok){m.textContent='Please fill in your name, work email, agency and what you need help with.';return}
+if(v('_honey')){m.textContent='Thanks.';return}
+var data={name:v('name'),email:v('email'),agency:v('agency'),website:v('website')||'-',services:sv.join(', '),briefs_per_month:picked('briefs')[0]||'-',white_label:picked('white_label')[0]||'-',start:picked('start')[0]||'-',message:v('message')||'-',
+_subject:'New enquiry from '+v('agency')+' (angkasa.studio)',_replyto:v('email'),_template:'table',_captcha:'false'};
+btn.disabled=true;m.textContent='Sending…';
+fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+.then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
+.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})
+.catch(function(){m.innerHTML='Something went wrong. Please email us at <a href="mailto:'+TO+'">'+TO+'</a> or message us on WhatsApp.'})
+.then(function(){btn.disabled=false})});
+})();
 </script>
 <script>
 /* sticky navbar state: scrolled (softer) and hidden while the CTA or footer is on screen */

@@ -151,3 +151,11 @@ Isinya ditulis langsung di `index.html`, di dalam `<div id="about">`:
 - **What we do:** empat layanan.
 - **How we work:** empat langkah kerja.
 - **The people:** foto tim di `assets/team/member-1.webp` sampai `member-4.webp` (potret 4:5, disarankan 800 x 1000). Ganti juga "Name Surname" dan jabatannya. Untuk menambah orang, salin satu `<div>` di dalam `.ab-team`.
+
+## Form Contact (dikirim ke email)
+
+Form di halaman Contact mengirim setiap pesan ke **hello@angkasa.studio** lewat layanan gratis FormSubmit (formsubmit.co), jadi tidak perlu server.
+
+- **Aktivasi sekali di awal:** kirim form satu kali dari situs online. FormSubmit akan mengirim email aktivasi ke hello@angkasa.studio. Klik tombol "Activate" di email itu. Setelah itu, setiap pesan langsung masuk.
+- **Mengganti email tujuan:** di `index.html`, cari `var TO='hello@angkasa.studio'` dan ganti alamatnya. Setelah itu aktivasi ulang dengan cara yang sama.
+- **Isi email:** nama, email, agency, website, layanan, jumlah brief per bulan, white-label, kapan mulai, dan pesan. Tombol Reply di email langsung membalas ke pengirim.
