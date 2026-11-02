@@ -8,7 +8,7 @@
 window.POSTS = [
   {
     slug: "design-team-by-the-month",
-    title: "Why agencies add a design team by the month.",
+    title: "Design teams, monthly.",
     category: "Agencies",
     date: "June 12, 2026",
     read: "2 min read",
@@ -23,7 +23,7 @@ window.POSTS = [
   },
   {
     slug: "what-makes-a-logo-last",
-    title: "What makes a logo last.",
+    title: "Logos that last.",
     category: "Logo design",
     date: "May 5, 2026",
     read: "2 min read",
@@ -38,7 +38,7 @@ window.POSTS = [
   },
   {
     slug: "white-label-without-the-awkwardness",
-    title: "White-label, without the awkwardness.",
+    title: "White-label, done right.",
     category: "Partnership",
     date: "April 21, 2026",
     read: "2 min read",
@@ -53,7 +53,7 @@ window.POSTS = [
   },
   {
     slug: "brief-to-brand-guidelines",
-    title: "From brief to brand guidelines in four weeks.",
+    title: "A brand in four weeks.",
     category: "Brand identity",
     date: "March 2, 2026",
     read: "2 min read",
