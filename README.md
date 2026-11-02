@@ -164,7 +164,7 @@ Form di halaman Contact mengirim setiap pesan ke **hello@angkasa.studio** lewat 
 
 Halaman Pricing ada di `#pricing`, berisi 3 paket bulanan, catatan harga, dan FAQ. Di Home ada section "Plans." berisi versi ringkas ketiga paket, tepat sebelum CTA. Menu dan footer juga punya link Pricing.
 
-- **Paket dan harga** (USD per bulan): Logo $1,490, Brand $2,990 (ditandai "Most popular"), Dedicated $4,900. Proyek satuan mulai dari $3,500.
+- **Paket dan harga** (USD per bulan): Logo $790, Brand $1,490 (ditandai "Most popular"), Dedicated $2,490. Proyek satuan mulai dari $1,900.
 - **Mengubah isi:** cari `pr-card` di `index.html`. Isi halaman Pricing dan section di Home ditulis terpisah, jadi ubah keduanya.
 - **Tombol "Choose …":** membuka Contact dengan paket yang dipilih sudah tercatat ("Selected plan: Brand"), dan nama paket ikut terkirim di email.
 - **FAQ:** cari `pr-q` di `index.html`.
