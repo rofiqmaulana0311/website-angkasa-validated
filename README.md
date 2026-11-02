@@ -174,3 +174,7 @@ Halaman Pricing ada di `#pricing`, berisi 3 paket bulanan, catatan harga, dan FA
 - **FAQ:** cari `pr-q` di `index.html`.
 
 Harga dan ketentuannya (tanpa minimal kontrak, pause kapan saja, cancel 14 hari sebelumnya, file milik agency setelah dibayar, tagihan dalam USD) masih usulan. Sesuaikan sebelum dipromosikan.
+
+## Link sosial di footer
+
+Footer berisi Behance, Dribbble, LinkedIn, Instagram, WhatsApp, dan Email. Untuk Behance, Dribbble, LinkedIn, dan Instagram, link-nya masih ke halaman utama situs masing-masing (ditandai `data-todo`). Ganti dengan alamat profilmu di `index.html`, cari `wf-links`.
