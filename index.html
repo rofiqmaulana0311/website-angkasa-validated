@@ -949,8 +949,10 @@ fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'
 (function(){var b=document.body,vis=new Set();
 function onScroll(){b.classList.toggle('nav-scrolled',(window.scrollY||document.documentElement.scrollTop)>40)}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target)});var h=vis.size>0;b.classList.toggle('nav-hide',h);if(h&&window.tog)tog(false)},{rootMargin:'0px 0px -12% 0px'});
-document.querySelectorAll('.cta,.wf').forEach(function(el){io.observe(el)});
+/* hide once the footer scrolls into view (not over the CTA) */
+var wf=document.getElementById('wf'),nt=false;
+function chk(){nt=false;var n=document.querySelector('#app>div:not([hidden]) .nav');if(!n||!wf)return;var r=n.getBoundingClientRect(),f=wf.getBoundingClientRect(),h=f.top<innerHeight*.88;b.classList.toggle('nav-hide',h);if(h&&window.tog)tog(false)}
+addEventListener('scroll',function(){if(!nt){nt=true;requestAnimationFrame(chk)}},{passive:true});addEventListener('resize',chk);addEventListener('hashchange',function(){setTimeout(chk,80)});chk();
 addEventListener('hashchange',function(){setTimeout(onScroll,60)})})();
 </script>
 <script>
