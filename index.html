@@ -421,7 +421,7 @@ a.status:hover .st-img{transform:scale(.97)}
 .menu{position:fixed;z-index:29}
 body.nav-scrolled .nav{opacity:.9;background:rgba(17,17,17,.66);border-color:rgba(255,255,255,.1)}
 body.nav-scrolled .nav:hover,body.nav-scrolled .nav:focus-within{opacity:1}
-body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
+body.nav-hide .nav,body.nav-hide-g #project .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
 @media(prefers-reduced-motion:reduce){.nav{transition:opacity .2s linear}}
 /* client logo marquee under the intro: slow, seamless, pauses on hover */
 .marq{--gap:clamp(44px,5vw,80px);position:relative;overflow:hidden;margin:clamp(32px,4vw,56px) auto 0;max-width:1200px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
@@ -639,9 +639,9 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .shots .sc:last-child{margin-bottom:0}
 .shots .sc,.shots .sc-in{width:100%;aspect-ratio:auto!important;grid-column:auto!important;background:none}
 .shots .sc-in{background:none}
-.shots .sc-in{display:grid;gap:clamp(4px,.5vw,8px);height:100%;transform-origin:50% 0;will-change:transform,filter;border-radius:10px}
+.shots .sc-in{display:grid;gap:clamp(4px,.5vw,8px);height:100%;transform-origin:50% 0;will-change:transform,filter,opacity;border-radius:10px}
 .shots .sc-in.c2{grid-template-columns:1fr 1fr}.shots .sc-in.c3{grid-template-columns:repeat(3,1fr)}
-.shots .sc-in span{display:block;border-radius:10px;background-color:#111;background-size:cover;background-position:center;box-shadow:0 -10px 40px rgba(0,0,0,.12)}
+.shots .sc-in span{display:block;border-radius:10px;background-color:#111;background-size:cover;background-position:center}
 @media(max-width:640px){.shots .sc{height:72vh;height:72svh;top:84px}.shots .sc-in.c3{grid-template-columns:1fr 1fr}.shots .sc-in.c3 span:last-child{grid-column:1/-1}}
 /* staggered columns: used for Works and the other section pages */
 .pt-cols{position:fixed;inset:0;z-index:28;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none;visibility:hidden}
@@ -846,7 +846,7 @@ app.style.transition='transform .85s '+E+' .06s';app.style.transform='translateY
 await wait(930);app.style.transition='border-radius .35s ease,box-shadow .35s ease';app.style.borderRadius='0';app.style.boxShadow='none';box.remove();await wait(360);app.style.cssText=''}
 addEventListener('hashchange',async function(){var h=location.hash,prev=last;last=h;
 if(rm||base(prev)===base(h)||busy){route();return}
-busy=true;try{if(isHome(h))await stamp();else if(isProject(h))await stack();else await columns()}catch(e){route()}busy=false});
+busy=true;try{if(isHome(h))await stamp();else await columns()}catch(e){route()}busy=false});
 route()})();
 </script>
 <script src="assets/logos/logos.js"></script>
@@ -1110,10 +1110,11 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 /* gallery card stack: each row shrinks and dims as the next one slides over it */
 (function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,cards=[],tick=false;
 window.stackShots=function(){cards=[].slice.call(document.querySelectorAll('#shots .sc'));upd()};
-function upd(){tick=false;if(rm||!cards.length||document.getElementById('project').hidden)return;
-for(var i=0;i<cards.length;i++){var inner=cards[i].firstChild,nx=cards[i+1];if(!nx){inner.style.transform='';inner.style.filter='';continue}
+function upd(){tick=false;if(document.getElementById('project').hidden){document.body.classList.remove('nav-hide-g');return}if(!cards.length)return;var rmo=rm;
+for(var i=0;i<cards.length&&!rmo;i++){var inner=cards[i].firstChild,nx=cards[i+1];if(!nx){inner.style.transform='';inner.style.filter='';continue}
 var a=cards[i].getBoundingClientRect(),b=nx.getBoundingClientRect(),p=Math.min(1,Math.max(0,1-(b.top-a.top)/a.height));
-inner.style.transform='scale('+(1-p*.08).toFixed(4)+')';inner.style.filter='brightness('+(1-p*.45).toFixed(3)+')'}}
+inner.style.transform='scale('+(1-p*.08).toFixed(4)+')';inner.style.filter=p>.001?'blur('+(p*10).toFixed(2)+'px)':'';inner.style.opacity=(1-p*.65).toFixed(3)}
+var sh=document.getElementById('shots'),nv=document.querySelector('#project .nav');if(sh&&nv){var a2=sh.getBoundingClientRect(),n2=nv.getBoundingClientRect();document.body.classList.toggle('nav-hide-g',a2.top<n2.bottom+8&&a2.bottom>n2.top)}}
 function on(){if(!tick){tick=true;requestAnimationFrame(upd)}}
 addEventListener('scroll',on,{passive:true});addEventListener('resize',on);stackShots()})();
 </script>
