@@ -60,6 +60,8 @@ gallery: [
 ],
 ```
 
+Setiap baris tampil sebagai kartu setinggi layar yang menumpuk saat di-scroll: kartu berikutnya naik menimpa, dan kartu sebelumnya mengecil serta meredup. Karena tinggi kartu mengikuti layar, gambar dipotong otomatis dari tengah.
+
 Kalau jumlah `portrait` atau `small` yang berurutan tidak pas (misal 3 portrait berturut-turut), sisanya otomatis dilebarkan supaya tidak ada lubang kosong.
 Bisa juga menentukan bentuk secara manual: `{ src: "foto-apa-saja.webp", size: "wide" }` (`wide`, `portrait`, atau `small`).
 
