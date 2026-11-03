@@ -39,13 +39,20 @@
   title: "Halcyon",          // <br> = line break
   brief: "Halcyon had grown through acquisitions into five logos and no shared rules. Working as the extra design team for their branding agency, we built one identity — mark, type, colour and a guide — that every regional office now uses.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "Five acquired companies, five logos and no shared rules. Every regional office presented Halcyon differently."],
+    ["The mark", "A calm rising-sun symbol joins the companies under one horizon. It stays simple enough to sit beside each regional name without competing."],
+    ["The system", "One master kit with type, colour, grids and templates replaced 220 scattered files, so every office now works from the same source."]
+  ],
+
   quote: {
     text: "We stopped arguing about the logo and started using it. Every office now looks like the same company.",
     name: "Mara Linde",
     role: "Chief brand officer, Halcyon"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Consolidation", "Five legacy logos replaced by one identity.", "5 → 1"],
     ["Rollout", "Identity and guide delivered in eleven weeks.", "11 wks"],

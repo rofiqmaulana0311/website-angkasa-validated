@@ -38,13 +38,20 @@
   title: "Northwind",          // <br> = line break
   brief: "Northwind's name was strong but its look belonged to the company it used to be. Alongside their agency's strategy team, we redrew the identity — mark, type and colour — and built the guidelines they rolled out to every store.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "The name was strong, but the look belonged to the company Northwind used to be: dated, heavy and hard to use online."],
+    ["The mark", "We redrew the arrow into a lighter, more confident form that points forward without losing the recognition built over the years."],
+    ["The system", "A wider type range, a crisp colour palette and a 48-page guide replaced six old decks and let stores relaunch in a single week."]
+  ],
+
   quote: {
     text: "Our sales team finally has a story they believe, and a look that backs it up.",
     name: "Henrik Olsen",
     role: "CEO, Northwind"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Refresh", "Mark redrawn, name and equity kept.", "Redrawn"],
     ["Rollout", "Stores and sales material relaunched in one week.", "1 week"],

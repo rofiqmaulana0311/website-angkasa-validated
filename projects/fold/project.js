@@ -40,13 +40,20 @@
   title: "Fold<br>Apparel",          // <br> = line break
   brief: "A retail agency won FOLD+ with no designer free for eleven weeks. We joined their team on a monthly contract and built the identity end to end: wordmark, monogram, type and colour, plus a guide their account team now presents from.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "FOLD+ sells modular apparel built from a few precise folds. The old look was generic streetwear and said nothing about the idea behind the product."],
+    ["The mark", "We built the wordmark and monogram from a single folded square, so the logo carries the product's own construction. The plus sign marks the modular range."],
+    ["The system", "A tight palette of ink, paper and one signal colour, a sharp grotesk and fold-based layouts give the agency a kit they can roll out across store, web and packaging."]
+  ],
+
   quote: {
     text: "We pitched it as ours and it was the strongest work in the room. Angkasa felt like the senior team we never had time to hire.",
     name: "Noor Haddad",
     role: "Creative director, partner agency"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Capacity", "One extra senior designer for the length of the project, no hiring.", "+1 senior"],
     ["Speed", "Brief to approved identity in eleven weeks.", "11 wks"],

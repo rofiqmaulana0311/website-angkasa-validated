@@ -39,13 +39,20 @@
   title: "Ostra",          // <br> = line break
   brief: "OSTRA is an IT solution network company focused on delivering reliable, secure and scalable digital infrastructure for modern businesses. We designed an identity — mark, type and colour — that feels as dependable as the networks it builds.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "OSTRA builds network infrastructure for modern businesses, but its old look felt like any other IT supplier."],
+    ["The mark", "A layered circular symbol suggests connected nodes and stable signal, solid enough to feel dependable and simple enough for small screens."],
+    ["The system", "Type, colour and layout rules gathered in one guide, with files for screen, print and signage so the team can use the brand from day one."]
+  ],
+
   quote: {
     text: "The new identity finally looks like the company we are: solid, calm and built to scale.",
     name: "Tomas Reyes",
     role: "Founder, Ostra"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Mark", "A symbol built on the idea of a stable network.", "1 mark"],
     ["System", "Type, colour and layout rules in one guide.", "1 guide"],

@@ -39,13 +39,20 @@
   title: "Meridian",          // <br> = line break
   brief: "Meridian was launching a new line while their agency was stretched across three launches at once. We took the identity of the new line off their plate: logo, packaging system and launch assets, delivered in nine weeks under the agency's name.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "A new product line needed its own identity while the agency was running three launches at once."],
+    ["The mark", "A globe split by a single meridian line ties the line back to the parent brand while giving it a clear identity of its own."],
+    ["The system", "The packaging system uses one grid and one colour per variant, so the range reads as a family on shelf and scales to new products easily."]
+  ],
+
   quote: {
     text: "Our client never knew we had help. They just knew it shipped on time and looked right.",
     name: "Elena Costa",
     role: "Managing partner, partner agency"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Timeline", "Identity and packaging in nine weeks.", "9 wks"],
     ["Load", "One of three parallel launches taken off the agency's desk.", "1 of 3"],

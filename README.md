@@ -180,3 +180,9 @@ Harga dan ketentuannya (tanpa minimal kontrak, pause kapan saja, cancel 14 hari 
 ## Link sosial di footer
 
 Footer berisi Behance (angkasa___studio), Dribbble (Angkasa_Studio), LinkedIn (sementara profil Rofiq Maulana), Instagram (angkasa___studio), WhatsApp, dan Email. Untuk mengubahnya, buka `index.html` dan cari `wf-links`.
+
+## Teks cerita dan Results di halaman project
+
+Halaman project kini menampilkan galeri biasa (tanpa efek tumpuk/parallax), dengan:
+- **3 teks cerita di antara gambar:** diambil dari `story` di `project.js`, format `["Judul", "Isi"]`. Teks ditempatkan otomatis di sekitar 1/4, 2/4, dan 3/4 galeri.
+- **Results setelah gambar terakhir:** diambil dari `results` di `project.js`, format `["Judul", "Penjelasan", "Angka"]`, tampil 4 kolom.

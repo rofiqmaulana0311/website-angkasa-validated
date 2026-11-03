@@ -38,13 +38,20 @@
   title: "Aurel",          // <br> = line break
   brief: "Aurel was renaming and needed a mark before launch day, not after. On a monthly retainer with their agency, we took the logo from first sketches to final files in three weeks, with app icon, favicon and social versions ready to ship.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "Aurel was renaming and needed a mark ready before launch day, with app icon and social versions included."],
+    ["The mark", "Two overlapping circles, one open and one solid, show the link between Aurel and the people it serves. Simple, ownable and easy to animate."],
+    ["The system", "Three weeks from first sketches to final files, with favicon, app icon and social avatars delivered ready to ship."]
+  ],
+
   quote: {
     text: "We added a logo designer for a month instead of hiring for a year. The mark was ready before the launch plan was.",
     name: "Priya Nair",
     role: "Founder, partner agency"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Speed", "Sketch to final files in three weeks.", "3 wks"],
     ["Formats", "App icon, favicon and social versions included.", "All sizes"],

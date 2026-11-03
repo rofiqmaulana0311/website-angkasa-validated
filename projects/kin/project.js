@@ -38,13 +38,20 @@
   title: "KIN",          // <br> = line break
   brief: "KIN needed a mark that worked as an app icon, a sticker and a sign. Their agency brought us in for a four-week logo sprint: forty sketches, three routes and one mark tested at every size from 16 pixels to a storefront.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "KIN needed one mark that works as an app icon, a sticker and a storefront sign, at 16 pixels and at four metres."],
+    ["The mark", "Three connected circles stand for the people the app brings together. It reads as a face, a family and a K, depending on the size."],
+    ["The system", "The mark was tested at every size first, then paired with a friendly lowercase wordmark and a small set of rounded shapes for the product."]
+  ],
+
   quote: {
     text: "Three routes in two weeks, all of them presentable. Our client signed off in the first round.",
     name: "Jonas Weber",
     role: "Design director, partner agency"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Sprint", "Logo delivered in four weeks.", "4 wks"],
     ["Exploration", "Forty sketches narrowed to three routes.", "40 → 3"],

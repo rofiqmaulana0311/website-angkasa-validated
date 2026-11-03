@@ -38,13 +38,20 @@
   title: "Luma",          // <br> = line break
   brief: "Luma's agency had the campaign covered but no time for the mark itself. We designed the Luma symbol and wordmark, then built a simple animated version so the logo arrives on screen the same way every time.",
 
+  // Three short texts placed between the gallery images (title + body)
+  story: [
+    ["The challenge", "Luma's agency had the campaign ready but no time for the mark itself, and the launch date could not move."],
+    ["The mark", "A four-point spark captures the moment a light switches on. It works in one colour and stays sharp on screen and in print."],
+    ["The system", "We designed a simple animated version so the logo arrives the same way in every film, story and screen, with files ready for the campaign team."]
+  ],
+
   quote: {
     text: "We handed over the logo brief on Monday and stopped worrying about it. Angkasa handled the rest.",
     name: "Sofia Marchetti",
     role: "Account director, partner agency"
   },
 
-  // Stored for the case study (not shown on the page yet)
+  // Shown as "Results" after the last gallery image: [title, text, figure]
   results: [
     ["Mark", "Symbol and wordmark designed together.", "2 marks"],
     ["Motion", "One animated logo for every screen.", "1 animation"],

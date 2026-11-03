@@ -421,7 +421,7 @@ a.status:hover .st-img{transform:scale(.97)}
 .menu{position:fixed;z-index:29}
 body.nav-scrolled .nav{opacity:.9;background:rgba(17,17,17,.66);border-color:rgba(255,255,255,.1)}
 body.nav-scrolled .nav:hover,body.nav-scrolled .nav:focus-within{opacity:1}
-body.nav-hide .nav,body.nav-hide-g #project .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
+body.nav-hide .nav{opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-24px);pointer-events:none;transition:opacity .9s var(--ne),transform .9s var(--ne),background-color .9s ease,visibility 0s .9s}
 @media(prefers-reduced-motion:reduce){.nav{transition:opacity .2s linear}}
 /* client logo marquee under the intro: slow, seamless, pauses on hover */
 .marq{--gap:clamp(44px,5vw,80px);position:relative;overflow:hidden;margin:clamp(32px,4vw,56px) auto 0;max-width:1200px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
@@ -633,16 +633,6 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .pt-stamp.out b{opacity:0;transition-delay:0s}
 .pt-box{position:fixed;inset:0;z-index:24;background:#0d0d0d;overflow:hidden;pointer-events:none}
 .pt-ghost{position:absolute;left:0;right:0;background:#fff;will-change:transform}
-/* project gallery: rows stack like cards while scrolling */
-.shots{display:block;padding:0 clamp(12px,1.4vw,24px)}
-.shots .sc{position:sticky;top:clamp(86px,8vw,110px);height:calc(100vh - clamp(110px,10vw,140px));height:calc(100svh - clamp(110px,10vw,140px));margin-bottom:clamp(40px,6vh,80px);aspect-ratio:auto;background:none;border-radius:0}
-.shots .sc:last-child{margin-bottom:0}
-.shots .sc,.shots .sc-in{width:100%;aspect-ratio:auto!important;grid-column:auto!important;background:none}
-.shots .sc-in{background:none}
-.shots .sc-in{display:grid;gap:clamp(4px,.5vw,8px);height:100%;transform-origin:50% 0;will-change:transform,filter,opacity;border-radius:10px}
-.shots .sc-in.c2{grid-template-columns:1fr 1fr}.shots .sc-in.c3{grid-template-columns:repeat(3,1fr)}
-.shots .sc-in span{display:block;border-radius:10px;background-color:#111;background-size:cover;background-position:center}
-@media(max-width:640px){.shots .sc{height:72vh;height:72svh;top:84px}.shots .sc-in.c3{grid-template-columns:1fr 1fr}.shots .sc-in.c3 span:last-child{grid-column:1/-1}}
 /* staggered columns: used for Works and the other section pages */
 .pt-cols{position:fixed;inset:0;z-index:28;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none;visibility:hidden}
 .pt-cols span{background:#fff;transform:scaleY(0);transform-origin:50% 100%;margin-right:-1px}
@@ -657,11 +647,6 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 html.intro-on,html.intro-on body{overflow:hidden}
 html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .nav{opacity:0}
 .hero h1,.hero .status,#home>.hero .nav{transition:opacity .8s cubic-bezier(.4,0,.2,1)}
-/* gallery: original proportions (16:9 wide, 4:5 portrait, 1:1 small), sized to fit the screen */
-.shots .sc{height:auto!important;display:flex;justify-content:center}
-.shots .sc-in{height:auto!important;width:min(100%,calc((100vh - clamp(130px,12vw,170px)) * var(--r,1.78)));width:min(100%,calc((100svh - clamp(130px,12vw,170px)) * var(--r,1.78)))}
-.shots .sc-in.c1 span{aspect-ratio:16/9}.shots .sc-in.c2 span{aspect-ratio:4/5}.shots .sc-in.c3 span{aspect-ratio:1}
-@media(max-width:640px){.shots .sc-in{width:100%}.shots .sc-in.c3 span:last-child{aspect-ratio:2}}
 /* next project: compact, title left and card right */
 .nxt{display:grid;grid-template-columns:1fr minmax(0,1.15fr);gap:clamp(20px,3vw,48px);align-items:end;padding:clamp(70px,8vw,130px) clamp(12px,1.6vw,26px) 0}
 .nxt{align-items:center}
@@ -671,9 +656,22 @@ html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .na
 .nxt-l .nxt-all{display:inline-block;margin-top:18px;font-size:14px;text-decoration:underline;text-underline-offset:3px;color:#333}
 .nxt .nx{aspect-ratio:16/10;max-height:440px;width:100%}
 @media(max-width:640px){.nxt{grid-template-columns:1fr}.nxt-l{justify-self:start}.nxt .nx{aspect-ratio:4/3}}
-/* gallery parallax drift: each image moves a little slower than the page inside its frame */
-.shots .sc-in span{position:relative;overflow:hidden}
-.shots .sc-in span i{position:absolute;left:0;right:0;top:-10%;bottom:-10%;background-size:cover;background-position:center;background-repeat:no-repeat;will-change:transform}
+/* project page: plain gallery with story texts between images and results at the end */
+.pg .shots+.shots{margin-top:clamp(4px,.5vw,8px)}
+.pg-story{display:grid;grid-template-columns:1fr 2fr;gap:clamp(20px,3vw,48px);padding:clamp(80px,9vw,150px) clamp(12px,1.4vw,24px)}
+.pg-story small{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#666;padding-top:.5em}
+.pg-story p{margin:0;max-width:720px;font-size:clamp(22px,2.2vw,34px);line-height:1.25;font-weight:500;letter-spacing:-.03em;color:#111}
+.pg-res{padding:clamp(90px,10vw,170px) clamp(12px,1.4vw,24px) 0}
+.pg-res-h small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666;margin-bottom:14px}
+.pg-res-h h2{margin:0 0 clamp(30px,4vw,60px);font-size:clamp(30px,3.4vw,52px);line-height:1;font-weight:600;letter-spacing:-.04em}
+.pg-res-g{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d9d9d3}
+.pg-res-g>div{padding:clamp(22px,2.6vw,38px) clamp(12px,1.4vw,22px) 0 0}
+.pg-res-g>div+div{padding-left:clamp(12px,1.4vw,22px);border-left:1px solid #d9d9d3}
+.pg-res-g b{display:block;font-size:clamp(32px,3.6vw,56px);line-height:1;font-weight:600;letter-spacing:-.045em}
+.pg-res-g em{display:block;margin-top:14px;font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#666}
+.pg-res-g p{margin:10px 0 0;font-size:15px;line-height:1.45;color:#444;max-width:300px}
+@media(max-width:900px){.pg-res-g{grid-template-columns:1fr 1fr;row-gap:30px}.pg-res-g>div:nth-child(3){border-left:0;padding-left:0}}
+@media(max-width:640px){.pg-story{grid-template-columns:1fr;gap:14px;padding:64px 12px}}
 </style>
 </head>
 <body>
@@ -729,7 +727,7 @@ html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .na
   <h1>Fold<br>Apparel</h1>
 </header>
 <section class="brief cols"><h2>The brief.</h2><p>FOLD+ had three storefronts, two checkout flows and a design file no one trusted. We rebuilt the product surface as one system — tokens, components and templates their engineers own — then shipped the new shop alongside them over eleven weeks.</p></section>
-<section class="shots" id="shots"></section>
+<section class="pg" id="shots"></section>
 <section class="quote cols"><div class="ph"></div><div><div class="qmeta"><span>In their words</span><span>Nine months after launch</span></div><p class="qtxt">The old file was a museum. What we have now is a library our engineers actually pull from, and the shop has not drifted since.</p><div class="who"><i></i><div>Noor Haddad<small>Head of digital, Fold</small></div></div></div></section>
 <section class="nxt"><div class="nxt-l"><small>[ Up next ]</small><h2>Next<br>project.</h2><a class="nxt-all" href="#works">All works</a></div>
 <a class="wc nx" id="nx" href="#works"></a></section>
@@ -904,9 +902,13 @@ q('.p-hero small').textContent=d.meta;st(q('.p-hero h1'),d.title);st(q('.brief p
 var G=(I.gallery||[]).map(function(g){var f=typeof g==='string'?g:g.src,s=(typeof g==='object'&&g.size)||(/wide/i.test(f)?'wide':/small|square/i.test(f)?'small':'portrait');return{f:f,s:s}});
 for(var gi=0;gi<G.length;){var s=G[gi].s,gj=gi;while(gj<G.length&&G[gj].s===s)gj++;var per=s==='small'?3:s==='portrait'?2:1,left=(gj-gi)%per;if(left)for(var gx=gj-left;gx<gj;gx++)G[gx].o=left;gi=gj}
 var rows=[],cur=null,cap=0;G.forEach(function(g){var full=g.s==='wide'||g.o===1,per=full?1:(g.s==='small'&&g.o!==2?3:2);if(!cur||cur.n>=cap||cur.s!==g.s+(g.o||'')){cur={s:g.s+(g.o||''),n:0,items:[]};cap=per;rows.push(cur)}cur.items.push(g);cur.n++});
-function ratio(g){return (g.s==='wide'||g.o===1)?16/9:(g.s==='small'&&g.o!==2)?1:.8}
-q('#shots').innerHTML=rows.map(function(r,ri){var rr=r.items.reduce(function(a,g){return a+ratio(g)},0);return '<div class="sc" style="--k:'+ri+'"><div class="sc-in c'+r.items.length+'" style="--r:'+rr.toFixed(4)+'">'+r.items.map(function(g){return '<span><i style="background-image:'+U(k,g.f)+'"></i></span>'}).join('')+'</div></div>'}).join('');
-if(window.stackShots)stackShots();
+var cell=function(g){return '<div class="'+g.s+(g.o?' o'+g.o:'')+'" style="background-image:'+U(k,g.f)+'"></div>'},
+ST=d.story||[],cut=ST.map(function(_,n){return Math.max(1,Math.round(rows.length*(n+1)/(ST.length+1)))}),out='',grp=[],si=0;
+rows.forEach(function(r,ri){grp=grp.concat(r.items);if(si<ST.length&&ri+1===cut[si]){out+='<div class="shots">'+grp.map(cell).join('')+'</div>';grp=[];
+out+='<div class="pg-story"><small>'+String(si+1).padStart(2,'0')+' · '+esc(ST[si][0])+'</small><p>'+esc(ST[si][1])+'</p></div>';si++}});
+if(grp.length)out+='<div class="shots">'+grp.map(cell).join('')+'</div>';
+var RS=d.results||[];if(RS.length)out+='<div class="pg-res"><div class="pg-res-h"><small>[ Results ]</small><h2>What changed.</h2></div><div class="pg-res-g">'+RS.map(function(x){return '<div><b>'+esc(x[2])+'</b><em>'+esc(x[0])+'</em><p>'+esc(x[1])+'</p></div>'}).join('')+'</div></div>';
+q('#shots').innerHTML=out;if(window.splitEl)[].forEach.call(document.querySelectorAll('#shots .pg-res h2'),function(e){splitEl(e)});if(window.arm)setTimeout(arm,30);
 var ks=Object.keys(PJ),nk=ks[(ks.indexOf(k)+1)%ks.length],nc=document.querySelector('.wc[data-s="'+nk+'"]'),nx=q('#nx');if(nc&&nx){nx.href='#'+nk;nx.style.backgroundImage=nc.style.backgroundImage;nx.innerHTML=nc.innerHTML}
 st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i'+(I.avatar?' style="background-image:'+U(k,I.avatar)+'"':'')+'></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
 var ph=q('.quote .ph');ph.style.backgroundImage=U(k,I.quote);ph.style.backgroundSize='cover';ph.style.backgroundPosition='center'};
@@ -1126,21 +1128,6 @@ var ic=b.querySelector('i svg');if(ic&&!ic.nextElementSibling)ic.parentNode.appe
 </script>
 <script>
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-to]');if(!a)return;var id=a.dataset.to;setTimeout(function(){var t=document.getElementById(id);if(!t)return;var y=t.getBoundingClientRect().top+scrollY-20;if(window.lenis)lenis.scrollTo(y,{duration:1.2});else scrollTo({top:y,behavior:'smooth'})},location.hash==='#home'||location.hash===''?0:250)});
-</script>
-<script>
-/* gallery card stack: each row shrinks and dims as the next one slides over it */
-(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,cards=[],tick=false;
-window.stackShots=function(){cards=[].slice.call(document.querySelectorAll('#shots .sc'));upd()};
-function upd(){tick=false;if(document.getElementById('project').hidden){document.body.classList.remove('nav-hide-g');return}if(!cards.length)return;var rmo=rm;
-var vh=innerHeight;for(var i=0;i<cards.length&&!rmo;i++){var inner=cards[i].firstChild,nx=cards[i+1],cr=cards[i].getBoundingClientRect(),stk=parseFloat(getComputedStyle(cards[i]).top)||0,pe=Math.min(1,Math.max(0,(cr.top-stk)/Math.max(1,vh-stk))),pc=0;
-if(nx){var nb=nx.getBoundingClientRect();pc=Math.min(1,Math.max(0,1-(nb.top-cr.top)/cr.height))}
-var ty=(pe*8-pc*5).toFixed(2);inner.querySelectorAll('i').forEach(function(x){x.style.transform='translate3d(0,'+ty+'%,0)'});
-if(!nx){inner.style.transform='';inner.style.filter='';continue}
-var a=cards[i].getBoundingClientRect(),b=nx.getBoundingClientRect(),p=Math.min(1,Math.max(0,1-(b.top-a.top)/a.height));
-inner.style.transform='scale('+(1-p*.08).toFixed(4)+')';inner.style.filter=p>.001?'blur('+(p*10).toFixed(2)+'px)':'';inner.style.opacity=(1-p*.65).toFixed(3)}
-var sh=document.getElementById('shots'),nv=document.querySelector('#project .nav');if(sh&&nv){var a2=sh.getBoundingClientRect(),n2=nv.getBoundingClientRect();document.body.classList.toggle('nav-hide-g',a2.top<n2.bottom+8&&a2.bottom>n2.top)}}
-function on(){if(!tick){tick=true;requestAnimationFrame(upd)}}
-addEventListener('scroll',on,{passive:true});addEventListener('resize',on);stackShots()})();
 </script>
 <script>
 /* run the first-load intro */
