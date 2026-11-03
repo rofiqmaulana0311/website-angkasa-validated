@@ -657,6 +657,18 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 html.intro-on,html.intro-on body{overflow:hidden}
 html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .nav{opacity:0}
 .hero h1,.hero .status,#home>.hero .nav{transition:opacity .8s cubic-bezier(.4,0,.2,1)}
+/* gallery: original proportions (16:9 wide, 4:5 portrait, 1:1 small), sized to fit the screen */
+.shots .sc{height:auto!important;display:flex;justify-content:center}
+.shots .sc-in{height:auto!important;width:min(100%,calc((100vh - clamp(130px,12vw,170px)) * var(--r,1.78)));width:min(100%,calc((100svh - clamp(130px,12vw,170px)) * var(--r,1.78)))}
+.shots .sc-in.c1 span{aspect-ratio:16/9}.shots .sc-in.c2 span{aspect-ratio:4/5}.shots .sc-in.c3 span{aspect-ratio:1}
+@media(max-width:640px){.shots .sc-in{width:100%}.shots .sc-in.c3 span:last-child{aspect-ratio:2}}
+/* next project: compact, title left and card right */
+.nxt{display:grid;grid-template-columns:1fr minmax(0,1.15fr);gap:clamp(20px,3vw,48px);align-items:end;padding:clamp(70px,8vw,130px) clamp(12px,1.6vw,26px) 0}
+.nxt-l small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666;margin-bottom:14px}
+.nxt-l h2{margin:0;font-size:clamp(30px,3.4vw,52px);line-height:1;font-weight:600;letter-spacing:-.04em}
+.nxt-l .nxt-all{display:inline-block;margin-top:18px;font-size:14px;text-decoration:underline;text-underline-offset:3px;color:#333}
+.nxt .nx{aspect-ratio:16/10;max-height:440px;width:100%}
+@media(max-width:640px){.nxt{grid-template-columns:1fr}.nxt .nx{aspect-ratio:4/3}}
 </style>
 </head>
 <body>
@@ -714,7 +726,7 @@ html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .na
 <section class="brief cols"><h2>The brief.</h2><p>FOLD+ had three storefronts, two checkout flows and a design file no one trusted. We rebuilt the product surface as one system — tokens, components and templates their engineers own — then shipped the new shop alongside them over eleven weeks.</p></section>
 <section class="shots" id="shots"></section>
 <section class="quote cols"><div class="ph"></div><div><div class="qmeta"><span>In their words</span><span>Nine months after launch</span></div><p class="qtxt">The old file was a museum. What we have now is a library our engineers actually pull from, and the shop has not drifted since.</p><div class="who"><i></i><div>Noor Haddad<small>Head of digital, Fold</small></div></div></div></section>
-<section class="nxt"><div class="head"><h2>Next<br>project.</h2><p>[ Up next ]<br><a href="#works">All works</a></p></div>
+<section class="nxt"><div class="nxt-l"><small>[ Up next ]</small><h2>Next<br>project.</h2><a class="nxt-all" href="#works">All works</a></div>
 <a class="wc nx" id="nx" href="#works"></a></section>
 </div>
 <div id="works" hidden>
@@ -887,7 +899,8 @@ q('.p-hero small').textContent=d.meta;st(q('.p-hero h1'),d.title);st(q('.brief p
 var G=(I.gallery||[]).map(function(g){var f=typeof g==='string'?g:g.src,s=(typeof g==='object'&&g.size)||(/wide/i.test(f)?'wide':/small|square/i.test(f)?'small':'portrait');return{f:f,s:s}});
 for(var gi=0;gi<G.length;){var s=G[gi].s,gj=gi;while(gj<G.length&&G[gj].s===s)gj++;var per=s==='small'?3:s==='portrait'?2:1,left=(gj-gi)%per;if(left)for(var gx=gj-left;gx<gj;gx++)G[gx].o=left;gi=gj}
 var rows=[],cur=null,cap=0;G.forEach(function(g){var full=g.s==='wide'||g.o===1,per=full?1:(g.s==='small'&&g.o!==2?3:2);if(!cur||cur.n>=cap||cur.s!==g.s+(g.o||'')){cur={s:g.s+(g.o||''),n:0,items:[]};cap=per;rows.push(cur)}cur.items.push(g);cur.n++});
-q('#shots').innerHTML=rows.map(function(r,ri){return '<div class="sc" style="--k:'+ri+'"><div class="sc-in c'+r.items.length+'">'+r.items.map(function(g){return '<span style="background-image:'+U(k,g.f)+'"></span>'}).join('')+'</div></div>'}).join('');
+function ratio(g){return (g.s==='wide'||g.o===1)?16/9:(g.s==='small'&&g.o!==2)?1:.8}
+q('#shots').innerHTML=rows.map(function(r,ri){var rr=r.items.reduce(function(a,g){return a+ratio(g)},0);return '<div class="sc" style="--k:'+ri+'"><div class="sc-in c'+r.items.length+'" style="--r:'+rr.toFixed(4)+'">'+r.items.map(function(g){return '<span style="background-image:'+U(k,g.f)+'"></span>'}).join('')+'</div></div>'}).join('');
 if(window.stackShots)stackShots();
 var ks=Object.keys(PJ),nk=ks[(ks.indexOf(k)+1)%ks.length],nc=document.querySelector('.wc[data-s="'+nk+'"]'),nx=q('#nx');if(nc&&nx){nx.href='#'+nk;nx.style.backgroundImage=nc.style.backgroundImage;nx.innerHTML=nc.innerHTML}
 st(q('.qtxt'),d.quote.text);q('.who').innerHTML='<i'+(I.avatar?' style="background-image:'+U(k,I.avatar)+'"':'')+'></i><div>'+esc(d.quote.name)+'<small>'+esc(d.quote.role)+'</small></div>';
@@ -1086,7 +1099,8 @@ wm.classList.remove('go');wm.innerHTML='<span class="sl">'+t.innerHTML+'</span><
 clearTimeout(timer);timer=setTimeout(function(){wm.classList.remove('go');wm.textContent=to;cur=to;busy=false;if(want!==cur)flip(want)},760)}
 function pick(){tick=false;if(home.hidden){set('Angkasa Studio');return}
 var r=nav.getBoundingClientRect(),y=r.top+r.height/2,L=logos.getBoundingClientRect(),A=wk.getBoundingClientRect(),B=grid.getBoundingClientRect();
-set(y>=A.top&&y<=B.bottom?'Selected Works':(y>B.bottom&&y<=L.bottom?'Logo Collection':'Angkasa Studio'))}
+var N=document.querySelector('#home .notes').getBoundingClientRect(),P=document.getElementById('pricing-home').getBoundingClientRect();
+set(y>=A.top&&y<=B.bottom?'Selected Works':(y>B.bottom&&y<=L.bottom?'Logo Collection':(y>L.bottom&&y<=N.bottom?'Journal':(y>N.bottom&&y<=P.bottom?'Pricing':'Angkasa Studio'))))}
 function set(t){want=t;if(!busy&&t!==cur)flip(t)}
 function on(){if(!tick){tick=true;requestAnimationFrame(pick)}}
 addEventListener('scroll',on,{passive:true});addEventListener('resize',on);addEventListener('hashchange',function(){setTimeout(on,60)});on()})();
