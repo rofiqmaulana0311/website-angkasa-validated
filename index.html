@@ -615,12 +615,12 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 #home main.wrap{padding-bottom:clamp(60px,6vw,110px)}
 @media(max-width:640px){#home .intro{padding:90px 16px 70px}#home .head.hc{margin-top:96px;margin-bottom:32px}#home .notes .head.hc,#home .pr-home .head.hc,#home .lc-head{margin-top:96px}}
 /* page transition: a soft curtain fades in, the page swaps underneath, then fades out */
-.pt-curtain{position:fixed;inset:0;z-index:25;background:#f1f1ec;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .75s cubic-bezier(.65,0,.35,1),visibility 0s .75s}
-.pt-curtain.on{opacity:1;visibility:visible;transition:opacity .5s cubic-bezier(.65,0,.35,1),visibility 0s}
+.pt-curtain{position:fixed;inset:0;z-index:25;background:#f1f1ec;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .6s cubic-bezier(.33,1,.68,1),visibility 0s .6s}
+.pt-curtain.on{opacity:1;visibility:visible;transition:opacity .4s cubic-bezier(.32,0,.67,0),visibility 0s}
 /* menu closes slowly and smoothly */
-.menu,.menu{transition:opacity .7s ease .15s,transform 1s var(--e),clip-path 1s var(--e),visibility 0s 1.15s,background-color .9s ease,border-color .9s ease}
+.menu,.menu{transition:opacity .55s cubic-bezier(.32,0,.67,0) .1s,transform .8s cubic-bezier(.32,0,.67,0),clip-path .8s cubic-bezier(.32,0,.67,0),visibility 0s .9s,background-color .9s ease,border-color .9s ease}
 .menu.open{transition:opacity .3s ease,transform .6s var(--e),clip-path .75s var(--e),visibility 0s,background-color .9s ease,border-color .9s ease}
-.menu li,.menu .go{transition:opacity .45s ease,transform .7s var(--e);transition-delay:calc((5 - var(--n,0))*35ms)}
+.menu li,.menu .go{transition:opacity .35s cubic-bezier(.32,0,.67,0),transform .55s cubic-bezier(.32,0,.67,0);transition-delay:calc((5 - var(--n,0))*28ms)}
 @media(prefers-reduced-motion:reduce){.pt-curtain{display:none}}
 </style>
 </head>
@@ -789,7 +789,7 @@ function same(a,b){var pa=(a||'#home').split('/')[0],pb=(b||'#home').split('/')[
 addEventListener('hashchange',function(){var h=location.hash,prev=last;last=h;
 if(rm||!cur||same(prev,h)){route();return}
 clearTimeout(busy);cur.classList.add('on');
-busy=setTimeout(function(){route();requestAnimationFrame(function(){requestAnimationFrame(function(){cur.classList.remove('on')})})},520)});
+busy=setTimeout(function(){route();requestAnimationFrame(function(){requestAnimationFrame(function(){cur.classList.remove('on')})})},420)});
 route()})();
 </script>
 <script src="assets/logos/logos.js"></script>
