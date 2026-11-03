@@ -595,6 +595,13 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .pr-grid-home .pr-feat ul{border-top-color:rgba(255,255,255,.12)}
 .pr-grid-home .pr-feat{background:#111}
 @media(max-width:900px){.pr-grid{grid-template-columns:1fr}.pr-card ul{margin-bottom:24px}}
+/* homepage section heads: centered heading with a short body */
+.head.hc{display:block;text-align:center;max-width:640px;margin-left:auto;margin-right:auto}
+.head.hc small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#666;margin-bottom:14px}
+.head.hc h2{font-size:clamp(30px,3.4vw,52px);line-height:1;letter-spacing:-.04em}
+.head.hc .hc-b{margin:16px auto 0;max-width:460px;text-align:center;font-size:clamp(16px,1.3vw,19px);line-height:1.45;text-transform:none;letter-spacing:-.01em;color:#555;padding:0}
+.head.hc .hc-b a{color:#111;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+@media(max-width:640px){.head.hc{display:block;text-align:center}.head.hc .hc-b{text-align:center}}
 </style>
 </head>
 <body>
@@ -617,25 +624,25 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 </header>
 
 <section class="intro">
-  <p>Angkasa is the extra design team agencies call when the briefs pile up. Brand identity and logo design, on a monthly contract, under your name.</p>
+  <p>Your extra design team for brand identity and logos. Monthly, under your name.</p>
   <div class="marq" aria-label="Clients"><ul class="marq-track"><li><svg viewBox="0 0 92 32" role="img" aria-label="Fold+" fill="currentColor"><path d="M2 6h20v20H2z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M2 6l20 20H2z"/><text x="30" y="23" font-family="Inter,system-ui,sans-serif" font-size="19" font-weight="700" letter-spacing="-.5">FOLD+</text></svg></li><li><svg viewBox="0 0 118 32" role="img" aria-label="Meridian+" fill="currentColor"><circle cx="14" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 3v26" stroke="currentColor" stroke-width="2"/><ellipse cx="14" cy="16" rx="5" ry="11" fill="none" stroke="currentColor" stroke-width="1.6"/><text x="33" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="500" letter-spacing="-.4">Meridian+</text></svg></li><li><svg viewBox="0 0 145 32" role="img" aria-label="Halcyon" fill="currentColor"><path d="M3 23a11 11 0 0 1 22 0z"/><path d="M1 27h26" stroke="currentColor" stroke-width="2"/><text x="35" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="3">HALCYON®</text></svg></li><li><svg viewBox="0 0 62 32" role="img" aria-label="Kin" fill="currentColor"><circle cx="7" cy="9" r="4.5"/><circle cx="19" cy="9" r="4.5"/><circle cx="13" cy="20" r="4.5"/><text x="31" y="24" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="700" letter-spacing="-1">kin</text></svg></li><li><svg viewBox="0 0 98 32" role="img" aria-label="Luma" fill="currentColor"><path d="M14 2c1.2 7.3 4.7 10.8 12 12-7.3 1.2-10.8 4.7-12 12-1.2-7.3-4.7-10.8-12-12 7.3-1.2 10.8-4.7 12-12z"/><text x="34" y="23" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="500" letter-spacing="-.6">Luma®</text></svg></li><li><svg viewBox="0 0 149 32" role="img" aria-label="Northwind" fill="currentColor"><path d="M13 3l10 22-10-6-10 6z"/><text x="31" y="22.5" font-family="Inter,system-ui,sans-serif" font-size="14.5" font-weight="700" letter-spacing="2.6">NORTHWIND</text></svg></li><li><svg viewBox="0 0 79 32" role="img" aria-label="Ostra" fill="currentColor"><circle cx="13" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="16" r="4"/><text x="31" y="23" font-family="Georgia,'Times New Roman',serif" font-size="21" font-style="italic" letter-spacing="-.3">Ostra</text></svg></li><li><svg viewBox="0 0 98 32" role="img" aria-label="Aurel+" fill="currentColor"><circle cx="10" cy="16" r="8" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="19" cy="16" r="8"/><text x="35" y="23" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600" letter-spacing="-.6">Aurel+</text></svg></li></ul></div>
 </section>
 
 <main class="wrap">
-  <div class="head" id="works-sec"><h2>Work<br>that lasts.</h2><p>[ Featured ]<br>Brand identity, logo design</p></div>
+  <div class="head hc" id="works-sec"><small>[ Featured ]</small><h2>Work that lasts.</h2><p class="hc-b">Identities and logos we designed alongside agencies, delivered under their name. <a href="#works">All works</a></p></div>
   <div class="grid" id="hgrid"></div>
 
   <section class="ifield-sec" id="logos" aria-labelledby="lc-h">
-    <div class="head lc-head"><h2 id="lc-h">Logo<br>collection.</h2><p>[ Logo design ]<br>28 marks, 2017–2026</p></div>
+    <div class="head hc lc-head"><small>[ Logo design ]</small><h2 id="lc-h">Logo collection.</h2><p class="hc-b">28 marks for founders, products and campaigns. Drag the field to explore.</p></div>
     <div class="ifield" id="ifield" role="img" aria-label="Logos of brands we have worked with"></div>
   </section>
 
   <section class="notes">
-    <div class="head" style="margin:0"><h2>Notes from the<br>studio.</h2><p>[ Journal ]<br><a href="#journal">All articles</a></p></div>
+    <div class="head hc" style="margin-top:0"><small>[ Journal ]</small><h2>Notes from the studio.</h2><p class="hc-b">Short notes on logos, brands and working with agencies. <a href="#journal">All articles</a></p></div>
     <div class="jn-cards" id="hposts"></div>
   </section>
   <section class="pr-home" id="pricing-home">
-    <div class="head"><h2>Plans.</h2><p>[ Pricing ]<br><a href="#pricing">All plans and FAQ</a></p></div>
+    <div class="head hc"><small>[ Pricing ]</small><h2>Plans.</h2><p class="hc-b">Simple monthly plans. Senior designers, white-label, no long contracts. <a href="#pricing">Compare plans</a></p></div>
     <div class="pr-grid pr-grid-home"><div class="pr-card"><b class="pr-name">Logo</b><p class="pr-tag">For agencies that need marks, fast.</p><p class="pr-price"><strong>$790</strong><span>/ month</span></p><p class="pr-cap">Up to 2 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 active brief at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>3 logo routes per brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 rounds of revisions</li></ul><a class="btn  pr-go" href="#contact" data-plan="Logo">Choose Logo <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card pr-feat"><em class="pr-pop">Most popular</em><b class="pr-name">Brand</b><p class="pr-tag">For agencies with identity work piling up.</p><p class="pr-price"><strong>$1,490</strong><span>/ month</span></p><p class="pr-cap">1 full identity or 3 logos a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>2 active briefs at a time</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Logo, type, colour and graphic language</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Brand guidelines (PDF)</li></ul><a class="btn btn-light pr-go" href="#contact" data-plan="Brand">Choose Brand <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div><div class="pr-card"><b class="pr-name">Dedicated</b><p class="pr-tag">Your own senior designer, full time.</p><p class="pr-price"><strong>$2,490</strong><span>/ month</span></p><p class="pr-cap">About 160 design hours a month</p><ul><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>1 dedicated senior designer</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Creative director review on every brief</li><li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>Up to 3 active briefs</li></ul><a class="btn  pr-go" href="#contact" data-plan="Dedicated">Choose Dedicated <i aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M3 9l6-6M4 3h5v5"/></svg></i></a></div></div>
   </section>
 </main>
