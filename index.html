@@ -649,9 +649,22 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .pt-cols.in span{transform:scaleY(1);transition:transform .47s cubic-bezier(.76,0,.24,1) calc(var(--i)*55ms)}
 .pt-cols.in.out span{transform:scaleY(0);transform-origin:50% 0}
 @media(max-width:640px){.pt-cols{grid-template-columns:repeat(4,1fr)}.pt-cols span:nth-child(n+5){display:none}}
+/* first-load intro: the astronaut image starts small, grows into the hero, then hands over to it */
+.boot{position:fixed;inset:0;z-index:40;background:#f1f1ec;transition:background-color .7s ease}
+.boot-img{position:absolute;left:50%;top:50%;width:min(26vw,320px);aspect-ratio:16/10;transform:translate(-50%,-50%) scale(.92);opacity:0;border-radius:10px;background:#1a1f2a url(assets/hero-home.webp) 60% center/cover no-repeat;transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+.boot.s1 .boot-img{opacity:1;transform:translate(-50%,-50%)}
+.boot.s2 .boot-img{transition:left 1.15s cubic-bezier(.76,0,.24,1),top 1.15s cubic-bezier(.76,0,.24,1),width 1.15s cubic-bezier(.76,0,.24,1),height 1.15s cubic-bezier(.76,0,.24,1),transform 1.15s cubic-bezier(.76,0,.24,1),border-radius 1.15s ease,opacity .6s ease}
+.boot.s3{background:transparent}
+.boot.s3 .boot-img{opacity:0;transition:opacity .8s ease}
+html.intro-on,html.intro-on body{overflow:hidden}
+html.intro-on .hero h1,html.intro-on .hero .status,html.intro-on #home>.hero .nav{opacity:0}
+.hero h1,.hero .status,#home>.hero .nav{transition:opacity .6s ease}
+@media(max-width:640px){.boot-img{width:62vw}}
 </style>
 </head>
 <body>
+<div class="boot" id="boot" aria-hidden="true"><div class="boot-img"></div></div>
+<script>(function(){var h=location.hash;if((h&&h!=='#home')||matchMedia('(prefers-reduced-motion: reduce)').matches){var e=document.getElementById('boot');e.parentNode.removeChild(e)}else document.documentElement.classList.add('intro-on')})();</script>
 <nav class="menu" id="menu" aria-label="Main">
 <ul>
 <li><a class="it" href="#home">Home<svg viewBox="0 0 12 12"><path d="M3.4 8.9l5-5M4.4 3.9h4v4"/></svg></a></li>
@@ -1106,6 +1119,19 @@ var a=cards[i].getBoundingClientRect(),b=nx.getBoundingClientRect(),p=Math.min(1
 inner.style.transform='scale('+(1-p*.08).toFixed(4)+')';inner.style.filter='brightness('+(1-p*.45).toFixed(3)+')'}}
 function on(){if(!tick){tick=true;requestAnimationFrame(upd)}}
 addEventListener('scroll',on,{passive:true});addEventListener('resize',on);stackShots()})();
+</script>
+<script>
+/* run the first-load intro */
+(function(){var o=document.getElementById('boot');if(!o)return;var im=o.firstChild,root=document.documentElement;
+function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+function done(){root.classList.remove('intro-on');if(window.lenis&&lenis.start)lenis.start();var h=document.querySelector('.hero h1');if(h&&h.classList.contains('rv')){h.classList.remove('in');void h.offsetWidth;setTimeout(function(){h.classList.add('in')},40)}}
+var pic=new Image();pic.src='assets/hero-home.webp';
+var ready=new Promise(function(r){if(pic.decode)pic.decode().then(r,r);else pic.onload=r;setTimeout(r,2500)});
+(async function(){if(window.lenis&&lenis.stop)lenis.stop();scrollTo(0,0);await ready;o.classList.add('s1');await wait(850);
+var h=document.querySelector('.hero').getBoundingClientRect(),r=im.getBoundingClientRect();
+im.style.left=r.left+'px';im.style.top=r.top+'px';im.style.width=r.width+'px';im.style.height=r.height+'px';im.style.transform='none';void im.offsetWidth;
+o.classList.add('s2');im.style.left=h.left+'px';im.style.top=h.top+'px';im.style.width=h.width+'px';im.style.height=h.height+'px';
+await wait(1150);done();o.classList.add('s3');await wait(850);o.remove()})()})();
 </script>
 </body>
 </html>
