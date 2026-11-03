@@ -602,6 +602,18 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
 .head.hc .hc-b{margin:16px auto 0;max-width:460px;text-align:center;font-size:clamp(16px,1.3vw,19px);line-height:1.45;text-transform:none;letter-spacing:-.01em;color:#555;padding:0}
 .head.hc .hc-b a{color:#111;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 @media(max-width:640px){.head.hc{display:block;text-align:center}.head.hc .hc-b{text-align:center}}
+/* homepage: more white space between sections */
+#home .intro{padding:clamp(110px,13vw,220px) 20px clamp(90px,10vw,170px)}
+#home .intro p{font-size:clamp(24px,2.6vw,40px);max-width:760px}
+#home .marq{margin-top:clamp(48px,5vw,80px)}
+#home .head.hc{margin-top:clamp(120px,14vw,240px);margin-bottom:clamp(40px,4.6vw,76px)}
+#home .head.hc small{margin-bottom:20px}
+#home .head.hc h2{font-size:clamp(34px,4.4vw,68px)}
+#home .head.hc .hc-b{margin-top:22px;max-width:500px;font-size:clamp(17px,1.4vw,20px)}
+#home .notes,#home .ifield-sec,#home .pr-home{margin-top:0}
+#home .notes .head.hc,#home .pr-home .head.hc,#home .lc-head{margin-top:clamp(120px,14vw,240px)}
+#home main.wrap{padding-bottom:clamp(60px,6vw,110px)}
+@media(max-width:640px){#home .intro{padding:90px 16px 70px}#home .head.hc{margin-top:96px;margin-bottom:32px}#home .notes .head.hc,#home .pr-home .head.hc,#home .lc-head{margin-top:96px}}
 </style>
 </head>
 <body>
@@ -638,7 +650,7 @@ body.nav-scrolled .menu,body.works .menu,body.contact .menu,body.journal .menu{b
   </section>
 
   <section class="notes">
-    <div class="head hc" style="margin-top:0"><small>[ Journal ]</small><h2>Notes from the studio.</h2><p class="hc-b">Short notes on logos, brands and working with agencies. <a href="#journal">All articles</a></p></div>
+    <div class="head hc"><small>[ Journal ]</small><h2>Notes from the studio.</h2><p class="hc-b">Short notes on logos, brands and working with agencies. <a href="#journal">All articles</a></p></div>
     <div class="jn-cards" id="hposts"></div>
   </section>
   <section class="pr-home" id="pricing-home">
