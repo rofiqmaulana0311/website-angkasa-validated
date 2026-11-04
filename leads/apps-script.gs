@@ -58,10 +58,71 @@ function doPost(e) {
       clean_(d.whatsapp), clean_(d.plan), clean_(d.message),
       'New', '', now
     ]);
-    return json_({ ok: true, id: id });
+    return json_({ ok: true, id: id, mailed: mail_(d) });
   } finally {
     lock.releaseLock();
   }
+}
+
+/**
+ * Optional e-mails, sent from the Google account that owns this script.
+ * Turn on by adding the script property NOTIFY_EMAIL (e.g. hello@angkasastudio.space).
+ * Sends you a notification and the enquirer a short thank-you.
+ * Returns true when the notification went out, so the website can skip its backup e-mail service.
+ */
+function mail_(d) {
+  const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL');
+  if (!to) return false;
+  // simple flood guard: at most 30 e-mails per hour
+  const cache = CacheService.getScriptCache();
+  const n = Number(cache.get('mails') || 0);
+  if (n >= 30) return false;
+  cache.put('mails', String(n + 1), 3600);
+  const s = function (v) { return String(v == null ? '' : v).trim().slice(0, 2000); };
+  const email = s(d.email);
+  const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const wa = s(d.whatsapp);
+  const waLink = wa ? '  →  https://wa.me/' + wa.replace(/[^0-9]/g, '').replace(/^0/, '62') : '';
+  try {
+    const msg = {
+      to: to,
+      subject: 'New enquiry from ' + (s(d.agency) || s(d.name)) + ' (angkasastudio.space)',
+      name: 'Angkasa Studio website',
+      body: [
+        'Plan: ' + (s(d.plan) || '-'),
+        'Name: ' + s(d.name),
+        'Email: ' + email,
+        'Agency: ' + (s(d.agency) || '-'),
+        'Website: ' + (s(d.website) || '-'),
+        'WhatsApp: ' + (wa ? wa + waLink : '-'),
+        '',
+        'Message:',
+        s(d.message) || '-',
+        '',
+        'Manage this lead: https://website-angkasa-validated.vercel.app/dashboard'
+      ].join('\n')
+    };
+    if (okEmail) msg.replyTo = email;
+    MailApp.sendEmail(msg);
+  } catch (err) {
+    return false;
+  }
+  if (okEmail) {
+    try {
+      MailApp.sendEmail({
+        to: email,
+        replyTo: to,
+        name: 'Angkasa Studio',
+        subject: 'Thanks for reaching out to Angkasa Studio',
+        body: 'Hi ' + s(d.name) + ',\n\nThanks for reaching out to Angkasa Studio. We have received your enquiry' +
+          (s(d.agency) ? ' for ' + s(d.agency) : '') +
+          ' and will reply within two working days with a team and a monthly plan that fits.\n\n' +
+          'Need something sooner? Message us on WhatsApp: +62 877 8059 7311.\n\n' +
+          'Angkasa Studio\nYour invincible design team\nhello@angkasastudio.space'
+      });
+    } catch (err) { /* the notification already went out */ }
+  }
+  return true;
 }
 
 /** Dashboard reads and updates. Always needs the key. */

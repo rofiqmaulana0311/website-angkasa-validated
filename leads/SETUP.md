@@ -36,7 +36,15 @@ window.LEADS_URL = 'https://script.google.com/macros/s/XXXX/exec';
 - Status lead: New → Contacted → Call booked → Proposal sent → Won / Lost. Catatan tersimpan otomatis saat kotak notes ditinggalkan.
 - Contoh tampilan tanpa data asli: `/dashboard?demo`.
 
+## 6. Email notifikasi dari Apps Script (disarankan)
+Supaya email tidak bergantung pada FormSubmit:
+1. Di Apps Script, tempel ulang isi `leads/apps-script.gs` terbaru (Ctrl+A → paste → Save).
+2. **Project Settings → Script Properties → Add**: `NOTIFY_EMAIL` = `hello@angkasastudio.space`.
+3. **Deploy → Manage deployments → ikon pensil → Version: New version → Deploy**. Izinkan akses baru (kirim email) bila diminta. URL tetap sama.
+
+Setelah itu setiap enquiry: kamu dapat email notifikasi, pengirim dapat balasan otomatis (dikirim dari akun Google pemilik Sheet, dengan reply-to ke `hello@angkasastudio.space`), dan FormSubmit tidak dipakai lagi. Batas Gmail gratis: 100 email/hari.
+
 ## Catatan
-- Email dari FormSubmit tetap jalan seperti biasa; Sheet hanya tambahan.
+- Form dianggap terkirim bila lead tersimpan di Sheet. FormSubmit hanya dipakai sebagai cadangan email bila `NOTIFY_EMAIL` belum diset, dengan batas waktu 15 detik.
 - Kalau script diubah, deploy ulang lewat **Deploy → Manage deployments → Edit → Version: New version** supaya URL tetap sama.
 - Data lead juga bisa dilihat langsung di Google Sheet-nya.

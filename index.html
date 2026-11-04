@@ -945,11 +945,16 @@ var data={plan:pl,name:v('name'),email:v('email'),agency:v('agency'),website:v('
 _subject:'New enquiry from '+v('agency')+' (angkasastudio.space)',_replyto:v('email'),_template:'table',_captcha:'false',
 _autoresponse:'Hi '+v('name')+',\n\nThanks for reaching out to Angkasa Studio. We have received your enquiry for '+v('agency')+' and will reply within two working days with a team and a monthly plan that fits.\n\nNeed something sooner? Message us on WhatsApp: +62 877 8059 7311.\n\nAngkasa Studio\nYour invincible design team\nhello@angkasastudio.space'};
 btn.disabled=true;m.textContent='Sending…';
-/* also store the lead in the Google Sheet behind /dashboard (fire and forget) */
-if(window.LEADS_URL){try{fetch(LEADS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name:v('name'),email:v('email'),agency:v('agency'),website:v('website'),whatsapp:v('whatsapp'),plan:pl,message:v('message'),_honey:v('_honey')})}).catch(function(){})}catch(_){}}
-fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-.then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
-.then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})
+/* 1) store the lead in the Google Sheet behind /dashboard (it can also send the e-mails)
+   2) FormSubmit e-mail as a backup, with a time limit so a slow server never blocks the form */
+function within(ms,p){return Promise.race([p,new Promise(function(_,no){setTimeout(function(){no('timeout')},ms)})])}
+var sheet=window.LEADS_URL?within(15000,fetch(LEADS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name:v('name'),email:v('email'),agency:v('agency'),website:v('website'),whatsapp:v('whatsapp'),plan:pl,message:v('message'),_honey:v('_honey')})}).then(function(r){return r.json()})).then(function(j){return j&&j.ok?j:null},function(){return null}):Promise.resolve(null);
+sheet.then(function(s){
+  if(s&&s.mailed)return true;
+  var mail=within(15000,fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}).then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})).catch(function(){return false});
+  return mail.then(function(sent){return sent||!!s});
+})
+.then(function(ok){if(!ok)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})
 .catch(function(){m.innerHTML='Something went wrong. Please email us at <a href="mailto:'+TO+'">'+TO+'</a> or message us on WhatsApp.'})
 .then(function(){btn.disabled=false})});
 })();
