@@ -865,6 +865,7 @@ busy=true;try{if(isHome(h))await stamp();else await columns()}catch(e){route()}b
 route()})();
 </script>
 <script src="assets/logos/logos.js"></script>
+<script src="leads/config.js"></script>
 <script src="journal/posts.js"></script>
 <script src="projects/fold/project.js"></script>
 <script src="projects/halcyon/project.js"></script>
@@ -944,6 +945,8 @@ var data={plan:pl,name:v('name'),email:v('email'),agency:v('agency'),website:v('
 _subject:'New enquiry from '+v('agency')+' (angkasastudio.space)',_replyto:v('email'),_template:'table',_captcha:'false',
 _autoresponse:'Hi '+v('name')+',\n\nThanks for reaching out to Angkasa Studio. We have received your enquiry for '+v('agency')+' and will reply within two working days with a team and a monthly plan that fits.\n\nNeed something sooner? Message us on WhatsApp: +62 877 8059 7311.\n\nAngkasa Studio\nYour invincible design team\nhello@angkasastudio.space'};
 btn.disabled=true;m.textContent='Sending…';
+/* also store the lead in the Google Sheet behind /dashboard (fire and forget) */
+if(window.LEADS_URL){try{fetch(LEADS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name:v('name'),email:v('email'),agency:v('agency'),website:v('website'),whatsapp:v('whatsapp'),plan:pl,message:v('message'),_honey:v('_honey')})}).catch(function(){})}catch(_){}}
 fetch('https://formsubmit.co/ajax/'+KEY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
 .then(function(r){return r.json().then(function(j){return r.ok&&String(j.success)!=='false'})})
 .then(function(sent){if(!sent)throw 0;m.textContent='Thanks. We will reply within two working days with a team and a plan.';f.reset()})

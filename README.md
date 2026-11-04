@@ -186,3 +186,8 @@ Footer berisi Behance (angkasa___studio), Dribbble (Angkasa_Studio), LinkedIn (s
 Halaman project kini menampilkan galeri biasa (tanpa efek tumpuk/parallax), dengan:
 - **3 teks cerita di antara gambar:** diambil dari `story` di `project.js`, format `["Judul", "Isi"]`. Teks ditempatkan otomatis di sekitar 1/4, 2/4, dan 3/4 galeri.
 - **Results setelah gambar terakhir:** diambil dari `results` di `project.js`, format `["Judul", "Penjelasan", "Angka"]`, tampil 4 kolom.
+
+## Dashboard leads (/dashboard)
+
+Halaman `/dashboard` menampilkan semua enquiry dari form Contact: ringkasan angka, paket yang diminta, pipeline status, daftar lead dengan status dan catatan. Datanya disimpan di Google Sheet lewat Google Apps Script.
+Cara memasangnya ada di `leads/SETUP.md`. Contoh tampilan dengan data contoh: `/dashboard?demo`.

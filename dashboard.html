@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Leads · Angkasa Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f1ec;--card:#fff;--ink:#111;--mute:#6b6b66;--line:#e2e2dc;--dark:#0d0d0d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:16px clamp(12px,2vw,28px) 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px;padding:0 16px;margin-bottom:28px;border-radius:12px;background:var(--dark);color:#fff}
+.top .brand{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.top svg{width:24px;height:auto}
+.top .acts{display:flex;gap:8px}
+.ghost{height:36px;padding:0 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:14px;cursor:pointer}
+.ghost:hover{background:rgba(255,255,255,.08)}
+h1{margin:0;font-size:clamp(34px,4vw,56px);line-height:1;font-weight:600;letter-spacing:-.045em}
+.sub{margin:10px 0 28px;color:var(--mute);font-size:15px}
+.note{margin:0 0 20px;padding:12px 14px;border-radius:8px;background:#fff6dd;border:1px solid #f0dfa8;font-size:14px;line-height:1.45}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:8px}
+.kpi{background:var(--card);border-radius:10px;padding:18px 18px 16px}
+.kpi small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.kpi b{display:block;margin-top:12px;font-size:clamp(28px,2.8vw,40px);line-height:1;font-weight:600;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.kpi span{display:block;margin-top:8px;font-size:13px;color:var(--mute)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px}
+.panel{background:var(--card);border-radius:10px;padding:18px}
+.panel h2{margin:0 0 14px;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:110px 1fr 34px;align-items:center;gap:10px;font-size:14px}
+.bar i{display:block;height:10px;border-radius:5px;background:#ecebe5;overflow:hidden}
+.bar i u{display:block;height:100%;background:var(--ink);border-radius:5px;text-decoration:none}
+.bar em{font-style:normal;text-align:right;font-variant-numeric:tabular-nums;color:var(--mute)}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+.chip{height:34px;padding:0 13px;border-radius:999px;border:1px solid #d6d6cf;background:transparent;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip em{font-style:normal;opacity:.6;margin-left:4px}
+.search{margin-left:auto;height:36px;width:min(280px,100%);padding:0 12px;border-radius:8px;border:1px solid #d6d6cf;background:#fff}
+.list{display:grid;gap:8px}
+.lead{display:grid;grid-template-columns:96px 1.3fr 1fr 150px 1.4fr;gap:16px;align-items:start;background:var(--card);border-radius:10px;padding:16px 18px}
+.lead .d{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;padding-top:2px}
+.lead .who b{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em}
+.lead .who span{display:block;margin-top:3px;font-size:14px;color:var(--mute)}
+.lead .who a.site{font-size:13px;color:var(--mute)}
+.lead .plan{display:table;margin-top:10px;padding:3px 9px;border-radius:999px;background:#ecebe5;font-size:12px}
+.lead .ct{display:grid;gap:6px;font-size:14px}
+.lead .ct a{text-decoration:none;word-break:break-all}
+.lead .ct a:hover{text-decoration:underline}
+.st{width:100%;height:36px;padding:0 10px;border-radius:7px;border:1px solid #d6d6cf;background:#fff;cursor:pointer}
+.st[data-v="New"]{background:#111;color:#fff;border-color:#111}
+.st[data-v="Won"]{background:#e3f1df;border-color:#bcdcb3}
+.st[data-v="Lost"]{background:#f3e2df;border-color:#e2c2bc;color:#7a2e22}
+.lead .msg{font-size:14px;line-height:1.45;color:#333;white-space:pre-wrap}
+.lead textarea{width:100%;min-height:58px;margin-top:10px;padding:8px 10px;border-radius:7px;border:1px solid #e2e2dc;background:#fafaf7;resize:vertical;font-size:13px}
+.saved{font-size:12px;color:var(--mute);height:16px;margin-top:4px}
+.empty{padding:40px;text-align:center;color:var(--mute);background:var(--card);border-radius:10px}
+/* login */
+.gate{min-height:100vh;display:grid;place-items:center;padding:20px}
+.gate form{width:min(380px,100%);background:#fff;border-radius:12px;padding:28px}
+.gate h1{font-size:30px}
+.gate p{color:var(--mute);font-size:14px;line-height:1.5;margin:10px 0 22px}
+.gate input{width:100%;height:44px;padding:0 12px;border-radius:8px;border:1px solid #d6d6cf}
+.gate button{margin-top:12px;width:100%;height:44px;border:0;border-radius:8px;background:var(--ink);color:#fff;cursor:pointer}
+.gate .err{color:#b23a2b;font-size:14px;min-height:20px;margin-top:10px}
+.gate .demo{display:block;margin-top:14px;text-align:center;font-size:13px;color:var(--mute)}
+[hidden]{display:none!important}
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(3,1fr)}.lead{grid-template-columns:1fr 1fr}.lead .d{grid-column:1/-1}.lead .msgc{grid-column:1/-1}}
+@media(max-width:640px){.kpis{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}.lead{grid-template-columns:1fr}.search{margin-left:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <form id="login">
+    <h1>Leads</h1>
+    <p>Angkasa Studio dashboard. Enter the dashboard key you set in the Google Apps Script.</p>
+    <input id="key" type="password" autocomplete="current-password" placeholder="Dashboard key" required>
+    <button type="submit">Open dashboard</button>
+    <div class="err" id="err"></div>
+    <a class="demo" href="?demo">Preview with sample data</a>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <header class="top">
+    <div class="brand"><svg viewBox="0.1 0 158.5 138.5" fill="#fff" aria-hidden="true"><path fill-rule="evenodd" d="M135.08 134.96L70.52 70.41l20.81 5.58c15.61-6.06 25.79-13.07 24.54-17.74-1.18-4.43-12.42-5.54-27.79-3.42-5.71-6.43-14.75-9.46-23.63-7.09-8.87 2.38-15.18 9.53-16.91 17.95-14.38 5.84-23.55 12.42-22.36 16.87 1.53 5.7 19.69 5.9 41.87.8l-14.75 55.08C25.12 131.17 4.4 108.04.7 79.57l-.08-.66A70.4 70.4 0 0 1 70.52 0c19.45 0 37.05 7.88 49.79 20.62l14.77-14.77h23.46v129.11z"/></svg>Angkasa Studio · Leads</div>
+    <div class="acts"><button class="ghost" id="refresh" type="button">Refresh</button><button class="ghost" id="logout" type="button">Log out</button></div>
+  </header>
+  <h1>Leads.</h1>
+  <p class="sub" id="sub">Enquiries from the Contact form.</p>
+  <p class="note" id="demoNote" hidden>Sample data. Nothing here is saved. Set up the Google Sheet (leads/SETUP.md) to see real leads.</p>
+
+  <section class="kpis" id="kpis"></section>
+  <section class="row2">
+    <div class="panel"><h2>Plans requested</h2><div class="bars" id="byPlan"></div></div>
+    <div class="panel"><h2>Pipeline</h2><div class="bars" id="byStatus"></div></div>
+  </section>
+
+  <div class="tools" id="tools"><input class="search" id="q" type="search" placeholder="Search name, agency, email"></div>
+  <div class="list" id="list"></div>
+</div>
+
+<script src="leads/config.js"></script>
+<script>
+(function(){
+var STATUSES=['New','Contacted','Call booked','Proposal sent','Won','Lost'];
+var PLANS=['Logo','Brand','Dedicated','Custom'];
+var URL_=window.LEADS_URL||'',DEMO=/[?&]demo\b/.test(location.search),KEY='',leads=[],filter='All';
+function $(i){return document.getElementById(i)}
+function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;')}
+function store(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v)}catch(e){return null}}
+function api(params){var q=Object.keys(params).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(params[k])}).join('&');
+  return fetch(URL_+(URL_.indexOf('?')<0?'?':'&')+'key='+encodeURIComponent(KEY)+'&'+q).then(function(r){return r.json()})}
+function demo(){var n=Date.now(),d=864e5;function t(x){return new Date(n-x*d).toISOString()}
+  return [
+  {id:'a1',date:t(.2),name:'Dana Putri',email:'dana@northlight.co',agency:'Northlight',website:'northlight.co',whatsapp:'0812 3456 7890',plan:'Brand',message:'Two identity briefs landing next month, need help with both.',status:'New',notes:''},
+  {id:'a2',date:t(1.4),name:'Marco Ruiz',email:'marco@studioalta.es',agency:'Studio Alta',website:'studioalta.es',whatsapp:'',plan:'Logo',message:'Looking for a logo partner for small clients.',status:'Contacted',notes:'Sent portfolio PDF.'},
+  {id:'a3',date:t(3),name:'Aisha Rahman',email:'aisha@brightfold.com',agency:'Brightfold',website:'brightfold.com',whatsapp:'+44 7700 900123',plan:'Dedicated',message:'We need a senior designer embedded for Q1.',status:'Call booked',notes:'Call Thu 4pm WIB.'},
+  {id:'a4',date:t(6),name:'Tom Becker',email:'tom@hausmeister.de',agency:'Hausmeister',website:'hausmeister.de',whatsapp:'',plan:'Brand',message:'',status:'Proposal sent',notes:'Proposal v2 sent.'},
+  {id:'a5',date:t(9),name:'Lena Ong',email:'lena@pixelharbour.sg',agency:'Pixel Harbour',website:'pixelharbour.sg',whatsapp:'+65 8123 4567',plan:'Custom',message:'Mix of logos and refresh work, around 4 a month.',status:'Won',notes:'Started 1 Nov.'},
+  {id:'a6',date:t(14),name:'Raka Pratama',email:'raka@kolektif.id',agency:'Kolektif',website:'kolektif.id',whatsapp:'0857 1111 2222',plan:'Logo',message:'Budget is tight this quarter.',status:'Lost',notes:'Revisit in Feb.'},
+  {id:'a7',date:t(19),name:'Sofia Marchetti',email:'sofia@lumen.it',agency:'Lumen',website:'lumen.it',whatsapp:'',plan:'Brand',message:'',status:'Won',notes:''}]}
+function load(){$('sub').textContent='Loading…';
+  if(DEMO){leads=demo();return Promise.resolve(render())}
+  return api({action:'list'}).then(function(r){if(!r.ok)throw new Error(r.error||'error');leads=r.leads||[];render()})}
+function ago(iso){var d=(Date.now()-new Date(iso))/864e5;return d<1?'Today':d<2?'Yesterday':Math.floor(d)+' days ago'}
+function fmt(iso){var d=new Date(iso);return isNaN(d)?'':d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})}
+function wa(n){var x=String(n||'').replace(/[^0-9]/g,'').replace(/^0/,'62');return x?'https://wa.me/'+x:''}
+function bars(el,keys,counts){var max=Math.max(1,Math.max.apply(null,keys.map(function(k){return counts[k]||0})));
+  el.innerHTML=keys.map(function(k){var c=counts[k]||0;return '<div class="bar"><span>'+esc(k)+'</span><i><u style="width:'+(c/max*100)+'%"></u></i><em>'+c+'</em></div>'}).join('')}
+function render(){
+  var now=Date.now(),wk=7*864e5,month=new Date();month.setDate(1);month.setHours(0,0,0,0);
+  var by={},bp={};leads.forEach(function(l){by[l.status]=(by[l.status]||0)+1;bp[l.plan||'—']=(bp[l.plan||'—']||0)+1});
+  var closed=(by.Won||0)+(by.Lost||0),win=closed?Math.round((by.Won||0)/closed*100):0;
+  var thisWeek=leads.filter(function(l){return now-new Date(l.date)<wk}).length,thisMonth=leads.filter(function(l){return new Date(l.date)>=month}).length;
+  $('kpis').innerHTML=[['Total leads',leads.length,'All time'],['New',by.New||0,'Not contacted yet'],['This week',thisWeek,thisMonth+' this month'],['Won',by.Won||0,(by['Proposal sent']||0)+((by['Proposal sent']||0)===1?' proposal out':' proposals out')],['Win rate',closed?win+'%':'—',closed+' closed']]
+    .map(function(k){return '<div class="kpi"><small>'+k[0]+'</small><b>'+k[1]+'</b><span>'+k[2]+'</span></div>'}).join('');
+  bars($('byPlan'),PLANS.concat(Object.keys(bp).filter(function(k){return PLANS.indexOf(k)<0})),bp);
+  bars($('byStatus'),STATUSES,by);
+  var t=$('tools');t.querySelectorAll('.chip').forEach(function(c){c.remove()});
+  ['All'].concat(STATUSES).reverse().forEach(function(s){var b=document.createElement('button');b.className='chip';b.type='button';b.setAttribute('aria-pressed',s===filter);b.innerHTML=esc(s)+'<em>'+(s==='All'?leads.length:(by[s]||0))+'</em>';b.onclick=function(){filter=s;render()};t.insertBefore(b,t.firstChild)});
+  list();$('sub').textContent='Enquiries from the Contact form · '+leads.length+' total';$('demoNote').hidden=!DEMO}
+function list(){var q=$('q').value.trim().toLowerCase();
+  var rows=leads.filter(function(l){return (filter==='All'||l.status===filter)&&(!q||[l.name,l.agency,l.email,l.website].join(' ').toLowerCase().indexOf(q)>=0)})
+    .sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+  $('list').innerHTML=rows.length?rows.map(function(l){var w=wa(l.whatsapp),site=l.website?String(l.website).replace(/^https?:\/\//,''):'';
+    return '<article class="lead" data-id="'+esc(l.id)+'"><div class="d">'+fmt(l.date)+'<br>'+ago(l.date)+'</div>'+
+    '<div class="who"><b>'+esc(l.name)+'</b><span>'+esc(l.agency)+'</span>'+(site?'<a class="site" href="https://'+esc(site)+'" target="_blank" rel="noopener">'+esc(site)+'</a>':'')+(l.plan?'<div class="plan">'+esc(l.plan)+'</div>':'')+'</div>'+
+    '<div class="ct"><a href="mailto:'+esc(l.email)+'">'+esc(l.email)+'</a>'+(w?'<a href="'+w+'" target="_blank" rel="noopener">WhatsApp '+esc(l.whatsapp)+'</a>':'')+'</div>'+
+    '<div><select class="st" data-v="'+esc(l.status)+'" aria-label="Status">'+STATUSES.map(function(s){return '<option'+(s===l.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select><div class="saved"></div></div>'+
+    '<div class="msgc"><div class="msg">'+(l.message&&l.message!=='-'?esc(l.message):'<span style="color:#999">No message</span>')+'</div><textarea placeholder="Notes" aria-label="Notes">'+esc(l.notes||'')+'</textarea></div></article>'}).join('')
+    :'<div class="empty">'+(leads.length?'No leads match this filter.':'No leads yet. New enquiries from the Contact form will appear here.')+'</div>'}
+function save(id,patch,el){var l=leads.filter(function(x){return String(x.id)===String(id)})[0];if(!l)return;
+  var msg=el.closest('.lead').querySelector('.saved');msg.textContent='Saving…';
+  Object.keys(patch).forEach(function(k){l[k]=patch[k]});
+  var p=DEMO?Promise.resolve({ok:true}):api(Object.assign({action:'update',id:id},patch));
+  p.then(function(r){if(!r.ok)throw 0;msg.textContent=DEMO?'Saved (demo)':'Saved';setTimeout(function(){msg.textContent=''},1800);if(patch.status)render()})
+   .catch(function(){msg.textContent='Could not save'})}
+document.addEventListener('change',function(e){if(e.target.classList.contains('st')){e.target.dataset.v=e.target.value;save(e.target.closest('.lead').dataset.id,{status:e.target.value},e.target)}});
+document.addEventListener('focusout',function(e){if(e.target.tagName==='TEXTAREA'&&e.target.closest('.lead')){var l=leads.filter(function(x){return String(x.id)===e.target.closest('.lead').dataset.id})[0];if(l&&(l.notes||'')!==e.target.value)save(l.id,{notes:e.target.value},e.target)}});
+$('q').addEventListener('input',list);
+$('refresh').onclick=function(){load().catch(function(){$('sub').textContent='Could not load leads.'})};
+$('logout').onclick=function(){store('ak_key',null);location.href=location.pathname};
+function open_(){$('gate').hidden=true;$('app').hidden=false;return load()}
+$('login').onsubmit=function(e){e.preventDefault();$('err').textContent='';
+  if(!URL_){$('err').textContent='The leads sheet is not connected yet (leads/config.js). Try the sample data.';return}
+  KEY=$('key').value.trim();api({action:'list'}).then(function(r){if(!r.ok){$('err').textContent=r.error==='unauthorized'?'Wrong key.':'Could not reach the sheet.';return}
+    store('ak_key',KEY);leads=r.leads||[];$('gate').hidden=true;$('app').hidden=false;render()}).catch(function(){$('err').textContent='Could not reach the sheet. Check the web app URL and access.'})};
+if(DEMO)open_();else{var k=store('ak_key');if(k&&URL_){KEY=k;open_().catch(function(){store('ak_key',null);$('gate').hidden=false;$('app').hidden=true})}}
+})();
+</script>
+</body>
+</html>
