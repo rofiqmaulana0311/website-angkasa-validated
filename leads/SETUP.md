@@ -32,7 +32,7 @@ window.LEADS_URL = 'https://script.google.com/macros/s/XXXX/exec';
 (atau kirim URL-nya ke Claude untuk dipasangkan), lalu push.
 
 ## 5. Pakai dashboard
-- Buka `https://website-angkasa-validated.vercel.app/dashboard`, masukkan `DASHBOARD_KEY`.
+- Buka `https://angkasastudio.space/dashboard`, masukkan `DASHBOARD_KEY`.
 - Status lead: New → Contacted → Call booked → Proposal sent → Won / Lost. Catatan tersimpan otomatis saat kotak notes ditinggalkan.
 - Contoh tampilan tanpa data asli: `/dashboard?demo`.
 

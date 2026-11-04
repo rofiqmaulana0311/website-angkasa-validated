@@ -89,7 +89,7 @@ function telegram_(d) {
   const buttons = [];
   const wa = s(d.whatsapp).replace(/[^0-9]/g, '').replace(/^0/, '62');
   if (wa.length >= 8) buttons.push({ text: 'WhatsApp', url: 'https://wa.me/' + wa });
-  buttons.push({ text: 'Open dashboard', url: 'https://website-angkasa-validated.vercel.app/dashboard' });
+  buttons.push({ text: 'Open dashboard', url: 'https://angkasastudio.space/dashboard' });
   try {
     UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
       method: 'post',
@@ -170,7 +170,7 @@ function mail_(d) {
         'Message:',
         s(d.message) || '-',
         '',
-        'Manage this lead: https://website-angkasa-validated.vercel.app/dashboard'
+        'Manage this lead: https://angkasastudio.space/dashboard'
       ].join('\n')
     };
     if (okEmail) msg.replyTo = email;
