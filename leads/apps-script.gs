@@ -58,10 +58,81 @@ function doPost(e) {
       clean_(d.whatsapp), clean_(d.plan), clean_(d.message),
       'New', '', now
     ]);
+    telegram_(d);
     return json_({ ok: true, id: id, mailed: mail_(d) });
   } finally {
     lock.releaseLock();
   }
+}
+
+/**
+ * Optional Telegram notification for every new lead.
+ * Needs script properties TELEGRAM_TOKEN (from @BotFather) and TELEGRAM_CHAT_ID.
+ * The chat id is filled in for you by running telegramSetup() once (see leads/SETUP.md).
+ */
+function telegram_(d) {
+  const props = PropertiesService.getScriptProperties();
+  const token = props.getProperty('TELEGRAM_TOKEN');
+  const chat = props.getProperty('TELEGRAM_CHAT_ID');
+  if (!token || !chat) return false;
+  const s = function (v) { return String(v == null ? '' : v).trim().slice(0, 600); };
+  const h = function (v) { return s(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+  const lines = [
+    '🔔 <b>New lead</b>' + (s(d.plan) ? ' · ' + h(d.plan) : ''),
+    '',
+    '<b>' + h(d.name) + '</b>' + (s(d.agency) ? ' — ' + h(d.agency) : ''),
+    '✉️ ' + h(d.email)
+  ];
+  if (s(d.website)) lines.push('🌐 ' + h(d.website));
+  if (s(d.whatsapp)) lines.push('📱 ' + h(d.whatsapp));
+  if (s(d.message)) lines.push('', '<i>' + h(d.message) + '</i>');
+  const buttons = [];
+  const wa = s(d.whatsapp).replace(/[^0-9]/g, '').replace(/^0/, '62');
+  if (wa.length >= 8) buttons.push({ text: 'WhatsApp', url: 'https://wa.me/' + wa });
+  buttons.push({ text: 'Open dashboard', url: 'https://website-angkasa-validated.vercel.app/dashboard' });
+  try {
+    UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+      method: 'post',
+      contentType: 'application/json',
+      muteHttpExceptions: true,
+      payload: JSON.stringify({
+        chat_id: chat,
+        text: lines.join('\n'),
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+        reply_markup: { inline_keyboard: [buttons] }
+      })
+    });
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+/**
+ * Run this once from the Apps Script editor after you have sent any message to your bot.
+ * It finds your chat id, saves it as TELEGRAM_CHAT_ID and sends a test message.
+ */
+function telegramSetup() {
+  const props = PropertiesService.getScriptProperties();
+  const token = props.getProperty('TELEGRAM_TOKEN');
+  if (!token) throw new Error('Add the script property TELEGRAM_TOKEN first.');
+  const res = JSON.parse(UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/getUpdates', { muteHttpExceptions: true }).getContentText());
+  if (!res.ok) throw new Error('Telegram said: ' + (res.description || 'error') + '. Check the token.');
+  const msgs = (res.result || []).map(function (u) { return u.message || u.channel_post || u.my_chat_member; }).filter(Boolean);
+  if (!msgs.length) throw new Error('No messages found. Open your bot in Telegram, press Start (or send "hi"), then run this again.');
+  const chat = msgs[msgs.length - 1].chat;
+  props.setProperty('TELEGRAM_CHAT_ID', String(chat.id));
+  UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'post', contentType: 'application/json', muteHttpExceptions: true,
+    payload: JSON.stringify({ chat_id: chat.id, text: '✅ Angkasa Studio leads are connected. New enquiries will appear here.' })
+  });
+  Logger.log('Saved TELEGRAM_CHAT_ID for ' + (chat.title || chat.first_name || chat.id));
+}
+
+/** Sends a sample lead to Telegram so you can see what it looks like. Writes nothing to the Sheet. */
+function telegramTest() {
+  telegram_({ name: 'Sample Person', agency: 'Sample Agency', email: 'sample@example.com', plan: 'Brand', website: 'example.com', whatsapp: '+62 812 0000 0000', message: 'This is a test notification.' });
 }
 
 /**

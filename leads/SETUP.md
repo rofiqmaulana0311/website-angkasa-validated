@@ -44,6 +44,17 @@ Supaya email tidak bergantung pada FormSubmit:
 
 Setelah itu setiap enquiry: kamu dapat email notifikasi, pengirim dapat balasan otomatis (dikirim dari akun Google pemilik Sheet, dengan reply-to ke `hello@angkasastudio.space`), dan FormSubmit tidak dipakai lagi. Batas Gmail gratis: 100 email/hari.
 
+## 7. Notifikasi Telegram
+1. Di Telegram, buka **@BotFather** → kirim `/newbot` → beri nama (misalnya *Angkasa Leads*) dan username yang berakhiran `bot`. Salin **token** yang diberikan. Token ini rahasia, jangan dibagikan.
+2. Buka bot barumu (link dari BotFather) → tekan **Start**.
+3. Di Apps Script: tempel ulang `leads/apps-script.gs` terbaru → Save.
+4. **Project Settings → Script Properties → Add**: `TELEGRAM_TOKEN` = token dari BotFather.
+5. Kembali ke editor, pilih fungsi **telegramSetup** di menu atas → **Run** → izinkan akses. Bot akan mengirim "✅ … connected" dan `TELEGRAM_CHAT_ID` tersimpan otomatis.
+6. (Opsional) Run **telegramTest** untuk melihat contoh notifikasi lead.
+7. **Deploy → Manage deployments → ikon pensil → Version: New version → Deploy.** Tanpa langkah ini situs masih memakai versi lama.
+
+Ingin notifikasi masuk ke grup (misalnya bersama tim)? Tambahkan bot ke grup, kirim satu pesan di grup, lalu jalankan `telegramSetup` lagi.
+
 ## Catatan
 - Form dianggap terkirim bila lead tersimpan di Sheet. FormSubmit hanya dipakai sebagai cadangan email bila `NOTIFY_EMAIL` belum diset, dengan batas waktu 15 detik.
 - Kalau script diubah, deploy ulang lewat **Deploy → Manage deployments → Edit → Version: New version** supaya URL tetap sama.
